@@ -1,0 +1,27 @@
+<?php
+
+return [
+    'home' => 'الرئيسية',
+    'about' => 'من نحن',
+    'products' => 'منتجاتنا',
+    'news' => 'الأخبار',
+    'quality' => 'الجودة',
+    'careers' => 'الوظائف',
+    'contact' => 'اتصل بنا',
+    'read_more' => 'اقرأ المزيد',
+    'our_products' => 'منتجاتنا',
+    'our_products_desc' => 'اكتشف مجموعتنا من الأسمنت والجير والكلنكر عالي الجودة.',
+    'latest_news' => 'آخر الأخبار',
+    'latest_news_desc' => 'ابق على اطلاع بأخبارنا وبياناتنا الصحفية.',
+    'contact_us' => 'اتصل بنا',
+    'send_message' => 'إرسال الرسالة',
+    'your_name' => 'الاسم',
+    'your_email' => 'البريد الإلكتروني',
+    'your_phone' => 'الهاتف',
+    'subject' => 'الموضوع',
+    'message' => 'الرسالة',
+    'welcome_title' => 'مرحبا بكم في CIOK',
+    'welcome_subtitle' => 'إسمنت أم الكليل — التميز الصناعي منذ 1979',
+    'learn_more' => 'اعرف المزيد',
+    'all_rights_reserved' => 'جميع الحقوق محفوظة',
+];

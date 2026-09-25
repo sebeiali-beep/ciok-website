@@ -1,0 +1,27 @@
+<?php
+
+return [
+    'home' => 'Accueil',
+    'about' => 'À propos',
+    'products' => 'Nos produits',
+    'news' => 'Actualités',
+    'quality' => 'Qualité',
+    'careers' => 'Carrières',
+    'contact' => 'Contact',
+    'read_more' => 'Lire la suite',
+    'our_products' => 'Nos produits',
+    'our_products_desc' => 'Découvrez notre gamme de ciments, chaux et clinker de haute qualité.',
+    'latest_news' => 'Dernières actualités',
+    'latest_news_desc' => 'Restez informé de nos actualités et communiqués.',
+    'contact_us' => 'Nous contacter',
+    'send_message' => 'Envoyer le message',
+    'your_name' => 'Votre nom',
+    'your_email' => 'Votre email',
+    'your_phone' => 'Votre téléphone',
+    'subject' => 'Sujet',
+    'message' => 'Message',
+    'welcome_title' => 'Bienvenue chez CIOK',
+    'welcome_subtitle' => 'Les Ciments d\'Oum El Kelil — Excellence industrielle depuis 1979',
+    'learn_more' => 'En savoir plus',
+    'all_rights_reserved' => 'Tous droits réservés',
+];
