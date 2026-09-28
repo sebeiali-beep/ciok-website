@@ -66,11 +66,8 @@
     </script>
     @endverbatim
 
-    {{-- ═══════════════════════════════════════════════════════ --}}
-    {{-- POLICES LOCALES (gain 2000ms) --}}
-    {{-- ═══════════════════════════════════════════════════════ --}}
+    {{-- Polices locales --}}
     <style>
-        /* ═══ Inter (latin) ═══ */
         @font-face {
             font-family: 'Inter';
             font-style: normal;
@@ -107,7 +104,6 @@
             src: url('{{ asset('fonts/inter-800.woff2') }}') format('woff2');
         }
 
-        /* ═══ Cairo (arabe) ═══ */
         @font-face {
             font-family: 'Cairo';
             font-style: normal;
@@ -136,9 +132,9 @@
     <link rel="preload" as="font" type="font/woff2" href="{{ asset('fonts/inter-700.woff2') }}" crossorigin>
     <link rel="preload" as="font" type="font/woff2" href="{{ asset('fonts/inter-800.woff2') }}" crossorigin>
 
- <script defer src="https://cdn.jsdelivr.net/gh/sebeiali-beep/ciok-website@main/public/js/alpine.min.js"></script>
+    {{-- Alpine.js est chargé via Vite (resources/js/app.js) --}}
 
-    {{-- CSS principal (preload non-bloquant) --}}
+    {{-- CSS principal --}}
     <link rel="preload" as="style" href="{{ Vite::asset('resources/css/app.css') }}">
     <link rel="stylesheet" href="{{ Vite::asset('resources/css/app.css') }}">
     <noscript>
@@ -148,7 +144,6 @@
     @vite(['resources/js/app.js'])
 
     <style>
-        /* CSS critique inline */
         body { margin: 0; font-family: 'Inter', system-ui, sans-serif; }
         html[dir="rtl"] body, html[lang="ar"] body { font-family: 'Cairo', 'Tahoma', sans-serif; }
 
@@ -185,8 +180,9 @@
         .counter-animating { color: #EAB308; }
         .hero-slider { transition: opacity 0.5s ease; }
 
-        /* Éviter le CLS sur les compteurs */
         [data-counter] { display: inline-block; min-width: 1ch; }
+
+        [x-cloak] { display: none !important; }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800 min-h-screen flex flex-col">
@@ -206,7 +202,6 @@
     </button>
 
     <script>
-        // Animation fade-in au scroll
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -217,7 +212,6 @@
 
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        // Barre de progression + bouton retour
         const progressBar = document.getElementById('scroll-progress');
         const backTop = document.getElementById('back-to-top');
 
@@ -241,7 +235,6 @@
             }
         });
 
-        // Compteurs animés
         function animateCounter(el, target, duration = 2000) {
             if (isNaN(target)) return;
             const startTime = performance.now();
