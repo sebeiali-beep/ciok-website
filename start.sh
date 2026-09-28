@@ -7,18 +7,23 @@ if [ -z "$APP_KEY" ]; then
     php artisan key:generate --force
 fi
 
-# Vider les caches
 php artisan optimize:clear
-
-# Migrations (SANS fresh)
 php artisan migrate --force
-
-# Storage link
 php artisan storage:link || true
 
-# Seeder UNIQUEMENT les appels d'offres
-echo "🌱 Seeding tenders only..."
-php artisan db:seed --class=TenderSeeder --force || true
+# ✅ FIX ADMIN : Forcer les droits admin
+echo "🔧 Correction des droits admin..."
+php artisan tinker --execute="
+\$u = App\Models\User::where('email', 'admin@ciok.tn')->first();
+if (\$u) {
+    \$u->is_admin = true;
+    \$u->role = 'super_admin';
+    \$u->save();
+    echo 'Admin corrigé : ' . \$u->email;
+} else {
+    echo 'Admin non trouvé';
+}
+" || true
 
 echo "✅ Prêt, démarrage du serveur..."
 
