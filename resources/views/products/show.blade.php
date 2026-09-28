@@ -5,9 +5,8 @@
 @section('og_image', $product->image ? asset('storage/' . $product->image) : asset('images/silos.webp'))
 @section('og_type', 'product')
 
-@section('content')
+@section('content')      ← ✅ Doit être là
 
-{{-- ═══════════════════════════════════════════════════════ --}}
 {{-- FIL D'ARIANE --}}
 <div class="bg-gray-100 border-b">
     <div class="max-w-7xl mx-auto px-4 py-3 text-sm flex items-center gap-2">
