@@ -2,7 +2,7 @@
 {{-- HERO SLIDER avec 5 images --}}
 {{-- ═══════════════════════════════════════════════════════ --}}
 <section class="hero-slider relative text-white overflow-hidden flex items-center"
-         style="min-height: 650px; height: 650px; contain: layout;">
+         style="min-height: 650px; height: 650px; contain: layout;"
          x-data="{
             current: 0,
             slides: 5,
@@ -22,7 +22,7 @@
     @php
         $slides = [
             [
-                'image' => 'hero-1.webp',
+                'image' => 'hero-1.jpg',
                 'badge' => '🏭 EXCELLENCE INDUSTRIELLE DEPUIS 1979',
                 'title' => 'Bienvenue chez CIOK',
                 'subtitle' => 'Les Ciments d\'Oum El Kelil — Excellence industrielle depuis 1979',
@@ -30,7 +30,7 @@
                 'btn2' => ['text' => 'Nous contacter', 'url' => '/contact', 'icon' => '✉️'],
             ],
             [
-                'image' => 'hero-2.webp',
+                'image' => 'hero-2.jpg',
                 'badge' => '🇹🇳 ACTEUR CLÉ DU BÂTIMENT EN TUNISIE',
                 'title' => 'Une entreprise nationale',
                 'subtitle' => 'Fièrement tunisienne, au service du développement du pays',
@@ -38,7 +38,7 @@
                 'btn2' => ['text' => 'Nos produits', 'url' => '/produits', 'icon' => '🏭'],
             ],
             [
-                'image' => 'hero-3.webp',
+                'image' => 'hero-3.jpg',
                 'badge' => '🏷️ UN CIMENT DE QUALITÉ CERTIFIÉE',
                 'title' => 'Des produits reconnus',
                 'subtitle' => 'Conforme aux normes tunisiennes NT 47.01 et européennes EN 197-1',
@@ -46,7 +46,7 @@
                 'btn2' => ['text' => 'Notre qualité', 'url' => '/qualite', 'icon' => '✅'],
             ],
             [
-                'image' => 'hero-4.webp',
+                'image' => 'hero-4.jpg',
                 'badge' => '🚛 DISTRIBUTION NATIONALE',
                 'title' => 'Une logistique performante',
                 'subtitle' => 'Un réseau de distribution couvrant toute la Tunisie',
@@ -54,7 +54,7 @@
                 'btn2' => ['text' => 'Nous contacter', 'url' => '/contact', 'icon' => '✉️'],
             ],
             [
-                'image' => 'hero-5.webp',
+                'image' => 'hero-5.jpg',
                 'badge' => '⚙️ TECHNOLOGIE DE POINTE',
                 'title' => 'Un savoir-faire reconnu',
                 'subtitle' => 'Des équipements de dernière génération pour une qualité constante',
@@ -70,19 +70,19 @@
              style="z-index: {{ $index === 0 ? 1 : 0 }};"
              :class="current === {{ $index }} ? 'opacity-100' : 'opacity-0'">
             <img src="{{ asset('images/heroes/' . str_replace('.jpg', '.webp', $slide['image'])) }}"
-     alt="{{ $slide['title'] }}"
-     width="1920"
-     height="650"
-     loading="{{ $index === 0 ? 'eager' : 'lazy' }}"
-     fetchpriority="{{ $index === 0 ? 'high' : 'low' }}"
-     class="w-full h-full object-cover"
-     style="aspect-ratio: 1920/650;">
+                 alt="{{ $slide['title'] }}"
+                 width="1920"
+                 height="650"
+                 loading="{{ $index === 0 ? 'eager' : 'lazy' }}"
+                 fetchpriority="{{ $index === 0 ? 'high' : 'low' }}"
+                 class="w-full h-full object-cover"
+                 style="aspect-ratio: 1920/650;">
             <div class="absolute inset-0 bg-gradient-to-r from-blue-950/90 via-blue-900/75 to-blue-800/50"></div>
         </div>
     @endforeach
 
     {{-- CONTENU (z-20) --}}
- <div class="relative max-w-7xl mx-auto px-4 min-height: 500px" style="z-index: 20; min-height: 500px;">
+    <div class="relative max-w-7xl mx-auto px-4 py-24 w-full" style="z-index: 20; min-height: 500px;">
         <div class="max-w-3xl" style="min-height: 420px;">
 
             @foreach($slides as $index => $slide)
