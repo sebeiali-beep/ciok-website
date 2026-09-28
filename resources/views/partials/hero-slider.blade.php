@@ -2,7 +2,7 @@
 {{-- HERO SLIDER avec 5 images --}}
 {{-- ═══════════════════════════════════════════════════════ --}}
 <section class="hero-slider relative text-white overflow-hidden flex items-center"
-         style="min-height: 650px; height: 650px;"
+         style="min-height: 650px; height: 650px; contain: layout;">
          x-data="{
             current: 0,
             slides: 5,

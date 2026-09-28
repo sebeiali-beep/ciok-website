@@ -69,7 +69,8 @@
     {{-- Polices Google Fonts (display=optional = pas de CLS) --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Inter:wght@400;500;600;700;800&display=optional">
+    
+    
 
     {{-- Alpine.js (CDN GitHub local) --}}
     <script defer src="https://cdn.jsdelivr.net/gh/sebeiali-beep/ciok-website@main/public/js/alpine.min.js"></script>
@@ -131,9 +132,9 @@
 
     @include('partials.header')
 
-    <main class="flex-1">
-        @yield('content')
-    </main>
+<main class="flex-1" style="min-height: 800px;">
+    @yield('content')
+</main>
 
     @include('partials.footer')
 
