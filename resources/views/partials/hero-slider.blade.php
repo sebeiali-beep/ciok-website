@@ -81,8 +81,8 @@
     @endforeach
 
     {{-- CONTENU (z-20) --}}
-    <div class="relative max-w-7xl mx-auto px-4 py-24 w-full" style="z-index: 20;">
-        <div class="max-w-3xl">
+ <div class="relative max-w-7xl mx-auto px-4 min-height: 500px" style="z-index: 20; min-height: 500px;">
+        <div class="max-w-3xl" style="min-height: 420px;">
 
             @foreach($slides as $index => $slide)
                 <div x-show="current === {{ $index }}"

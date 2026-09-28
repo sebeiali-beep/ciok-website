@@ -5,7 +5,7 @@
 @section('og_image', asset('images/hero.webp'))
 
 @section('content')
-...
+
 
 {{-- ═══════════════════════════════════════════════════════ --}}
 {{-- HERO SLIDER --}}
@@ -27,14 +27,14 @@
 
         <div class="border-r border-gray-100 last:border-0">
             <div class="text-4xl md:text-5xl font-extrabold text-blue-900">
-                <span data-counter data-target="700">0</span><span class="text-yellow-500">+</span>
+                <span data-counter data-target="700">0</span><span class="text-yellow-500" style="display: inline-block; width: 1em;">+</span>
             </div>
             <div class="text-xs md:text-sm text-gray-600 mt-2 uppercase tracking-wider">Collaborateurs</div>
         </div>
 
         <div class="border-r border-gray-100 last:border-0">
             <div class="text-4xl md:text-5xl font-extrabold text-blue-900">
-                <span data-counter data-target="1">0</span>M<span class="text-yellow-500">+</span>
+                <span data-counter data-target="1">0</span>M<span class="text-yellow-500" style="display: inline-block; width: 1em;">+</span>
             </div>
             <div class="text-xs md:text-sm text-gray-600 mt-2 uppercase tracking-wider">Tonnes / an</div>
         </div>
@@ -51,7 +51,6 @@
 {{-- QUI SOMMES-NOUS --}}
 {{-- ═══════════════════════════════════════════════════════ --}}
 <section class="max-w-7xl mx-auto px-4 py-20 grid lg:grid-cols-2 gap-12 items-center reveal">
-
     <div>
         <div class="inline-block bg-yellow-500 text-blue-900 text-xs font-bold px-3 py-1 rounded-full mb-4">
             QUI SOMMES-NOUS
@@ -137,9 +136,9 @@
                         if ($product->image) {
                             $imgSrc = asset('storage/' . $product->image);
                         } elseif (str_contains($nameLower, 'cem i ') && !str_contains($nameLower, 'cem ii')) {
-                            $imgSrc = asset('images/produits/ciment-cem1-vert.png');
+                            $imgSrc = asset('images/produits/ciment-cem1-vert.webp');
                         } elseif (str_contains($nameLower, 'cem ii')) {
-                            $imgSrc = asset('images/produits/ciment-cem2-bleu.png');
+                            $imgSrc = asset('images/produits/ciment-cem2-bleu.webp');
                         }
                     @endphp
 
