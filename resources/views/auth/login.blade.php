@@ -1,47 +1,127 @@
-<x-guest-layout>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion - CIOK Admin</title>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+</head>
+<body class="min-h-screen bg-gradient-to-br from-blue-950 via-blue-900 to-blue-800 flex items-center justify-center p-4">
 
-    <form method="POST" action="{{ route('login') }}">
-        @csrf
+    {{-- Motif décoratif --}}
+    <div class="absolute inset-0 opacity-10 overflow-hidden">
+        <div class="absolute top-0 right-0 text-[30rem] leading-none select-none">🏭</div>
+    </div>
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+    {{-- Conteneur principal --}}
+    <div class="relative w-full max-w-md">
+
+        {{-- Logo CIOK --}}
+        <div class="text-center mb-8">
+            <a href="/" class="inline-flex items-center gap-3 group">
+                <div class="w-16 h-16 bg-gradient-to-br from-yellow-500 to-yellow-400 rounded-2xl flex items-center justify-center text-blue-950 font-extrabold text-3xl shadow-xl group-hover:scale-105 transition">
+                    C
+                </div>
+                <div class="text-left">
+                    <div class="font-extrabold text-3xl text-white">CIOK</div>
+                    <div class="text-xs text-blue-200">Ciments d'Oum El Kelil</div>
+                </div>
+            </a>
         </div>
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
+        {{-- Carte de connexion --}}
+        <div class="bg-white rounded-2xl shadow-2xl overflow-hidden">
 
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
+            {{-- En-tête --}}
+            <div class="bg-gradient-to-r from-blue-900 to-blue-800 px-8 py-6">
+                <h1 class="text-white text-2xl font-bold mb-1">🔐 Espace Administrateur</h1>
+                <p class="text-blue-200 text-sm">Connectez-vous pour gérer votre site</p>
+            </div>
 
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+            {{-- Formulaire --}}
+            <div class="p-8">
+
+                {{-- Session status --}}
+                @if (session('status'))
+                    <div class="bg-green-100 border-l-4 border-green-500 text-green-800 px-4 py-3 rounded mb-5 text-sm">
+                        {{ session('status') }}
+                    </div>
+                @endif
+
+                <form method="POST" action="{{ route('login') }}" class="space-y-5">
+                    @csrf
+
+                    {{-- Email --}}
+                    <div>
+                        <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">
+                            📧 Adresse email
+                        </label>
+                        <input id="email" type="email" name="email" value="{{ old('email') }}"
+                               required autofocus autocomplete="username"
+                               placeholder="admin@ciok.tn"
+                               class="w-full border-2 border-gray-200 rounded-lg px-4 py-3 focus:border-blue-900 focus:ring-2 focus:ring-blue-100 outline-none transition">
+                        @error('email')
+                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    {{-- Password --}}
+                    <div>
+                        <label for="password" class="block text-sm font-semibold text-gray-700 mb-2">
+                            🔑 Mot de passe
+                        </label>
+                        <input id="password" type="password" name="password"
+                               required autocomplete="current-password"
+                               placeholder="••••••••"
+                               class="w-full border-2 border-gray-200 rounded-lg px-4 py-3 focus:border-blue-900 focus:ring-2 focus:ring-blue-100 outline-none transition">
+                        @error('password')
+                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    {{-- Remember + Forgot --}}
+                    <div class="flex items-center justify-between text-sm">
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="checkbox" name="remember"
+                                   class="w-4 h-4 accent-blue-900 cursor-pointer">
+                            <span class="text-gray-700">Se souvenir de moi</span>
+                        </label>
+
+                        @if (Route::has('password.request'))
+                            <a href="{{ route('password.request') }}"
+                               class="text-blue-700 hover:underline font-semibold">
+                                Mot de passe oublié ?
+                            </a>
+                        @endif
+                    </div>
+
+                    {{-- Bouton --}}
+                    <button type="submit"
+                            class="w-full bg-gradient-to-r from-blue-900 to-blue-700 text-white py-3.5 rounded-lg font-bold hover:from-blue-800 hover:to-blue-600 transition shadow-md text-base flex items-center justify-center gap-2">
+                        🔓 Se connecter
+                    </button>
+
+                </form>
+
+            </div>
+
+            {{-- Pied de carte --}}
+            <div class="bg-gray-50 px-8 py-4 border-t border-gray-100 text-center">
+                <p class="text-xs text-gray-500">
+                    © {{ date('Y') }} CIOK — Tous droits réservés
+                </p>
+            </div>
+
         </div>
 
-        <!-- Remember Me -->
-        <div class="block mt-4">
-            <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
-                <span class="ms-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-            </label>
+        {{-- Lien retour --}}
+        <div class="text-center mt-6">
+            <a href="/" class="inline-flex items-center gap-2 text-blue-200 hover:text-yellow-400 transition text-sm">
+                ← Retour au site
+            </a>
         </div>
 
-        <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
+    </div>
 
-            <x-primary-button class="ms-3">
-                {{ __('Log in') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+</body>
+</html>
