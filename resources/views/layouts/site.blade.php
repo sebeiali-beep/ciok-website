@@ -16,7 +16,7 @@
     {{-- Canonical --}}
     <link rel="canonical" href="{{ url()->current() }}">
 
-    {{-- Open Graph (Facebook / LinkedIn) --}}
+    {{-- Open Graph --}}
     <meta property="og:type" content="@yield('og_type', 'website')">
     <meta property="og:site_name" content="{{ config('seo.site_name') }}">
     <meta property="og:title" content="@yield('title', 'CIOK')">
@@ -38,7 +38,7 @@
     <link rel="icon" type="image/png" href="{{ asset('images/favicon.png') }}">
     <link rel="apple-touch-icon" href="{{ asset('images/favicon.png') }}">
 
-    {{-- Schema.org (Google Rich Results) --}}
+    {{-- Schema.org --}}
     @verbatim
     <script type="application/ld+json">
     {
@@ -66,11 +66,75 @@
     </script>
     @endverbatim
 
-    {{-- Polices Google Fonts (display=optional = pas de CLS) --}}
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
-    
+    {{-- ═══════════════════════════════════════════════════════ --}}
+    {{-- POLICES LOCALES (gain 2000ms) --}}
+    {{-- ═══════════════════════════════════════════════════════ --}}
+    <style>
+        /* ═══ Inter (latin) ═══ */
+        @font-face {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url('{{ asset('fonts/inter-400.woff2') }}') format('woff2');
+        }
+        @font-face {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 500;
+            font-display: swap;
+            src: url('{{ asset('fonts/inter-500.woff2') }}') format('woff2');
+        }
+        @font-face {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 600;
+            font-display: swap;
+            src: url('{{ asset('fonts/inter-600.woff2') }}') format('woff2');
+        }
+        @font-face {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 700;
+            font-display: swap;
+            src: url('{{ asset('fonts/inter-700.woff2') }}') format('woff2');
+        }
+        @font-face {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 800;
+            font-display: swap;
+            src: url('{{ asset('fonts/inter-800.woff2') }}') format('woff2');
+        }
+
+        /* ═══ Cairo (arabe) ═══ */
+        @font-face {
+            font-family: 'Cairo';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url('{{ asset('fonts/cairo-400.woff2') }}') format('woff2');
+        }
+        @font-face {
+            font-family: 'Cairo';
+            font-style: normal;
+            font-weight: 600;
+            font-display: swap;
+            src: url('{{ asset('fonts/cairo-600.woff2') }}') format('woff2');
+        }
+        @font-face {
+            font-family: 'Cairo';
+            font-style: normal;
+            font-weight: 700;
+            font-display: swap;
+            src: url('{{ asset('fonts/cairo-700.woff2') }}') format('woff2');
+        }
+    </style>
+
+    {{-- Preload des polices critiques --}}
+    <link rel="preload" as="font" type="font/woff2" href="{{ asset('fonts/inter-400.woff2') }}" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="{{ asset('fonts/inter-700.woff2') }}" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="{{ asset('fonts/inter-800.woff2') }}" crossorigin>
 
     {{-- Alpine.js (CDN GitHub local) --}}
     <script defer src="https://cdn.jsdelivr.net/gh/sebeiali-beep/ciok-website@main/public/js/alpine.min.js"></script>
@@ -85,7 +149,7 @@
     @vite(['resources/js/app.js'])
 
     <style>
-        /* CSS critique inline (évite le FOUC) */
+        /* CSS critique inline */
         body { margin: 0; font-family: 'Inter', system-ui, sans-serif; }
         html[dir="rtl"] body, html[lang="ar"] body { font-family: 'Cairo', 'Tahoma', sans-serif; }
 
@@ -132,9 +196,9 @@
 
     @include('partials.header')
 
-<main class="flex-1" style="min-height: 800px;">
-    @yield('content')
-</main>
+    <main class="flex-1" style="min-height: 500px;">
+        @yield('content')
+    </main>
 
     @include('partials.footer')
 
