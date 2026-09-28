@@ -52,9 +52,9 @@
                 if ($product->image) {
                     $mainImgSrc = asset('storage/' . $product->image);
                 } elseif (str_contains($nameLower, 'cem i ') && !str_contains($nameLower, 'cem ii')) {
-                    $mainImgSrc = asset('images/produits/ciment-cem1-vert.png');
+                    $mainImgSrc = asset('images/produits/ciment-cem1-vert.webp');
                 } elseif (str_contains($nameLower, 'cem ii')) {
-                    $mainImgSrc = asset('images/produits/ciment-cem2-bleu.png');
+                    $mainImgSrc = asset('images/produits/ciment-cem2-bleu.webp');
                 }
             @endphp
 
@@ -224,9 +224,9 @@
                         if ($p->image) {
                             $imgSrc = asset('storage/' . $p->image);
                         } elseif (str_contains($nameLower, 'cem i ') && !str_contains($nameLower, 'cem ii')) {
-                            $imgSrc = asset('images/produits/ciment-cem1-vert.png');
+                            $imgSrc = asset('images/produits/ciment-cem1-vert.webp');
                         } elseif (str_contains($nameLower, 'cem ii')) {
-                            $imgSrc = asset('images/produits/ciment-cem2-bleu.png');
+                            $imgSrc = asset('images/produits/ciment-cem2-bleu.webp');
                         }
                     @endphp
 

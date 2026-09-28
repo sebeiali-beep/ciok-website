@@ -2,7 +2,7 @@
 
 @section('title', 'CIOK - ' . __('messages.welcome_title'))
 @section('meta_description', 'CIOK - Société des Ciments d\'Oum El Kelil. Production de ciment, chaux et clinker de haute qualité en Tunisie depuis 1979.')
-@section('og_image', asset('images/hero.jpg'))
+@section('og_image', asset('images/hero.webp'))
 
 @section('content')
 ...
@@ -94,13 +94,13 @@
 
     <div class="grid grid-cols-2 gap-4">
         <div class="img-zoom rounded-xl shadow-lg col-span-2">
-            <img src="{{ asset('images/silos.jpg') }}" alt="Silos CIOK" class="w-full h-72 object-cover">
+            <img src="{{ asset('images/silos.webp') }}" alt="Silos CIOK" class="w-full h-72 object-cover">
         </div>
         <div class="img-zoom rounded-xl shadow-lg">
-            <img src="{{ asset('images/usine-panorama.jpg') }}" alt="Usine CIOK" class="w-full h-40 object-cover">
+            <img src="{{ asset('images/usine-panorama.webp') }}" alt="Usine CIOK" class="w-full h-40 object-cover">
         </div>
         <div class="img-zoom rounded-xl shadow-lg">
-            <img src="{{ asset('images/aerien.jpg') }}" alt="Vue aérienne" class="w-full h-40 object-cover">
+            <img src="{{ asset('images/aerien.webp') }}" alt="Vue aérienne" class="w-full h-40 object-cover">
         </div>
     </div>
 
@@ -364,7 +364,7 @@
 {{-- ═══════════════════════════════════════════════════════ --}}
 <section class="relative text-white overflow-hidden reveal">
     <div class="absolute inset-0">
-        <img src="{{ asset('images/entree.jpg') }}" alt="Contact CIOK" class="w-full h-full object-cover">
+        <img src="{{ asset('images/entree.webp') }}" alt="Contact CIOK" class="w-full h-full object-cover">
         <div class="absolute inset-0 bg-blue-950/90"></div>
     </div>
 

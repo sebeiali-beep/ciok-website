@@ -68,7 +68,7 @@
         <div class="absolute inset-0 transition-opacity duration-1000 ease-in-out pointer-events-none"
              style="z-index: {{ $index === 0 ? 1 : 0 }};"
              :class="current === {{ $index }} ? 'opacity-100' : 'opacity-0'">
-            <img src="{{ asset('images/heroes/' . $slide['image']) }}"
+            <img src="{{ asset('images/heroes/' . str_replace('.jpg', '.webp', $slide['image'])) }}"
                  alt="{{ $slide['title'] }}"
                  class="w-full h-full object-cover">
             <div class="absolute inset-0 bg-gradient-to-r from-blue-950/90 via-blue-900/75 to-blue-800/50"></div>

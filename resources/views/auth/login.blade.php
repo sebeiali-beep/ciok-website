@@ -19,7 +19,7 @@
         {{-- Logo CIOK --}}
         <div class="text-center mb-8">
             <a href="/" class="inline-flex items-center gap-3 group">
-                <img src="{{ asset('images/logo.png') }}"
+                <img src="{{ asset('images/logo.webp') }}"
                      alt="CIOK Logo"
                      class="w-16 h-16 object-contain group-hover:scale-105 transition drop-shadow-lg">
                 <div class="text-left">
