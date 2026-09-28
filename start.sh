@@ -16,7 +16,7 @@ php artisan migrate --force
 # Storage link
 php artisan storage:link || true
 
-# ⚠️ SEEDER : à commenter après le premier déploiement
+# SEEDER : injecter les données
 php artisan db:seed --force || true
 
 echo "✅ Prêt, démarrage du serveur..."
