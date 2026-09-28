@@ -19,9 +19,9 @@
         {{-- Logo CIOK --}}
         <div class="text-center mb-8">
             <a href="/" class="inline-flex items-center gap-3 group">
-                <div class="w-16 h-16 bg-gradient-to-br from-yellow-500 to-yellow-400 rounded-2xl flex items-center justify-center text-blue-950 font-extrabold text-3xl shadow-xl group-hover:scale-105 transition">
-                    C
-                </div>
+                <img src="{{ asset('images/logo.png') }}"
+                     alt="CIOK Logo"
+                     class="w-16 h-16 object-contain group-hover:scale-105 transition drop-shadow-lg">
                 <div class="text-left">
                     <div class="font-extrabold text-3xl text-white">CIOK</div>
                     <div class="text-xs text-blue-200">Ciments d'Oum El Kelil</div>
