@@ -2,7 +2,7 @@
 
 @section('title', $product->name . ' - CIOK')
 @section('meta_description', Str::limit($product->description, 155))
-@section('og_image', $product->image ? asset('storage/' . $product->image) : asset('images/silos.jpg'))
+@section('og_image', $product->image ? asset('storage/' . $product->image) : asset('images/silos.webp'))
 @section('og_type', 'product')
 
 {{-- ═══════════════════════════════════════════════════════ --}}
@@ -280,7 +280,7 @@
 {{-- ═══════════════════════════════════════════════════════ --}}
 <section class="relative text-white overflow-hidden mt-8">
     <div class="absolute inset-0">
-        <img src="{{ asset('images/entree.jpg') }}" alt="Contact CIOK" class="w-full h-full object-cover">
+        <img src="{{ asset('images/entree.webp') }}" alt="Contact CIOK" class="w-full h-full object-cover">
         <div class="absolute inset-0 bg-blue-950/90"></div>
     </div>
 
