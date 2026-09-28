@@ -78,7 +78,7 @@
 </noscript>
 
     {{-- Alpine.js --}}
-   <script defer src="{{ asset('js/alpine.min.js') }}"></script>
+<script defer src="https://cdn.jsdelivr.net/gh/sebeiali-beep/ciok-website@main/public/js/alpine.min.js"></script>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
