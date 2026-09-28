@@ -7,16 +7,13 @@ if [ -z "$APP_KEY" ]; then
     php artisan key:generate --force
 fi
 
-# Vider les caches
 php artisan optimize:clear
 
-# Migrations
-php artisan migrate --force
+# ⚠️ RECRÉER LES TABLES (dernier recours)
+php artisan migrate:fresh --force
 
-# Storage link
 php artisan storage:link || true
 
-# SEEDER : injecter les données
 php artisan db:seed --force || true
 
 echo "✅ Prêt, démarrage du serveur..."
