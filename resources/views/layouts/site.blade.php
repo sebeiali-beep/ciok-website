@@ -35,8 +35,8 @@
     <meta name="twitter:image" content="@yield('og_image', asset(config('seo.default_image')))">
 
     {{-- Favicon --}}
-    <link rel="icon" type="image/png" href="{{ asset('images/favicon.png') }}">
-    <link rel="apple-touch-icon" href="{{ asset('images/favicon.png') }}">
+    <link rel="icon" type="image/webp" href="{{ asset('images/favicon.webp') }}">
+    <link rel="apple-touch-icon" href="{{ asset('images/favicon.webp') }}">
 
     {{-- Schema.org (Google Rich Results) --}}
     @verbatim
@@ -47,7 +47,7 @@
         "name": "Société des Ciments d'Oum El Kelil",
         "alternateName": "CIOK",
         "url": "https://ciok.tn",
-        "logo": "/images/logo.png",
+        "logo": "/images/logo.webp",
         "description": "CIOK, Les Ciments d'Oum El Kelil - Production de ciment, chaux et clinker de haute qualité en Tunisie depuis 1979.",
         "address": {
             "@type": "PostalAddress",

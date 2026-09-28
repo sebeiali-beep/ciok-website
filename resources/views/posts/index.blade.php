@@ -1,7 +1,7 @@
 @extends('layouts.site')
 @section('title', __('messages.news') . ' - CIOK')
 @section('meta_description', 'Restez informé de nos dernières actualités, communiqués et événements.')
-@section('og_image', asset('images/usine-panorama.jpg'))
+@section('og_image', asset('images/usine-panorama.webp'))
 @section('content')
 
 {{-- ═══════════════════════════════════════════════════════ --}}
@@ -9,7 +9,7 @@
 {{-- ═══════════════════════════════════════════════════════ --}}
 <section class="relative text-white overflow-hidden">
     <div class="absolute inset-0">
-        <img src="{{ asset('images/usine-panorama.jpg') }}" alt="Actualités CIOK" class="w-full h-full object-cover">
+        <img src="{{ asset('images/usine-panorama.webp') }}" alt="Actualités CIOK" class="w-full h-full object-cover">
         <div class="absolute inset-0 bg-gradient-to-r from-blue-950/95 to-blue-900/70"></div>
     </div>
     <div class="relative max-w-7xl mx-auto px-4 py-24">

@@ -22,7 +22,7 @@
     @php
         $slides = [
             [
-                'image' => 'hero-1.jpg',
+                'image' => 'hero-1.webp',
                 'badge' => '🏭 EXCELLENCE INDUSTRIELLE DEPUIS 1979',
                 'title' => 'Bienvenue chez CIOK',
                 'subtitle' => 'Les Ciments d\'Oum El Kelil — Excellence industrielle depuis 1979',
@@ -30,7 +30,7 @@
                 'btn2' => ['text' => 'Nous contacter', 'url' => '/contact', 'icon' => '✉️'],
             ],
             [
-                'image' => 'hero-2.jpg',
+                'image' => 'hero-2.webp',
                 'badge' => '🇹🇳 ACTEUR CLÉ DU BÂTIMENT EN TUNISIE',
                 'title' => 'Une entreprise nationale',
                 'subtitle' => 'Fièrement tunisienne, au service du développement du pays',
@@ -38,7 +38,7 @@
                 'btn2' => ['text' => 'Nos produits', 'url' => '/produits', 'icon' => '🏭'],
             ],
             [
-                'image' => 'hero-3.jpg',
+                'image' => 'hero-3.webp',
                 'badge' => '🏷️ UN CIMENT DE QUALITÉ CERTIFIÉE',
                 'title' => 'Des produits reconnus',
                 'subtitle' => 'Conforme aux normes tunisiennes NT 47.01 et européennes EN 197-1',
@@ -46,7 +46,7 @@
                 'btn2' => ['text' => 'Notre qualité', 'url' => '/qualite', 'icon' => '✅'],
             ],
             [
-                'image' => 'hero-4.jpg',
+                'image' => 'hero-4.webp',
                 'badge' => '🚛 DISTRIBUTION NATIONALE',
                 'title' => 'Une logistique performante',
                 'subtitle' => 'Un réseau de distribution couvrant toute la Tunisie',
@@ -54,7 +54,7 @@
                 'btn2' => ['text' => 'Nous contacter', 'url' => '/contact', 'icon' => '✉️'],
             ],
             [
-                'image' => 'hero-5.jpg',
+                'image' => 'hero-5.webp',
                 'badge' => '⚙️ TECHNOLOGIE DE POINTE',
                 'title' => 'Un savoir-faire reconnu',
                 'subtitle' => 'Des équipements de dernière génération pour une qualité constante',

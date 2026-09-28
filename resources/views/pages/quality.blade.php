@@ -9,7 +9,7 @@
 {{-- ═══════════════════════════════════════════════════════ --}}
 <section class="relative text-white overflow-hidden">
     <div class="absolute inset-0">
-        <img src="{{ asset('images/silos.jpg') }}" alt="Qualité CIOK" class="w-full h-full object-cover">
+        <img src="{{ asset('images/silos.webp') }}" alt="Qualité CIOK" class="w-full h-full object-cover">
         <div class="absolute inset-0 bg-gradient-to-r from-blue-950/95 to-blue-900/70"></div>
     </div>
     <div class="relative max-w-7xl mx-auto px-4 py-24">
@@ -126,7 +126,7 @@
     </div>
 
     <div class="img-zoom rounded-2xl shadow-xl overflow-hidden">
-        <img src="{{ asset('images/aerien.jpg') }}" alt="Contrôle qualité" class="w-full h-96 object-cover">
+        <img src="{{ asset('images/aerien.webp') }}" alt="Contrôle qualité" class="w-full h-96 object-cover">
     </div>
 
 </section>

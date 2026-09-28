@@ -1,7 +1,7 @@
 @extends('layouts.site')
 @section('title', __('messages.contact') . ' - CIOK')
 @section('meta_description', 'Contactez la CIOK - Siège à Le Kef, antenne à Tunis. Téléphone : +216 78 253 816. Formulaire de contact en ligne.')
-@section('og_image', asset('images/entree.jpg'))
+@section('og_image', asset('images/entree.webp'))
 @section('content')
 
 {{-- ═══════════════════════════════════════════════════════ --}}
@@ -9,7 +9,7 @@
 {{-- ═══════════════════════════════════════════════════════ --}}
 <section class="relative text-white overflow-hidden">
     <div class="absolute inset-0">
-        <img src="{{ asset('images/entree.jpg') }}" alt="Contact CIOK" class="w-full h-full object-cover">
+        <img src="{{ asset('images/entree.webp') }}" alt="Contact CIOK" class="w-full h-full object-cover">
         <div class="absolute inset-0 bg-gradient-to-r from-blue-950/95 to-blue-900/70"></div>
     </div>
     <div class="relative max-w-7xl mx-auto px-4 py-24">

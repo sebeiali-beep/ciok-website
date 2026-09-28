@@ -1,7 +1,7 @@
 @extends('layouts.site')
 @section('title', __('messages.about') . ' - CIOK')
 @section('meta_description', 'Découvrez la CIOK - Société des Ciments d\'Oum El Kelil. Acteur industriel majeur en Tunisie depuis 1979. Notre histoire, mission et valeurs.')
-@section('og_image', asset('images/usine-flag.jpg'))
+@section('og_image', asset('images/usine-flag.webp'))
 @section('content')
 
 {{-- ═══════════════════════════════════════════════════════ --}}
@@ -9,7 +9,7 @@
 {{-- ═══════════════════════════════════════════════════════ --}}
 <section class="relative text-white overflow-hidden">
     <div class="absolute inset-0">
-        <img src="{{ asset('images/usine-flag.jpg') }}" alt="CIOK" class="w-full h-full object-cover">
+        <img src="{{ asset('images/usine-flag.webp') }}" alt="CIOK" class="w-full h-full object-cover">
         <div class="absolute inset-0 bg-gradient-to-r from-blue-950/95 to-blue-900/70"></div>
     </div>
     <div class="relative max-w-7xl mx-auto px-4 py-24">
@@ -62,13 +62,13 @@
 
     <div class="grid grid-cols-2 gap-4">
         <div class="img-zoom rounded-xl shadow-lg col-span-2">
-            <img src="{{ asset('images/silos.jpg') }}" alt="Silos CIOK" class="w-full h-72 object-cover">
+            <img src="{{ asset('images/silos.webp') }}" alt="Silos CIOK" class="w-full h-72 object-cover">
         </div>
         <div class="img-zoom rounded-xl shadow-lg">
-            <img src="{{ asset('images/usine-panorama.jpg') }}" alt="Usine CIOK" class="w-full h-40 object-cover">
+            <img src="{{ asset('images/usine-panorama.webp') }}" alt="Usine CIOK" class="w-full h-40 object-cover">
         </div>
         <div class="img-zoom rounded-xl shadow-lg">
-            <img src="{{ asset('images/aerien.jpg') }}" alt="Vue aérienne" class="w-full h-40 object-cover">
+            <img src="{{ asset('images/aerien.webp') }}" alt="Vue aérienne" class="w-full h-40 object-cover">
         </div>
     </div>
 
@@ -234,7 +234,7 @@
 <section class="max-w-7xl mx-auto px-4 py-20 grid lg:grid-cols-2 gap-12 items-center reveal">
 
     <div class="img-zoom rounded-2xl shadow-xl overflow-hidden">
-        <img src="{{ asset('images/entree.jpg') }}" alt="Entrée usine CIOK" class="w-full h-96 object-cover">
+        <img src="{{ asset('images/entree.webp') }}" alt="Entrée usine CIOK" class="w-full h-96 object-cover">
     </div>
 
     <div>
@@ -287,13 +287,13 @@
 
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div class="img-zoom rounded-xl overflow-hidden shadow-md col-span-2 md:col-span-2">
-                <img src="{{ asset('images/aerien.jpg') }}" class="w-full h-64 object-cover" alt="Vue aérienne">
+                <img src="{{ asset('images/aerien.webp') }}" class="w-full h-64 object-cover" alt="Vue aérienne">
             </div>
             <div class="img-zoom rounded-xl overflow-hidden shadow-md">
-                <img src="{{ asset('images/silos.jpg') }}" class="w-full h-64 object-cover" alt="Silos">
+                <img src="{{ asset('images/silos.webp') }}" class="w-full h-64 object-cover" alt="Silos">
             </div>
             <div class="img-zoom rounded-xl overflow-hidden shadow-md">
-                <img src="{{ asset('images/usine-panorama.jpg') }}" class="w-full h-64 object-cover" alt="Usine">
+                <img src="{{ asset('images/usine-panorama.webp') }}" class="w-full h-64 object-cover" alt="Usine">
             </div>
         </div>
 
@@ -305,7 +305,7 @@
 {{-- ═══════════════════════════════════════════════════════ --}}
 <section class="relative text-white overflow-hidden">
     <div class="absolute inset-0">
-        <img src="{{ asset('images/hero.jpg') }}" alt="CIOK" class="w-full h-full object-cover">
+        <img src="{{ asset('images/hero.webp') }}" alt="CIOK" class="w-full h-full object-cover">
         <div class="absolute inset-0 bg-blue-950/90"></div>
     </div>
     <div class="relative max-w-4xl mx-auto text-center px-4 py-20">
