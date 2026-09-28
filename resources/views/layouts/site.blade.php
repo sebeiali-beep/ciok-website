@@ -137,7 +137,7 @@
     <link rel="preload" as="font" type="font/woff2" href="{{ asset('fonts/inter-800.woff2') }}" crossorigin>
 
     {{-- Alpine.js (CDN GitHub local) --}}
-    <script defer src="https://cdn.jsdelivr.net/gh/sebeiali-beep/ciok-website@main/public/js/alpine.min.js"></script>
+    <script defer src="{{ asset('js/alpine.min.js') }}"></script>
 
     {{-- CSS principal (preload non-bloquant) --}}
     <link rel="preload" as="style" href="{{ Vite::asset('resources/css/app.css') }}">
