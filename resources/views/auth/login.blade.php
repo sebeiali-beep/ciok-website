@@ -6,10 +6,10 @@
     <title>Connexion - CIOK Admin</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="min-h-screen bg-gradient-to-br from-blue-950 via-blue-900 to-blue-800 flex items-center justify-center p-4">
+<body class="min-h-screen bg-gradient-to-br from-blue-950 via-blue-900 to-blue-800 flex items-center justify-center p-4 relative overflow-hidden">
 
     {{-- Motif décoratif --}}
-    <div class="absolute inset-0 opacity-10 overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
         <div class="absolute top-0 right-0 text-[30rem] leading-none select-none">🏭</div>
     </div>
 
