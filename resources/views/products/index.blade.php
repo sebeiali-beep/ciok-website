@@ -2,7 +2,7 @@
 
 @section('title', __('messages.products') . ' - CIOK')
 @section('meta_description', 'Découvrez notre gamme de ciments, chaux et clinker conformes aux normes tunisiennes et européennes. Qualité certifiée ISO 9001.')
-@section('og_image', asset('images/silos.jpg'))
+@section('og_image', asset('images/silos.webp'))
 
 @section('content')
 
@@ -11,7 +11,7 @@
 {{-- ═══════════════════════════════════════════════════════ --}}
 <section class="relative text-white overflow-hidden">
     <div class="absolute inset-0">
-        <img src="{{ asset('images/silos.jpg') }}" alt="Produits CIOK" class="w-full h-full object-cover">
+        <img src="{{ asset('images/silos.webp') }}" alt="Produits CIOK" class="w-full h-full object-cover">
         <div class="absolute inset-0 bg-gradient-to-r from-blue-950/95 to-blue-900/70"></div>
     </div>
     <div class="relative max-w-7xl mx-auto px-4 py-20">
@@ -72,9 +72,9 @@
                     if ($product->image) {
                         $imgSrc = asset('storage/' . $product->image);
                     } elseif (str_contains($nameLower, 'cem i ') && !str_contains($nameLower, 'cem ii')) {
-                        $imgSrc = asset('images/produits/ciment-cem1-vert.png');
+                        $imgSrc = asset('images/produits/ciment-cem1-vert.webp');
                     } elseif (str_contains($nameLower, 'cem ii')) {
-                        $imgSrc = asset('images/produits/ciment-cem2-bleu.png');
+                        $imgSrc = asset('images/produits/ciment-cem2-bleu.webp');
                     }
                 @endphp
 
