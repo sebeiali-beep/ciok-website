@@ -35,8 +35,8 @@
     <meta name="twitter:image" content="@yield('og_image', asset(config('seo.default_image')))">
 
     {{-- Favicon --}}
-    <link rel="icon" type="image/webp" href="{{ asset('images/favicon.webp') }}">
-    <link rel="apple-touch-icon" href="{{ asset('images/favicon.webp') }}">
+    <link rel="icon" type="image/png" href="{{ asset('images/favicon.png') }}">
+    <link rel="apple-touch-icon" href="{{ asset('images/favicon.png') }}">
 
     {{-- Schema.org (Google Rich Results) --}}
     @verbatim
@@ -66,67 +66,48 @@
     </script>
     @endverbatim
 
-    {{-- Polices Google Fonts --}}
+    {{-- Polices Google Fonts (non-bloquant) --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Inter:wght@400;500;600;700;800&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Inter:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
-<noscript>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Inter:wght@400;500;600;700;800&display=swap">
-</noscript>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Inter:wght@400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Inter:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Inter:wght@400;500;600;700;800&display=swap">
+    </noscript>
 
-    {{-- Alpine.js --}}
-<script defer src="https://cdn.jsdelivr.net/gh/sebeiali-beep/ciok-website@main/public/js/alpine.min.js"></script>
+    {{-- Alpine.js (CDN GitHub local) --}}
+    <script defer src="https://cdn.jsdelivr.net/gh/sebeiali-beep/ciok-website@main/public/js/alpine.min.js"></script>
 
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    {{-- CSS principal (non-bloquant) --}}
+    <link rel="preload" as="style" href="{{ Vite::asset('resources/css/app.css') }}">
+    <link rel="stylesheet" href="{{ Vite::asset('resources/css/app.css') }}" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="{{ Vite::asset('resources/css/app.css') }}">
+    </noscript>
+
+    @vite(['resources/js/app.js'])
 
     <style>
-        body { font-family: 'Inter', system-ui, sans-serif; }
+        /* CSS critique inline */
+        body { margin: 0; font-family: 'Inter', system-ui, sans-serif; }
         html[dir="rtl"] body, html[lang="ar"] body { font-family: 'Cairo', 'Tahoma', sans-serif; }
 
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
 
         #scroll-progress {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 3px;
+            position: fixed; top: 0; left: 0; height: 3px;
             background: linear-gradient(to right, #EAB308, #FACC15);
-            z-index: 9999;
-            transition: width 0.1s;
-            width: 0;
+            z-index: 9999; transition: width 0.1s; width: 0;
         }
 
         #back-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
-            background: #1E3A8A;
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 10px 25px rgba(30, 58, 138, 0.4);
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s;
-            z-index: 9998;
-            font-size: 20px;
-            border: none;
+            position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px;
+            background: #1E3A8A; color: white; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; box-shadow: 0 10px 25px rgba(30, 58, 138, 0.4);
+            opacity: 0; visibility: hidden; transition: all 0.3s;
+            z-index: 9998; font-size: 20px; border: none;
         }
         #back-to-top.show { opacity: 1; visibility: visible; }
         #back-to-top:hover { background: #EAB308; transform: translateY(-5px); }
