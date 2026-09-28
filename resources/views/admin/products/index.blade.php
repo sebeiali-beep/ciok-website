@@ -113,9 +113,9 @@
                         if ($product->image) {
                             $imgSrc = asset('storage/' . $product->image);
                         } elseif (str_contains($nameLower, 'cem i ') && !str_contains($nameLower, 'cem ii')) {
-                            $imgSrc = asset('images/produits/ciment-cem1-vert.png');
+                            $imgSrc = asset('images/produits/ciment-cem1-vert.webp');
                         } elseif (str_contains($nameLower, 'cem ii')) {
-                            $imgSrc = asset('images/produits/ciment-cem2-bleu.png');
+                            $imgSrc = asset('images/produits/ciment-cem2-bleu.webp');
                         }
                     @endphp
 
