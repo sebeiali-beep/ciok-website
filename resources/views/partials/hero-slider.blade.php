@@ -2,7 +2,7 @@
 {{-- HERO SLIDER avec 5 images --}}
 {{-- ═══════════════════════════════════════════════════════ --}}
 <section class="hero-slider relative text-white overflow-hidden flex items-center"
-         style="min-height: 650px; height: 650px;">
+         style="min-height: 650px; height: 650px;"
          x-data="{
             current: 0,
             slides: 5,
@@ -69,13 +69,13 @@
         <div class="absolute inset-0 transition-opacity duration-1000 ease-in-out pointer-events-none"
              style="z-index: {{ $index === 0 ? 1 : 0 }};"
              :class="current === {{ $index }} ? 'opacity-100' : 'opacity-0'">
-         <img src="{{ asset('images/heroes/' . str_replace('.jpg', '.webp', $slide['image'])) }}"
-     alt="{{ $slide['title'] }}"
-     width="1920"
-     height="650"
-     loading="eager"
-     class="w-full h-full object-cover"
-     style="aspect-ratio: 1920/650;">
+            <img src="{{ asset('images/heroes/' . str_replace('.jpg', '.webp', $slide['image'])) }}"
+                 alt="{{ $slide['title'] }}"
+                 width="1920"
+                 height="650"
+                 loading="eager"
+                 class="w-full h-full object-cover"
+                 style="aspect-ratio: 1920/650;">
             <div class="absolute inset-0 bg-gradient-to-r from-blue-950/90 via-blue-900/75 to-blue-800/50"></div>
         </div>
     @endforeach
