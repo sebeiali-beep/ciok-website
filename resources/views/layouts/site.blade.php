@@ -68,6 +68,7 @@
 
     {{-- Polices locales --}}
     <style>
+        /* ═══ Inter (latin) ═══ */
         @font-face {
             font-family: 'Inter';
             font-style: normal;
@@ -104,6 +105,7 @@
             src: url('{{ asset('fonts/inter-800.woff2') }}') format('woff2');
         }
 
+        /* ═══ Cairo (arabe) ═══ */
         @font-face {
             font-family: 'Cairo';
             font-style: normal;
@@ -127,10 +129,16 @@
         }
     </style>
 
-    {{-- Preload des polices critiques --}}
+    {{-- Preload TOUTES les polices critiques (gain 1000ms) --}}
     <link rel="preload" as="font" type="font/woff2" href="{{ asset('fonts/inter-400.woff2') }}" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="{{ asset('fonts/inter-500.woff2') }}" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="{{ asset('fonts/inter-600.woff2') }}" crossorigin>
     <link rel="preload" as="font" type="font/woff2" href="{{ asset('fonts/inter-700.woff2') }}" crossorigin>
     <link rel="preload" as="font" type="font/woff2" href="{{ asset('fonts/inter-800.woff2') }}" crossorigin>
+
+    {{-- Preload Cairo (utilisé seulement en AR) --}}
+    <link rel="preload" as="font" type="font/woff2" href="{{ asset('fonts/cairo-400.woff2') }}" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="{{ asset('fonts/cairo-700.woff2') }}" crossorigin>
 
     {{-- Alpine.js est chargé via Vite (resources/js/app.js) --}}
 
@@ -181,8 +189,6 @@
         .hero-slider { transition: opacity 0.5s ease; }
 
         [data-counter] { display: inline-block; min-width: 1ch; }
-
-        [x-cloak] { display: none !important; }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800 min-h-screen flex flex-col">
