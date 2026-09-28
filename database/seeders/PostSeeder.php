@@ -9,6 +9,10 @@ class PostSeeder extends Seeder
 {
     public function run(): void
     {
+        if (Post::count() > 0) {
+        $this->command->info('PostSeeder: actualités existent déjà, ignoré.');
+        return;
+    }
         $posts = [
             [
                 'title_fr' => 'CIOK annonce une augmentation de sa production pour 2024',

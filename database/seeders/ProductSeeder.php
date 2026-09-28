@@ -10,6 +10,10 @@ class ProductSeeder extends Seeder
 {
     public function run(): void
     {
+          if (Product::count() > 0) {
+        $this->command->info('ProductSeeder: produits existent déjà, ignoré.');
+        return;
+    }
         $ciments = Category::where('slug', 'ciments')->first();
         $chaux = Category::where('slug', 'chaux')->first();
         $clinker = Category::where('slug', 'clinker')->first();

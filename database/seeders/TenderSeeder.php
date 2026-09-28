@@ -10,6 +10,10 @@ class TenderSeeder extends Seeder
 {
     public function run(): void
     {
+          if (Tender::count() > 0) {
+        $this->command->info('TenderSeeder: appels d\'offres existent déjà, ignoré.');
+        return;
+    }
         $tenders = [
             [
                 'type' => 'appel_offre',

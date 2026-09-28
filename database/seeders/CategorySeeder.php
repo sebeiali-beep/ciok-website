@@ -9,6 +9,11 @@ class CategorySeeder extends Seeder
 {
     public function run(): void
     {
+        if (Category::count() > 0) {
+            $this->command->info('CategorySeeder: catégories existent déjà, ignoré.');
+            return;
+        }
+
         $categories = [
             [
                 'name_fr' => 'Ciments',
@@ -42,5 +47,7 @@ class CategorySeeder extends Seeder
         foreach ($categories as $cat) {
             Category::create($cat);
         }
+
+        $this->command->info('CategorySeeder: 3 catégories créées.');
     }
 }
