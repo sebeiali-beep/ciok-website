@@ -156,17 +156,25 @@
         const progressBar = document.getElementById('scroll-progress');
         const backTop = document.getElementById('back-to-top');
 
-        window.addEventListener('scroll', () => {
+       let ticking = false;
+window.addEventListener('scroll', () => {
+    if (!ticking) {
+        requestAnimationFrame(() => {
             const scrollTop = window.scrollY;
             const docHeight = document.documentElement.scrollHeight - window.innerHeight;
             const progress = (scrollTop / docHeight) * 100;
             progressBar.style.width = progress + '%';
+
             if (scrollTop > 400) {
                 backTop.classList.add('show');
             } else {
                 backTop.classList.remove('show');
             }
+            ticking = false;
         });
+        ticking = true;
+    }
+});
 
         function animateCounter(el, target, duration = 2000) {
             if (isNaN(target)) return;
