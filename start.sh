@@ -16,8 +16,9 @@ php artisan migrate --force
 # Storage link
 php artisan storage:link || true
 
-# ✅ Seeder complet — il ignorera ce qui existe déjà
-php artisan db:seed --force || true
+# Seeder UNIQUEMENT les appels d'offres
+echo "🌱 Seeding tenders only..."
+php artisan db:seed --class=TenderSeeder --force || true
 
 echo "✅ Prêt, démarrage du serveur..."
 
