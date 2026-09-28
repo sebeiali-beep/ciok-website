@@ -93,7 +93,7 @@
 
     <div class="grid grid-cols-2 gap-4">
         <div class="img-zoom rounded-xl shadow-lg col-span-2">
-            <img src="{{ asset('images/silos.webp') }}" alt="Silos CIOK" class="w-full h-72 object-cover">
+           <img src="{{ asset('images/silos.webp') }}" alt="Silos CIOK" width="704" height="387" loading="lazy" class="w-full h-72 object-cover">
         </div>
         <div class="img-zoom rounded-xl shadow-lg">
             <img src="{{ asset('images/usine-panorama.webp') }}" alt="Usine CIOK" class="w-full h-40 object-cover">

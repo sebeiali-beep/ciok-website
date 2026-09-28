@@ -66,21 +66,17 @@
     </script>
     @endverbatim
 
-    {{-- Polices Google Fonts (non-bloquant) --}}
+    {{-- Polices Google Fonts (display=optional = pas de CLS) --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Inter:wght@400;500;600;700;800&display=swap">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Inter:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
-    <noscript>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Inter:wght@400;500;600;700;800&display=swap">
-    </noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Inter:wght@400;500;600;700;800&display=optional">
 
     {{-- Alpine.js (CDN GitHub local) --}}
     <script defer src="https://cdn.jsdelivr.net/gh/sebeiali-beep/ciok-website@main/public/js/alpine.min.js"></script>
 
-    {{-- CSS principal (non-bloquant) --}}
+    {{-- CSS principal (preload non-bloquant) --}}
     <link rel="preload" as="style" href="{{ Vite::asset('resources/css/app.css') }}">
-    <link rel="stylesheet" href="{{ Vite::asset('resources/css/app.css') }}" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="{{ Vite::asset('resources/css/app.css') }}">
     <noscript>
         <link rel="stylesheet" href="{{ Vite::asset('resources/css/app.css') }}">
     </noscript>
@@ -88,7 +84,7 @@
     @vite(['resources/js/app.js'])
 
     <style>
-        /* CSS critique inline */
+        /* CSS critique inline (évite le FOUC) */
         body { margin: 0; font-family: 'Inter', system-ui, sans-serif; }
         html[dir="rtl"] body, html[lang="ar"] body { font-family: 'Cairo', 'Tahoma', sans-serif; }
 
@@ -124,6 +120,9 @@
 
         .counter-animating { color: #EAB308; }
         .hero-slider { transition: opacity 0.5s ease; }
+
+        /* Éviter le CLS sur les compteurs */
+        [data-counter] { display: inline-block; min-width: 1ch; }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800 min-h-screen flex flex-col">
@@ -143,6 +142,7 @@
     </button>
 
     <script>
+        // Animation fade-in au scroll
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -153,29 +153,31 @@
 
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
+        // Barre de progression + bouton retour
         const progressBar = document.getElementById('scroll-progress');
         const backTop = document.getElementById('back-to-top');
 
-       let ticking = false;
-window.addEventListener('scroll', () => {
-    if (!ticking) {
-        requestAnimationFrame(() => {
-            const scrollTop = window.scrollY;
-            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-            const progress = (scrollTop / docHeight) * 100;
-            progressBar.style.width = progress + '%';
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    const scrollTop = window.scrollY;
+                    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                    const progress = (scrollTop / docHeight) * 100;
+                    progressBar.style.width = progress + '%';
 
-            if (scrollTop > 400) {
-                backTop.classList.add('show');
-            } else {
-                backTop.classList.remove('show');
+                    if (scrollTop > 400) {
+                        backTop.classList.add('show');
+                    } else {
+                        backTop.classList.remove('show');
+                    }
+                    ticking = false;
+                });
+                ticking = true;
             }
-            ticking = false;
         });
-        ticking = true;
-    }
-});
 
+        // Compteurs animés
         function animateCounter(el, target, duration = 2000) {
             if (isNaN(target)) return;
             const startTime = performance.now();
