@@ -1,6 +1,6 @@
 <header class="bg-white shadow-sm sticky top-0 z-50">
 
-    {{-- Top bar (bandeau bleu foncé) --}}
+    {{-- Top bar --}}
     <div class="bg-blue-950 text-white text-xs md:text-sm border-b border-blue-800">
         <div class="max-w-7xl mx-auto px-4 py-2 flex flex-col md:flex-row justify-between items-center gap-2">
 
@@ -35,18 +35,14 @@
     {{-- Navbar principale --}}
     <nav class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center gap-6">
 
-        {{-- ═══════════════════════════════════════════════════════ --}}
         {{-- LOGO CIOK --}}
-        {{-- ═══════════════════════════════════════════════════════ --}}
         <a href="{{ route('home') }}" class="flex items-center gap-4 group flex-shrink-0 py-1">
 
-            {{-- Logo image --}}
             <img src="{{ asset('images/logo.webp') }}"
                  alt="CIOK - Ciments d'Oum El Kelil"
                  class="h-16 md:h-20 w-auto object-contain transition duration-300 group-hover:scale-105"
                  style="filter: drop-shadow(0 2px 8px rgba(30, 58, 138, 0.15));">
 
-            {{-- Texte à côté du logo --}}
             <div class="hidden md:block leading-tight border-l-2 border-blue-100 pl-4">
                 <div class="font-extrabold text-2xl text-blue-900 tracking-tight">CIOK</div>
                 <div class="text-xs text-gray-500 font-medium">Les Ciments d'Oum El Kelil</div>
@@ -54,9 +50,7 @@
 
         </a>
 
-        {{-- ═══════════════════════════════════════════════════════ --}}
         {{-- MENU DESKTOP --}}
-        {{-- ═══════════════════════════════════════════════════════ --}}
         <ul class="hidden lg:flex gap-1 items-center font-medium text-sm">
 
             <li>
@@ -87,51 +81,51 @@
                 </a>
             </li>
 
-           {{-- ═══ MARCHÉ PUBLIC (menu déroulant) ═══ --}}
-<li class="relative group">
-    <a href="{{ route('tenders.index') }}"
-       class="px-3 py-2 rounded-lg hover:bg-blue-50 hover:text-blue-900 transition flex items-center gap-1 {{ request()->routeIs('tenders.*') ? 'bg-blue-50 text-blue-900 font-semibold' : 'text-gray-700' }}">
-        Marché public
-        <svg class="w-4 h-4 transition group-hover:rotate-180" fill="currentColor" viewBox="0 0 20 20">
-            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-        </svg>
-    </a>
+            {{-- ═══ MARCHÉ PUBLIC (menu déroulant) ═══ --}}
+            <li class="relative group">
+                <a href="{{ route('tenders.index') }}"
+                   class="px-3 py-2 rounded-lg hover:bg-blue-50 hover:text-blue-900 transition flex items-center gap-1 {{ request()->routeIs('tenders.*') ? 'bg-blue-50 text-blue-900 font-semibold' : 'text-gray-700' }}">
+                    Marché public
+                    <svg class="w-4 h-4 transition group-hover:rotate-180" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                </a>
 
-    {{-- Sous-menu --}}
-    <ul class="absolute left-0 top-full mt-1 w-64 bg-white rounded-xl shadow-2xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 py-2">
-        <li>
-            <a href="{{ route('tenders.index', ['type' => 'appel_offre']) }}"
-               class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-900 transition flex items-center gap-2">
-                📄 Appel d'offre
-            </a>
-        </li>
-        <li>
-            <a href="{{ route('tenders.index', ['type' => 'consultation']) }}"
-               class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-900 transition flex items-center gap-2">
-                💼 Consultation
-            </a>
-        </li>
-        <li>
-            <a href="{{ route('tenders.index', ['type' => 'consultation_elargie']) }}"
-               class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-900 transition flex items-center gap-2">
-                📢 Consultation élargie
-            </a>
-        </li>
-        <li class="border-t border-gray-100 my-1"></li>
-        <li>
-            <a href="{{ route('tenders.manual') }}"
-               class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-900 transition flex items-center gap-2">
-                📘 Manuel d'achat CIOK
-            </a>
-        </li>
-        <li>
-            <a href="{{ route('tenders.plan') }}"
-               class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-900 transition flex items-center gap-2">
-                📅 Plan prévisionnel des marchés
-            </a>
-        </li>
-    </ul>
-</li>
+                {{-- Sous-menu --}}
+                <ul class="absolute left-0 top-full mt-1 w-64 bg-white rounded-xl shadow-2xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 py-2">
+                    <li>
+                        <a href="{{ route('tenders.index', ['type' => 'appel_offre']) }}"
+                           class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-900 transition flex items-center gap-2">
+                            📄 Appel d'offre
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('tenders.index', ['type' => 'consultation']) }}"
+                           class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-900 transition flex items-center gap-2">
+                            💼 Consultation
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('tenders.index', ['type' => 'consultation_elargie']) }}"
+                           class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-900 transition flex items-center gap-2">
+                            📢 Consultation élargie
+                        </a>
+                    </li>
+                    <li class="border-t border-gray-100 my-1"></li>
+                    <li>
+                        <a href="{{ route('tenders.manual') }}"
+                           class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-900 transition flex items-center gap-2">
+                            📘 Manuel d'achat CIOK
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('tenders.plan') }}"
+                           class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-900 transition flex items-center gap-2">
+                            📅 Plan prévisionnel des marchés
+                        </a>
+                    </li>
+                </ul>
+            </li>
 
             <li>
                 <a href="{{ route('quality') }}"
@@ -156,9 +150,7 @@
 
         </ul>
 
-        {{-- ═══════════════════════════════════════════════════════ --}}
         {{-- BOUTON MENU MOBILE --}}
-        {{-- ═══════════════════════════════════════════════════════ --}}
         <button class="lg:hidden text-3xl text-blue-900"
                 onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
             ☰
@@ -166,9 +158,7 @@
 
     </nav>
 
-    {{-- ═══════════════════════════════════════════════════════ --}}
     {{-- MENU MOBILE --}}
-    {{-- ═══════════════════════════════════════════════════════ --}}
     <div id="mobile-menu" class="hidden lg:hidden bg-white border-t">
         <ul class="px-4 py-3 space-y-1">
 
@@ -192,18 +182,20 @@
                     {{ __('messages.news') }}
                 </a>
             </li>
-           <li>
-    <a href="{{ route('tenders.index') }}" class="block px-3 py-2 rounded hover:bg-blue-50 font-semibold">
-        📋 Marché public
-    </a>
-    <ul class="pl-6 space-y-1">
-        <li><a href="{{ route('tenders.index', ['type' => 'appel_offre']) }}" class="block px-3 py-1.5 text-sm rounded hover:bg-blue-50">📄 Appel d'offre</a></li>
-        <li><a href="{{ route('tenders.index', ['type' => 'consultation']) }}" class="block px-3 py-1.5 text-sm rounded hover:bg-blue-50">💼 Consultation</a></li>
-        <li><a href="{{ route('tenders.index', ['type' => 'consultation_elargie']) }}" class="block px-3 py-1.5 text-sm rounded hover:bg-blue-50">📢 Consultation élargie</a></li>
-        <li><a href="{{ route('tenders.manual') }}" class="block px-3 py-1.5 text-sm rounded hover:bg-blue-50">📘 Manuel d'achat</a></li>
-        <li><a href="{{ route('tenders.plan') }}" class="block px-3 py-1.5 text-sm rounded hover:bg-blue-50">📅 Plan prévisionnel</a></li>
-    </ul>
-</li>
+
+            <li>
+                <a href="{{ route('tenders.index') }}" class="block px-3 py-2 rounded hover:bg-blue-50 font-semibold">
+                    📋 Marché public
+                </a>
+                <ul class="pl-6 space-y-1">
+                    <li><a href="{{ route('tenders.index', ['type' => 'appel_offre']) }}" class="block px-3 py-1.5 text-sm rounded hover:bg-blue-50">📄 Appel d'offre</a></li>
+                    <li><a href="{{ route('tenders.index', ['type' => 'consultation']) }}" class="block px-3 py-1.5 text-sm rounded hover:bg-blue-50">💼 Consultation</a></li>
+                    <li><a href="{{ route('tenders.index', ['type' => 'consultation_elargie']) }}" class="block px-3 py-1.5 text-sm rounded hover:bg-blue-50">📢 Consultation élargie</a></li>
+                    <li><a href="{{ route('tenders.manual') }}" class="block px-3 py-1.5 text-sm rounded hover:bg-blue-50">📘 Manuel d'achat</a></li>
+                    <li><a href="{{ route('tenders.plan') }}" class="block px-3 py-1.5 text-sm rounded hover:bg-blue-50">📅 Plan prévisionnel</a></li>
+                </ul>
+            </li>
+
             <li>
                 <a href="{{ route('quality') }}" class="block px-3 py-2 rounded hover:bg-blue-50">
                     {{ __('messages.quality') }}
