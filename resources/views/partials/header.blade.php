@@ -49,7 +49,7 @@
             {{-- Texte à côté du logo --}}
             <div class="hidden md:block leading-tight border-l-2 border-blue-100 pl-4">
                 <div class="font-extrabold text-2xl text-blue-900 tracking-tight">CIOK</div>
-                <div class="text-xs text-gray-500 font-medium">Ciments d'Oum El Kelil</div>
+                <div class="text-xs text-gray-500 font-medium">Les Ciments d'Oum El Kelil</div>
             </div>
 
         </a>
