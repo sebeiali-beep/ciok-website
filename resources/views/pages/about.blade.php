@@ -85,7 +85,7 @@
                  class="w-full h-56 object-cover group-hover:scale-110 transition duration-700">
         </div>
         <div class="rounded-2xl shadow-xl overflow-hidden group cursor-pointer">
-            <img src="{{ asset('images/aerien.webp') }}"
+            <img src="{{ asset('images/aerien1.webp') }}"
                  alt="Vue aérienne"
                  class="w-full h-56 object-cover group-hover:scale-110 transition duration-700">
         </div>
