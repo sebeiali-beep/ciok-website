@@ -9,18 +9,37 @@
 {{-- ═══════════════════════════════════════════════════════ --}}
 {{-- BANNER --}}
 {{-- ═══════════════════════════════════════════════════════ --}}
-<section class="relative text-white overflow-hidden">
+<section class="relative text-white overflow-hidden" style="min-height: 500px;">
+    {{-- Image de fond avec effet flou --}}
     <div class="absolute inset-0">
-        <img src="{{ asset('images/silos.webp') }}" alt="Produits CIOK" class="w-full h-full object-cover">
-        <div class="absolute inset-0 bg-gradient-to-r from-blue-950/95 to-blue-900/70"></div>
+        <img src="{{ asset('images/produit.webp') }}"
+             alt="Produits CIOK"
+             class="w-full h-full object-cover scale-110"
+             style="filter: blur(3px) brightness(0.9); object-position: center;">
+        <div class="absolute inset-0 bg-gradient-to-r from-blue-950/85 via-blue-900/70 to-blue-800/50"></div>
     </div>
-    <div class="relative max-w-7xl mx-auto px-4 py-20">
-        <div class="inline-block bg-yellow-500 text-blue-900 text-xs font-bold px-3 py-1 rounded-full mb-4">
-            NOS PRODUITS
+
+    {{-- Contenu --}}
+    <div class="relative max-w-7xl mx-auto px-4 py-32 flex flex-col justify-center" style="min-height: 500px;">
+
+        {{-- Badge --}}
+        <div class="inline-flex items-center gap-2 bg-yellow-500 text-blue-900 text-xs font-bold px-4 py-1.5 rounded-full mb-6 w-fit shadow-lg">
+            📦 NOS PRODUITS
         </div>
-        <h1 class="text-4xl md:text-5xl font-extrabold mb-4">{{ __('messages.our_products') }}</h1>
-        <p class="text-blue-100 text-lg max-w-2xl">{{ __('messages.our_products_desc') }}</p>
+
+        {{-- Titre --}}
+        <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-6 leading-tight drop-shadow-lg">
+            {{ __('messages.our_products') }}
+        </h1>
+
+        {{-- Sous-titre --}}
+        <p class="text-blue-100 text-lg md:text-xl lg:text-2xl max-w-3xl leading-relaxed drop-shadow-md">
+            {{ __('messages.our_products_desc') }}
+        </p>
     </div>
+
+    {{-- Bande jaune --}}
+    <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-yellow-500 via-yellow-400 to-yellow-500"></div>
 </section>
 
 {{-- ═══════════════════════════════════════════════════════ --}}

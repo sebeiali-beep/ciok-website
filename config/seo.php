@@ -9,5 +9,5 @@ return [
     'twitter_handle' => '@CIOK_Tunisie',
     'facebook_url' => 'https://www.facebook.com/ciok.tn',
     'linkedin_url' => 'https://www.linkedin.com/company/ciok',
-    'default_image' => 'images/hero.jpg',
+    'default_image' => 'images/hero.webp',
 ];

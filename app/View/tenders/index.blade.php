@@ -8,7 +8,7 @@
 {{-- ═══════════════════════════════════════════════════════ --}}
 <section class="relative text-white overflow-hidden">
     <div class="absolute inset-0">
-        <img src="{{ asset('images/silos.jpg') }}" alt="Appels d'offres CIOK" class="w-full h-full object-cover">
+        <img src="{{ asset('images/silos.webp') }}" alt="Appels d'offres CIOK" class="w-full h-full object-cover">
         <div class="absolute inset-0 bg-gradient-to-r from-blue-950/95 to-blue-900/70"></div>
     </div>
     <div class="relative max-w-7xl mx-auto px-4 py-20">

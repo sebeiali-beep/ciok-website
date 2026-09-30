@@ -1,26 +1,41 @@
 @extends('layouts.site')
 @section('title', __('messages.quality') . ' - CIOK')
 @section('meta_description', 'Notre engagement pour la qualité : certification ISO 9001, conformité aux normes NT 47.01 et EN 197-1. Contrôle qualité rigoureux.')
-@section('og_image', asset('images/silos.jpg'))
+@section('og_image', asset('images/silos.webp'))
 @section('content')
 
 {{-- ═══════════════════════════════════════════════════════ --}}
 {{-- BANNER --}}
 {{-- ═══════════════════════════════════════════════════════ --}}
-<section class="relative text-white overflow-hidden">
+<section class="relative text-white overflow-hidden" style="min-height: 500px;">
+    {{-- Image de fond avec effet flou --}}
     <div class="absolute inset-0">
-        <img src="{{ asset('images/silos.webp') }}" alt="Qualité CIOK" class="w-full h-full object-cover">
-        <div class="absolute inset-0 bg-gradient-to-r from-blue-950/95 to-blue-900/70"></div>
+        <img src="{{ asset('images/labo.webp') }}"
+             alt="Qualité CIOK"
+             class="w-full h-full object-cover scale-110"
+             style="filter: blur(3px) brightness(0.9); object-position: center;">
+        <div class="absolute inset-0 bg-gradient-to-r from-blue-950/85 via-blue-900/70 to-blue-800/50"></div>
     </div>
-    <div class="relative max-w-7xl mx-auto px-4 py-24">
-        <div class="inline-block bg-yellow-500 text-blue-900 text-xs font-bold px-3 py-1 rounded-full mb-4">
+
+    {{-- Contenu --}}
+    <div class="relative max-w-7xl mx-auto px-4 py-32 flex flex-col justify-center" style="min-height: 500px;">
+
+        {{-- Badge compact --}}
+        <div class="inline-flex items-center gap-2 bg-yellow-500 text-blue-900 text-xs font-bold px-4 py-1.5 rounded-full mb-6 w-fit shadow-lg">
             ✅ QUALITÉ
         </div>
-        <h1 class="text-4xl md:text-6xl font-extrabold mb-4">{{ __('messages.quality') }}</h1>
-        <p class="text-blue-100 text-lg md:text-xl max-w-3xl leading-relaxed">
+
+        {{-- Titre plus grand --}}
+        <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-6 leading-tight drop-shadow-lg">
+            {{ __('messages.quality') }}
+        </h1>
+
+        {{-- Sous-titre --}}
+        <p class="text-blue-100 text-lg md:text-xl lg:text-2xl max-w-3xl leading-relaxed drop-shadow-md">
             Notre engagement pour l'excellence et la conformité aux normes internationales
         </p>
     </div>
+
     <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-yellow-500 via-yellow-400 to-yellow-500"></div>
 </section>
 

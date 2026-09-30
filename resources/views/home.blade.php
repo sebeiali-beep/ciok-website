@@ -91,17 +91,37 @@
         </a>
     </div>
 
-    <div class="grid grid-cols-2 gap-4">
-        <div class="img-zoom rounded-xl shadow-lg col-span-2">
-           <img src="{{ asset('images/silos.webp') }}" alt="Silos CIOK" width="704" height="387" loading="lazy" class="w-full h-72 object-cover">
+ 
+   <div class="space-y-4">
+
+    {{-- Bloc PDG : photo + bandeau --}}
+    <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+        <div class="relative w-full overflow-hidden bg-gray-100">
+            <img src="{{ asset('images/pdg.webp') }}"
+                 alt="Taoufik KHARDANI - PDG CIOK"
+                 class="w-full object-contain"
+                 style="max-height: 400px;">
         </div>
-        <div class="img-zoom rounded-xl shadow-lg">
-            <img src="{{ asset('images/usine-panorama.webp') }}" alt="Usine CIOK" class="w-full h-40 object-cover">
-        </div>
-        <div class="img-zoom rounded-xl shadow-lg">
-            <img src="{{ asset('images/aerien.webp') }}" alt="Vue aérienne" class="w-full h-40 object-cover">
+        <div class="py-4 px-4 text-center bg-gradient-to-r from-blue-900 to-blue-800">
+            <h3 class="font-bold text-white text-xl tracking-wide">TAOUFIK KHARDANI</h3>
+            <p class="text-blue-200 text-sm mt-1">Président Directeur Général</p>
         </div>
     </div>
+
+    {{-- Deux images côte à côte avec effet zoom --}}
+    <div class="grid grid-cols-2 gap-4">
+        <div class="rounded-2xl shadow-xl overflow-hidden group cursor-pointer">
+            <img src="{{ asset('images/usine-panorama.webp') }}"
+                 alt="Usine CIOK"
+                 class="w-full h-56 object-cover group-hover:scale-110 transition duration-700">
+        </div>
+        <div class="rounded-2xl shadow-xl overflow-hidden group cursor-pointer">
+            <img src="{{ asset('images/aerien.webp') }}"
+                 alt="Vue aérienne"
+                 class="w-full h-56 object-cover group-hover:scale-110 transition duration-700">
+        </div>
+    </div>
+
 
 </section>
 
