@@ -26,9 +26,11 @@ Route::get('/actualites', [PostController::class, 'index'])->name('posts.index')
 Route::get('/actualites/{slug}', [PostController::class, 'show'])->name('posts.show');
 
 // 📋 Appels d'offres
-Route::get('/appels-offres', [TenderController::class, 'index'])->name('tenders.index');
-Route::get('/appels-offres/{slug}', [TenderController::class, 'show'])->name('tenders.show');
-
+// 📋 Marché public
+Route::get('/marche-public', [TenderController::class, 'index'])->name('tenders.index');
+Route::get('/marche-public/manuel-achat', [TenderController::class, 'manual'])->name('tenders.manual');
+Route::get('/marche-public/plan-previsionnel', [TenderController::class, 'plan'])->name('tenders.plan');
+Route::get('/marche-public/{slug}', [TenderController::class, 'show'])->name('tenders.show');
 Route::get('/contact', [ContactController::class, 'show'])->name('contact.show');
 Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
 

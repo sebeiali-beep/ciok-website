@@ -9,7 +9,7 @@
 {{-- ═══════════════════════════════════════════════════════ --}}
 <section class="relative text-white overflow-hidden" style="min-height: 500px;">
     <div class="absolute inset-0">
-        <img src="{{ asset('images/aerien.webp') }}" alt="CIOK" class="w-full h-full object-cover">
+        <img src="{{ asset('images/aerien1.webp') }}" alt="CIOK" class="w-full h-full object-cover">
         <div class="absolute inset-0 bg-gradient-to-r from-blue-950/95 to-blue-900/70"></div>
     </div>
     <div class="relative max-w-7xl mx-auto px-4 py-32 flex flex-col justify-center" style="min-height: 500px;">
@@ -307,7 +307,7 @@
 
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div class="img-zoom rounded-xl overflow-hidden shadow-md col-span-2 md:col-span-2">
-                <img src="{{ asset('images/aerien.webp') }}" class="w-full h-64 object-cover" alt="Vue aérienne">
+                <img src="{{ asset('images/aerien1.webp') }}" class="w-full h-64 object-cover" alt="Vue aérienne">
             </div>
             <div class="img-zoom rounded-xl overflow-hidden shadow-md">
                 <img src="{{ asset('images/silos.webp') }}" class="w-full h-64 object-cover" alt="Silos">
