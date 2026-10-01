@@ -17,6 +17,7 @@ class Tender extends Model
         'notice_pdf', 'result_pdf',
         'status',
         'is_published', 'published_at',
+         'approval_status', 'approved_by', 'approved_at', 'rejection_reason',
     ];
 
     protected $casts = [
@@ -24,6 +25,7 @@ class Tender extends Model
         'opening_date' => 'date',
         'published_at' => 'datetime',
         'is_published' => 'boolean',
+        'approved_at' => 'datetime',
     ];
 
     // Nom traduit
@@ -39,11 +41,25 @@ class Tender extends Model
         return $this->{"description_{$locale}"} ?? $this->description_fr;
     }
 
-    // Type lisible
-    public function getTypeLabelAttribute()
-    {
-        return $this->type === 'appel_offre' ? 'Appel d\'offres' : 'Consultation élargie';
-    }
+   public function getTypeLabelAttribute()
+{
+    return match($this->type) {
+        'appel_offre'          => 'Appel d\'offres',
+        'consultation'         => 'Consultation',
+        'consultation_elargie' => 'Consultation élargie',
+        default                => 'Type inconnu',
+    };
+}
+
+public function getTypeColorAttribute()
+{
+    return match($this->type) {
+        'appel_offre'          => 'blue',
+        'consultation'         => 'purple',
+        'consultation_elargie' => 'pink',
+        default                => 'gray',
+    };
+}
 
     // Statut lisible
     public function getStatusLabelAttribute()
@@ -82,5 +98,53 @@ class Tender extends Model
     {
         return $query->where('status', 'open')
                      ->where('deadline_date', '>=', now());
+    }
+
+        // ═══ APPROVAL SCOPES ═══
+    public function scopeApproved($query)
+    {
+        return $query->where('approval_status', 'approved');
+    }
+
+    public function scopePending($query)
+    {
+        return $query->where('approval_status', 'pending');
+    }
+
+    public function scopeRejected($query)
+    {
+        return $query->where('approval_status', 'rejected');
+    }
+
+    // ═══ APPROVAL RELATION ═══
+    public function approver()
+    {
+        return $this->belongsTo(\App\Models\User::class, 'approved_by');
+    }
+
+    // ═══ APPROVAL ACCESSORS ═══
+    public function getApprovalLabelAttribute(): string
+    {
+        return match($this->approval_status) {
+            'pending'  => '⏳ En attente',
+            'approved' => '✅ Approuvé',
+            'rejected' => '❌ Rejeté',
+            default    => '❓ Inconnu',
+        };
+    }
+
+    public function getApprovalColorAttribute(): string
+    {
+        return match($this->approval_status) {
+            'pending'  => 'yellow',
+            'approved' => 'green',
+            'rejected' => 'red',
+            default    => 'gray',
+        };
+    }
+
+    public function getIsApprovedAttribute(): bool
+    {
+        return $this->approval_status === 'approved';
     }
 }

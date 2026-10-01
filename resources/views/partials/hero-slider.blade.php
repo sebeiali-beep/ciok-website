@@ -23,43 +23,43 @@
         $slides = [
             [
                 'image' => 'hero-1.jpg',
-                'badge' => '🏭 EXCELLENCE INDUSTRIELLE DEPUIS 1979',
-                'title' => 'Bienvenue chez CIOK',
-                'subtitle' => 'Les Ciments d\'Oum El Kelil — Excellence industrielle depuis 1979',
-                'btn1' => ['text' => 'Nos produits', 'url' => '/produits', 'icon' => '🏭'],
-                'btn2' => ['text' => 'Nous contacter', 'url' => '/contact', 'icon' => '✉️'],
+                'badge' => __('messages.slide1_badge'),
+                'title' => __('messages.slide1_title'),
+                'subtitle' => __('messages.slide1_subtitle'),
+                'btn1' => ['text' => __('messages.our_products'), 'url' => route('products.index'), 'icon' => '🏭'],
+                'btn2' => ['text' => __('messages.contact_us'), 'url' => route('contact.show'), 'icon' => '✉️'],
             ],
             [
                 'image' => 'hero-2.jpg',
-                'badge' => '🇹🇳 ACTEUR CLÉ DU BÂTIMENT EN TUNISIE',
-                'title' => 'Une entreprise nationale',
-                'subtitle' => 'Fièrement tunisienne, au service du développement du pays',
-                'btn1' => ['text' => 'Découvrir CIOK', 'url' => '/a-propos', 'icon' => '🏢'],
-                'btn2' => ['text' => 'Nos produits', 'url' => '/produits', 'icon' => '🏭'],
+                'badge' => __('messages.slide2_badge'),
+                'title' => __('messages.slide2_title'),
+                'subtitle' => __('messages.slide2_subtitle'),
+                'btn1' => ['text' => __('messages.slide2_btn1'), 'url' => route('about'), 'icon' => '🏢'],
+                'btn2' => ['text' => __('messages.our_products'), 'url' => route('products.index'), 'icon' => '🏭'],
             ],
             [
                 'image' => 'hero-3.jpg',
-                'badge' => '🏷️ UN CIMENT DE QUALITÉ CERTIFIÉE',
-                'title' => 'Des produits reconnus',
-                'subtitle' => 'Conforme aux normes tunisiennes NT 47.01 et européennes EN 197-1',
-                'btn1' => ['text' => 'Nos produits', 'url' => '/produits', 'icon' => '🏭'],
-                'btn2' => ['text' => 'Notre qualité', 'url' => '/qualite', 'icon' => '✅'],
+                'badge' => __('messages.slide3_badge'),
+                'title' => __('messages.slide3_title'),
+                'subtitle' => __('messages.slide3_subtitle'),
+                'btn1' => ['text' => __('messages.our_products'), 'url' => route('products.index'), 'icon' => '🏭'],
+                'btn2' => ['text' => __('messages.slide3_btn2'), 'url' => route('quality'), 'icon' => '✅'],
             ],
             [
                 'image' => 'hero-4.jpg',
-                'badge' => '🚛 DISTRIBUTION NATIONALE',
-                'title' => 'Une logistique performante',
-                'subtitle' => 'Un réseau de distribution couvrant toute la Tunisie',
-                'btn1' => ['text' => 'Nos services', 'url' => '/a-propos', 'icon' => '🚚'],
-                'btn2' => ['text' => 'Nous contacter', 'url' => '/contact', 'icon' => '✉️'],
+                'badge' => __('messages.slide4_badge'),
+                'title' => __('messages.slide4_title'),
+                'subtitle' => __('messages.slide4_subtitle'),
+                'btn1' => ['text' => __('messages.slide4_btn1'), 'url' => route('about'), 'icon' => '🚚'],
+                'btn2' => ['text' => __('messages.contact_us'), 'url' => route('contact.show'), 'icon' => '✉️'],
             ],
             [
                 'image' => 'hero-5.jpg',
-                'badge' => '⚙️ TECHNOLOGIE DE POINTE',
-                'title' => 'Un savoir-faire reconnu',
-                'subtitle' => 'Des équipements de dernière génération pour une qualité constante',
-                'btn1' => ['text' => 'Voir la qualité', 'url' => '/qualite', 'icon' => '✅'],
-                'btn2' => ['text' => 'Nous contacter', 'url' => '/contact', 'icon' => '✉️'],
+                'badge' => __('messages.slide5_badge'),
+                'title' => __('messages.slide5_title'),
+                'subtitle' => __('messages.slide5_subtitle'),
+                'btn1' => ['text' => __('messages.slide5_btn1'), 'url' => route('quality'), 'icon' => '✅'],
+                'btn2' => ['text' => __('messages.contact_us'), 'url' => route('contact.show'), 'icon' => '✉️'],
             ],
         ];
     @endphp
@@ -107,11 +107,11 @@
                     </p>
 
                     <div class="flex flex-wrap gap-4">
-                        <a href="{{ url($slide['btn1']['url']) }}"
+                        <a href="{{ $slide['btn1']['url'] }}"
                            class="inline-block bg-white text-blue-900 px-8 py-4 rounded-lg font-bold hover:bg-yellow-400 transition shadow-xl">
                             {{ $slide['btn1']['icon'] }} {{ $slide['btn1']['text'] }}
                         </a>
-                        <a href="{{ url($slide['btn2']['url']) }}"
+                        <a href="{{ $slide['btn2']['url'] }}"
                            class="inline-block border-2 border-white text-white px-8 py-4 rounded-lg font-bold hover:bg-white hover:text-blue-900 transition">
                             {{ $slide['btn2']['icon'] }} {{ $slide['btn2']['text'] }}
                         </a>

@@ -6,7 +6,6 @@
 
 @section('content')
 
-
 {{-- ═══════════════════════════════════════════════════════ --}}
 {{-- HERO SLIDER --}}
 {{-- ═══════════════════════════════════════════════════════ --}}
@@ -19,29 +18,23 @@
     <div class="max-w-7xl mx-auto px-4 py-10 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
 
         <div class="border-r border-gray-100 last:border-0">
-            <div class="text-4xl md:text-5xl font-extrabold text-blue-900">
-                <span data-counter data-target="1979">0</span>
-            </div>
-            <div class="text-xs md:text-sm text-gray-600 mt-2 uppercase tracking-wider">Année de création</div>
+            <div class="text-4xl md:text-5xl font-extrabold text-blue-900">1979</div>
+            <div class="text-xs md:text-sm text-gray-600 mt-2 uppercase tracking-wider">{{ __('messages.key_stat_creation') }}</div>
         </div>
 
         <div class="border-r border-gray-100 last:border-0">
-            <div class="text-4xl md:text-5xl font-extrabold text-blue-900">
-                <span data-counter data-target="700">0</span><span class="text-yellow-500" style="display: inline-block; width: 1em;">+</span>
-            </div>
-            <div class="text-xs md:text-sm text-gray-600 mt-2 uppercase tracking-wider">Collaborateurs</div>
+            <div class="text-4xl md:text-5xl font-extrabold text-blue-900">700<span class="text-yellow-500">+</span></div>
+            <div class="text-xs md:text-sm text-gray-600 mt-2 uppercase tracking-wider">{{ __('messages.key_stat_employees') }}</div>
         </div>
 
         <div class="border-r border-gray-100 last:border-0">
-            <div class="text-4xl md:text-5xl font-extrabold text-blue-900">
-                <span data-counter data-target="1">0</span>M<span class="text-yellow-500" style="display: inline-block; width: 1em;">+</span>
-            </div>
-            <div class="text-xs md:text-sm text-gray-600 mt-2 uppercase tracking-wider">Tonnes / an</div>
+            <div class="text-4xl md:text-5xl font-extrabold text-blue-900">1M<span class="text-yellow-500">+</span></div>
+            <div class="text-xs md:text-sm text-gray-600 mt-2 uppercase tracking-wider">{{ __('messages.key_stat_tons') }}</div>
         </div>
 
         <div>
             <div class="text-4xl md:text-5xl font-extrabold text-blue-900">ISO</div>
-            <div class="text-xs md:text-sm text-gray-600 mt-2 uppercase tracking-wider">9001 Certifié</div>
+            <div class="text-xs md:text-sm text-gray-600 mt-2 uppercase tracking-wider">9001 {{ __('messages.key_stat_iso') }}</div>
         </div>
 
     </div>
@@ -53,35 +46,33 @@
 <section class="max-w-7xl mx-auto px-4 py-20 grid lg:grid-cols-2 gap-12 items-center reveal">
     <div>
         <div class="inline-block bg-yellow-500 text-blue-900 text-xs font-bold px-3 py-1 rounded-full mb-4">
-            QUI SOMMES-NOUS
+            {{ __('messages.who_we_are') }}
         </div>
 
         <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-6 leading-tight">
-            Un acteur clé dans la production de <span class="text-yellow-500">ciment de qualité</span>
+            {{ __('messages.who_we_are_title_part1') }} <span class="text-yellow-500">{{ __('messages.who_we_are_title_part2') }}</span>
         </h2>
 
         <p class="text-gray-700 leading-relaxed mb-4">
-            La <strong>Société des Ciments d'Oum El Khelil (CIOK)</strong> est une entreprise industrielle
-            spécialisée dans la production de ciment destiné aux secteurs du bâtiment et des travaux publics.
+            {!! __('messages.who_we_are_p1') !!}
         </p>
 
         <p class="text-gray-700 leading-relaxed mb-6">
-            Elle s'appuie sur un savoir-faire reconnu, des équipements performants et un engagement
-            permanent en faveur de la qualité, de la sécurité et du respect de l'environnement.
+            {{ __('messages.who_we_are_p2') }}
         </p>
 
         <ul class="space-y-3 mb-8">
             <li class="flex items-center gap-3 text-gray-700">
                 <span class="w-6 h-6 bg-green-500 text-white rounded-full flex items-center justify-center text-xs">✓</span>
-                Production conforme aux normes tunisiennes et internationales
+                {{ __('messages.who_we_are_li1') }}
             </li>
             <li class="flex items-center gap-3 text-gray-700">
                 <span class="w-6 h-6 bg-green-500 text-white rounded-full flex items-center justify-center text-xs">✓</span>
-                Équipements industriels de dernière génération
+                {{ __('messages.who_we_are_li2') }}
             </li>
             <li class="flex items-center gap-3 text-gray-700">
                 <span class="w-6 h-6 bg-green-500 text-white rounded-full flex items-center justify-center text-xs">✓</span>
-                Réseau de distribution national
+                {{ __('messages.who_we_are_li3') }}
             </li>
         </ul>
 
@@ -91,37 +82,36 @@
         </a>
     </div>
 
- 
-   <div class="space-y-4">
+    <div class="space-y-4">
 
-    {{-- Bloc PDG : photo + bandeau --}}
-    <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
-        <div class="relative w-full overflow-hidden bg-gray-100">
-            <img src="{{ asset('images/pdg.webp') }}"
-                 alt="Taoufik KHARDANI - PDG CIOK"
-                 class="w-full object-contain"
-                 style="max-height: 400px;">
+        {{-- Bloc PDG : photo + bandeau --}}
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+            <div class="relative w-full overflow-hidden bg-gray-100">
+                <img src="{{ asset('images/pdg.webp') }}"
+                     alt="Taoufik KHARDANI - PDG CIOK"
+                     class="w-full object-contain"
+                     style="max-height: 400px;">
+            </div>
+            <div class="py-4 px-4 text-center bg-gradient-to-r from-blue-900 to-blue-800">
+                <h3 class="font-bold text-white text-xl tracking-wide">TAOUFIK KHARDANI</h3>
+                <p class="text-blue-200 text-sm mt-1">{{ __('messages.pdg_title') }}</p>
+            </div>
         </div>
-        <div class="py-4 px-4 text-center bg-gradient-to-r from-blue-900 to-blue-800">
-            <h3 class="font-bold text-white text-xl tracking-wide">TAOUFIK KHARDANI</h3>
-            <p class="text-blue-200 text-sm mt-1">Président Directeur Général</p>
+
+        {{-- Deux images côte à côte avec effet zoom --}}
+        <div class="grid grid-cols-2 gap-4">
+            <div class="rounded-2xl shadow-xl overflow-hidden group cursor-pointer">
+                <img src="{{ asset('images/usine-panorama.webp') }}"
+                     alt="Usine CIOK"
+                     class="w-full h-56 object-cover group-hover:scale-110 transition duration-700">
+            </div>
+            <div class="rounded-2xl shadow-xl overflow-hidden group cursor-pointer">
+                <img src="{{ asset('images/aerien1.webp') }}"
+                     alt="Vue aérienne"
+                     class="w-full h-56 object-cover group-hover:scale-110 transition duration-700">
+            </div>
         </div>
     </div>
-
-    {{-- Deux images côte à côte avec effet zoom --}}
-    <div class="grid grid-cols-2 gap-4">
-        <div class="rounded-2xl shadow-xl overflow-hidden group cursor-pointer">
-            <img src="{{ asset('images/usine-panorama.webp') }}"
-                 alt="Usine CIOK"
-                 class="w-full h-56 object-cover group-hover:scale-110 transition duration-700">
-        </div>
-        <div class="rounded-2xl shadow-xl overflow-hidden group cursor-pointer">
-            <img src="{{ asset('images/aerien1.webp') }}"
-                 alt="Vue aérienne"
-                 class="w-full h-56 object-cover group-hover:scale-110 transition duration-700">
-        </div>
-    </div>
-
 
 </section>
 
@@ -133,7 +123,7 @@
 
         <div class="text-center mb-12">
             <div class="inline-block bg-blue-100 text-blue-800 text-xs font-bold px-3 py-1 rounded-full mb-4">
-                NOS PRODUITS
+                {{ __('messages.our_products') }}
             </div>
             <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-4">
                 {{ __('messages.our_products') }}
@@ -144,7 +134,7 @@
         </div>
 
         @if($featuredProducts->isEmpty())
-            <p class="text-center text-gray-500 py-12">Aucun produit pour le moment.</p>
+            <p class="text-center text-gray-500 py-12">{{ __('messages.no_products') }}</p>
         @else
             <div class="grid md:grid-cols-3 gap-8">
                 @foreach($featuredProducts as $product)
@@ -177,7 +167,7 @@
 
                             @if($product->is_featured)
                                 <span class="absolute top-3 right-3 bg-gradient-to-r from-yellow-500 to-yellow-400 text-blue-900 text-xs font-extrabold px-3 py-1.5 rounded-full shadow-lg">
-                                    ⭐ PHARE
+                                    ⭐ {{ __('messages.featured') }}
                                 </span>
                             @endif
 
@@ -215,7 +205,7 @@
         <div class="text-center mt-12">
             <a href="{{ route('products.index') }}"
                class="inline-flex items-center gap-2 bg-blue-900 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-800 transition hover:-translate-y-1">
-                Voir tous nos produits →
+                {{ __('messages.view_all_products') }} →
             </a>
         </div>
 
@@ -229,37 +219,34 @@
 
     <div class="text-center mb-12">
         <div class="inline-block bg-yellow-500 text-blue-900 text-xs font-bold px-3 py-1 rounded-full mb-4">
-            NOS ENGAGEMENTS
+            {{ __('messages.our_commitments') }}
         </div>
-        <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-4">Qualité, environnement & sécurité</h2>
+        <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-4">{{ __('messages.commitments_title') }}</h2>
     </div>
 
     <div class="grid md:grid-cols-3 gap-6">
 
         <div class="bg-white rounded-xl shadow-md p-8 hover:shadow-xl transition hover:-translate-y-2 border-t-4 border-blue-900">
             <div class="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center text-3xl mb-4">✅</div>
-            <h3 class="text-xl font-bold text-blue-900 mb-3">Qualité certifiée</h3>
+            <h3 class="text-xl font-bold text-blue-900 mb-3">{{ __('messages.commitment_quality') }}</h3>
             <p class="text-gray-600 text-sm leading-relaxed">
-                Nos produits sont conformes aux normes tunisiennes et européennes (EN 197-1).
-                Certification ISO 9001 pour l'ensemble de nos processus.
+                {{ __('messages.commitment_quality_desc') }}
             </p>
         </div>
 
         <div class="bg-white rounded-xl shadow-md p-8 hover:shadow-xl transition hover:-translate-y-2 border-t-4 border-green-600">
             <div class="w-16 h-16 bg-green-100 rounded-xl flex items-center justify-center text-3xl mb-4">🌱</div>
-            <h3 class="text-xl font-bold text-blue-900 mb-3">Respect de l'environnement</h3>
+            <h3 class="text-xl font-bold text-blue-900 mb-3">{{ __('messages.commitment_env') }}</h3>
             <p class="text-gray-600 text-sm leading-relaxed">
-                Engagement dans le programme national d'élimination des déchets PCB
-                et investissements continus dans des technologies propres.
+                {{ __('messages.commitment_env_desc') }}
             </p>
         </div>
 
         <div class="bg-white rounded-xl shadow-md p-8 hover:shadow-xl transition hover:-translate-y-2 border-t-4 border-yellow-500">
             <div class="w-16 h-16 bg-yellow-100 rounded-xl flex items-center justify-center text-3xl mb-4">🛡️</div>
-            <h3 class="text-xl font-bold text-blue-900 mb-3">Sécurité maximale</h3>
+            <h3 class="text-xl font-bold text-blue-900 mb-3">{{ __('messages.commitment_safety') }}</h3>
             <p class="text-gray-600 text-sm leading-relaxed">
-                Priorité absolue à la sécurité de nos collaborateurs avec des formations
-                régulières et des équipements aux normes internationales.
+                {{ __('messages.commitment_safety_desc') }}
             </p>
         </div>
 
@@ -274,7 +261,7 @@
 
         <div class="text-center mb-12">
             <div class="inline-block bg-blue-100 text-blue-800 text-xs font-bold px-3 py-1 rounded-full mb-4">
-                ACTUALITÉS
+                {{ __('messages.news') }}
             </div>
             <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-4">
                 {{ __('messages.latest_news') }}
@@ -283,7 +270,7 @@
         </div>
 
         @if($latestPosts->isEmpty())
-            <p class="text-center text-gray-500 py-12">Aucune actualité pour le moment.</p>
+            <p class="text-center text-gray-500 py-12">{{ __('messages.no_news') }}</p>
         @else
             <div class="grid md:grid-cols-3 gap-8">
                 @foreach($latestPosts as $post)
@@ -320,7 +307,7 @@
             <div class="text-center mt-12">
                 <a href="{{ route('posts.index') }}"
                    class="inline-flex items-center gap-2 bg-white border-2 border-blue-900 text-blue-900 px-8 py-3 rounded-lg font-semibold hover:bg-blue-900 hover:text-white transition hover:-translate-y-1">
-                    Voir toutes les actualités →
+                    {{ __('messages.view_all_news') }} →
                 </a>
             </div>
         @endif
@@ -340,39 +327,45 @@
         <div class="relative grid lg:grid-cols-2 gap-8 items-center">
             <div>
                 <div class="inline-block bg-yellow-500 text-blue-900 text-xs font-bold px-3 py-1 rounded-full mb-4">
-                    MARCHÉ PUBLIC
+                    {{ __('messages.tender_market') }}
                 </div>
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Appels d'offres en cours</h2>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">{{ __('messages.tenders_in_progress') }}</h2>
                 <p class="text-blue-100 mb-6 leading-relaxed">
-                    Consultez nos appels d'offres et consultations élargies en cours.
-                    Toutes les informations et documents sont disponibles en téléchargement.
+                    {{ __('messages.tenders_home_intro') }}
                 </p>
-                <a href="#"
+                <a href="{{ route('tenders.index') }}"
                    class="inline-flex items-center gap-2 bg-yellow-500 text-blue-900 px-6 py-3 rounded-lg font-bold hover:bg-yellow-400 transition shadow-lg hover:-translate-y-1">
-                    📋 Voir les appels d'offres →
+                    📋 {{ __('messages.tender_view_all') }} →
                 </a>
             </div>
 
+            @if(isset($latestTender) && $latestTender)
             <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
                 <h3 class="font-bold text-lg mb-4 flex items-center gap-2">
                     <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
-                    Dernier appel d'offres
+                    {{ __('messages.tender_latest') }}
                 </h3>
                 <div class="space-y-3 text-sm">
                     <div class="flex justify-between">
-                        <span class="text-blue-200">N° :</span>
-                        <span class="font-semibold">AO N° 16/2026</span>
+                        <span class="text-blue-200">{{ __('messages.tender_num') }} :</span>
+                        <span class="font-semibold">{{ $latestTender->reference }}</span>
                     </div>
                     <div class="flex justify-between">
-                        <span class="text-blue-200">Objet :</span>
-                        <span class="font-semibold text-right">Acquisition voitures hybrides</span>
+                        <span class="text-blue-200">{{ __('messages.tender_object') }} :</span>
+                        <span class="font-semibold text-right">{{ Str::limit($latestTender->title, 40) }}</span>
                     </div>
+                    @if($latestTender->deadline_date)
                     <div class="flex justify-between">
-                        <span class="text-blue-200">Date limite :</span>
-                        <span class="font-semibold text-yellow-400">17/09/2026 — 13h00</span>
+                        <span class="text-blue-200">{{ __('messages.tender_deadline_short') }} :</span>
+                        <span class="font-semibold text-yellow-400">
+                            {{ $latestTender->deadline_date->format('d/m/Y') }}
+                            @if($latestTender->deadline_time) — {{ \Carbon\Carbon::parse($latestTender->deadline_time)->format('H\hi') }} @endif
+                        </span>
                     </div>
+                    @endif
                 </div>
             </div>
+            @endif
         </div>
 
     </div>
@@ -389,7 +382,7 @@
 
     <div class="relative max-w-4xl mx-auto text-center px-4 py-20">
         <div class="inline-block bg-yellow-500 text-blue-900 text-xs font-bold px-3 py-1 rounded-full mb-4">
-            CONTACTEZ-NOUS
+            {{ __('messages.contact') }}
         </div>
 
         <h2 class="text-3xl md:text-5xl font-extrabold mb-6">
@@ -397,8 +390,7 @@
         </h2>
 
         <p class="text-blue-100 text-lg mb-10 max-w-2xl mx-auto">
-            Une question, un projet, une demande de devis ? Notre équipe commerciale
-            est à votre disposition pour vous accompagner.
+            {{ __('messages.contact_cta_desc') }}
         </p>
 
         <div class="flex flex-wrap gap-4 justify-center">

@@ -3,7 +3,9 @@
 
 @section('content')
 
+{{-- ═══════════════════════════════════════════════════════ --}}
 {{-- EN-TÊTE --}}
+{{-- ═══════════════════════════════════════════════════════ --}}
 <div class="flex justify-between items-center mb-6 flex-wrap gap-4">
     <div>
         <h1 class="text-3xl font-bold text-blue-900">📦 Produits</h1>
@@ -22,42 +24,56 @@
     </div>
 </div>
 
+{{-- ═══════════════════════════════════════════════════════ --}}
 {{-- STATISTIQUES --}}
+{{-- ═══════════════════════════════════════════════════════ --}}
 @php
     $allProducts = \App\Models\Product::all();
     $stats = [
-        'total' => $allProducts->count(),
-        'active' => $allProducts->where('is_active', true)->count(),
+        'total'    => $allProducts->count(),
+        'active'   => $allProducts->where('is_active', true)->count(),
         'featured' => $allProducts->where('is_featured', true)->count(),
-        'inactive' => $allProducts->where('is_active', false)->count(),
+        'pending'  => $allProducts->where('approval_status', 'pending')->count(),
+        'approved' => $allProducts->where('approval_status', 'approved')->count(),
+        'rejected' => $allProducts->where('approval_status', 'rejected')->count(),
     ];
 @endphp
 
-<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-
-    <div class="bg-white rounded-lg shadow-sm border-l-4 border-blue-900 p-4">
-        <div class="text-xs text-gray-500 uppercase tracking-wider font-semibold">Total</div>
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 mb-6">
+    <div class="bg-white rounded-lg shadow-sm border-l-4 border-blue-900 p-3">
+        <div class="text-xs text-gray-500 uppercase font-semibold">Total</div>
         <div class="text-2xl font-bold text-blue-900 mt-1">{{ $stats['total'] }}</div>
     </div>
 
-    <div class="bg-white rounded-lg shadow-sm border-l-4 border-green-500 p-4">
-        <div class="text-xs text-gray-500 uppercase tracking-wider font-semibold">✅ Actifs</div>
+    <div class="bg-white rounded-lg shadow-sm border-l-4 border-green-500 p-3">
+        <div class="text-xs text-gray-500 uppercase font-semibold">✅ Actifs</div>
         <div class="text-2xl font-bold text-green-600 mt-1">{{ $stats['active'] }}</div>
     </div>
 
-    <div class="bg-white rounded-lg shadow-sm border-l-4 border-yellow-500 p-4">
-        <div class="text-xs text-gray-500 uppercase tracking-wider font-semibold">⭐ Phares</div>
+    <div class="bg-white rounded-lg shadow-sm border-l-4 border-yellow-500 p-3">
+        <div class="text-xs text-gray-500 uppercase font-semibold">⭐ Phares</div>
         <div class="text-2xl font-bold text-yellow-600 mt-1">{{ $stats['featured'] }}</div>
     </div>
 
-    <div class="bg-white rounded-lg shadow-sm border-l-4 border-gray-400 p-4">
-        <div class="text-xs text-gray-500 uppercase tracking-wider font-semibold">❌ Inactifs</div>
-        <div class="text-2xl font-bold text-gray-600 mt-1">{{ $stats['inactive'] }}</div>
+    <div class="bg-white rounded-lg shadow-sm border-l-4 border-orange-500 p-3">
+        <div class="text-xs text-gray-500 uppercase font-semibold">⏳ En attente</div>
+        <div class="text-2xl font-bold text-orange-600 mt-1">{{ $stats['pending'] }}</div>
     </div>
 
+    <div class="bg-white rounded-lg shadow-sm border-l-4 border-green-600 p-3">
+        <div class="text-xs text-gray-500 uppercase font-semibold">✅ Approuvés</div>
+        <div class="text-2xl font-bold text-green-700 mt-1">{{ $stats['approved'] }}</div>
+    </div>
+
+    <div class="bg-white rounded-lg shadow-sm border-l-4 border-red-500 p-3">
+        <div class="text-xs text-gray-500 uppercase font-semibold">❌ Rejetés</div>
+        <div class="text-2xl font-bold text-red-600 mt-1">{{ $stats['rejected'] }}</div>
+    </div>
 </div>
 
-{{-- RECHERCHE + FILTRES --}}
+{{-- ═══════════════════════════════════════════════════════ --}}
+{{-- FILTRES --}}
+{{-- ═══════════════════════════════════════════════════════ --}}
 <div class="bg-white rounded-xl shadow-md p-4 mb-6">
     <form method="GET" action="{{ route('admin.products.index') }}" class="flex flex-wrap gap-3 items-center">
 
@@ -68,7 +84,7 @@
                    class="w-full pl-10 pr-4 py-2 border-2 border-gray-200 rounded-lg focus:border-blue-900 outline-none transition">
         </div>
 
-        <select name="category" class="border-2 border-gray-200 rounded-lg px-3 py-2 focus:border-blue-900 outline-none transition">
+        <select name="category" class="border-2 border-gray-200 rounded-lg px-3 py-2">
             <option value="">Toutes les catégories</option>
             @foreach(\App\Models\Category::all() as $cat)
                 <option value="{{ $cat->id }}" {{ request('category') == $cat->id ? 'selected' : '' }}>
@@ -77,31 +93,37 @@
             @endforeach
         </select>
 
+        <select name="approval" class="border-2 border-gray-200 rounded-lg px-3 py-2">
+            <option value="">Toutes les approbations</option>
+            <option value="pending" {{ request('approval') === 'pending' ? 'selected' : '' }}>⏳ En attente</option>
+            <option value="approved" {{ request('approval') === 'approved' ? 'selected' : '' }}>✅ Approuvés</option>
+            <option value="rejected" {{ request('approval') === 'rejected' ? 'selected' : '' }}>❌ Rejetés</option>
+        </select>
+
         <button type="submit" class="bg-blue-900 text-white px-5 py-2 rounded-lg hover:bg-blue-800 transition font-semibold">
             Filtrer
         </button>
 
-        @if(request('search') || request('category'))
-            <a href="{{ route('admin.products.index') }}" class="text-gray-600 hover:text-gray-900 text-sm flex items-center gap-1">
-                ✕ Réinitialiser
-            </a>
+        @if(request()->hasAny(['search', 'category', 'approval']))
+            <a href="{{ route('admin.products.index') }}" class="text-gray-600 hover:text-gray-900 text-sm">✕ Réinitialiser</a>
         @endif
-
     </form>
 </div>
 
+{{-- ═══════════════════════════════════════════════════════ --}}
 {{-- TABLEAU --}}
+{{-- ═══════════════════════════════════════════════════════ --}}
 <div class="bg-white rounded-xl shadow-md overflow-hidden">
-
     <div class="overflow-x-auto">
         <table class="w-full">
             <thead class="bg-gray-50 border-b-2 border-gray-200">
                 <tr>
-                    <th class="px-4 py-4 text-left text-xs uppercase tracking-wider font-bold text-gray-600">Produit</th>
-                    <th class="px-4 py-4 text-left text-xs uppercase tracking-wider font-bold text-gray-600">Catégorie</th>
-                    <th class="px-4 py-4 text-center text-xs uppercase tracking-wider font-bold text-gray-600">Statut</th>
-                    <th class="px-4 py-4 text-center text-xs uppercase tracking-wider font-bold text-gray-600">Phare</th>
-                    <th class="px-4 py-4 text-center text-xs uppercase tracking-wider font-bold text-gray-600">Actions</th>
+                    <th class="px-4 py-4 text-left text-xs uppercase font-bold text-gray-600">Produit</th>
+                    <th class="px-4 py-4 text-left text-xs uppercase font-bold text-gray-600">Catégorie</th>
+                    <th class="px-4 py-4 text-center text-xs uppercase font-bold text-gray-600">Statut</th>
+                    <th class="px-4 py-4 text-center text-xs uppercase font-bold text-gray-600">Approbation</th>
+                    <th class="px-4 py-4 text-center text-xs uppercase font-bold text-gray-600">Phare</th>
+                    <th class="px-4 py-4 text-center text-xs uppercase font-bold text-gray-600">Actions</th>
                 </tr>
             </thead>
             <tbody class="divide-y divide-gray-100">
@@ -162,6 +184,12 @@
                         </td>
 
                         <td class="px-4 py-4 text-center">
+                            <span class="inline-flex items-center gap-1 bg-{{ $product->approval_color }}-100 text-{{ $product->approval_color }}-800 px-2.5 py-1 rounded-full text-xs font-bold">
+                                {{ $product->approval_label }}
+                            </span>
+                        </td>
+
+                        <td class="px-4 py-4 text-center">
                             @if($product->is_featured)
                                 <span class="text-2xl">⭐</span>
                             @else
@@ -170,28 +198,35 @@
                         </td>
 
                         <td class="px-4 py-4">
-                            <div class="flex items-center justify-center gap-2">
+                            <div class="flex items-center justify-center gap-2 flex-wrap">
+
+                                {{-- Approuver / Rejeter --}}
+                                @if($product->approval_status === 'pending' && Auth::user()->canManageUsers())
+                                    <form action="{{ route('admin.products.approve', $product) }}" method="POST" class="inline">
+                                        @csrf
+                                        <button type="submit"
+                                                class="w-8 h-8 flex items-center justify-center rounded-lg bg-green-100 hover:bg-green-200 text-green-800 transition"
+                                                title="Approuver">✅</button>
+                                    </form>
+                                    <button type="button" onclick="rejectProduct({{ $product->id }})"
+                                            class="w-8 h-8 flex items-center justify-center rounded-lg bg-red-100 hover:bg-red-200 text-red-800 transition"
+                                            title="Rejeter">❌</button>
+                                @endif
 
                                 <a href="{{ route('products.show', $product->slug) }}" target="_blank"
                                    class="w-8 h-8 flex items-center justify-center rounded-lg bg-gray-100 hover:bg-blue-100 text-blue-700 transition"
-                                   title="Voir sur le site">
-                                    🌐
-                                </a>
+                                   title="Voir sur le site">🌐</a>
 
                                 <a href="{{ route('admin.products.edit', $product) }}"
                                    class="w-8 h-8 flex items-center justify-center rounded-lg bg-blue-100 hover:bg-blue-200 text-blue-800 transition"
-                                   title="Modifier">
-                                    ✏️
-                                </a>
+                                   title="Modifier">✏️</a>
 
                                 <form action="{{ route('admin.products.destroy', $product) }}" method="POST" class="inline"
-                                      onsubmit="return confirm('⚠️ Supprimer DÉFINITIVEMENT {{ $product->name }} ?\n\nCette action est irréversible.')">
+                                      onsubmit="return confirm(@js('Supprimer DÉFINITIVEMENT ' . $product->name . ' ? Action irréversible.'))">
                                     @csrf @method('DELETE')
                                     <button type="submit"
                                             class="w-8 h-8 flex items-center justify-center rounded-lg bg-red-100 hover:bg-red-200 text-red-700 transition"
-                                            title="Supprimer">
-                                        🗑️
-                                    </button>
+                                            title="Supprimer">🗑️</button>
                                 </form>
 
                             </div>
@@ -199,17 +234,17 @@
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="5" class="px-4 py-16 text-center">
+                        <td colspan="6" class="px-4 py-16 text-center">
                             <div class="text-6xl mb-4">📦</div>
                             <div class="text-xl font-semibold text-gray-700 mb-2">Aucun produit</div>
                             <div class="text-sm text-gray-500 mb-6">
-                                @if(request('search') || request('category'))
+                                @if(request()->hasAny(['search', 'category', 'approval']))
                                     Aucun résultat pour ces filtres.
                                 @else
                                     Commencez par créer votre premier produit.
                                 @endif
                             </div>
-                            @if(request('search') || request('category'))
+                            @if(request()->hasAny(['search', 'category', 'approval']))
                                 <a href="{{ route('admin.products.index') }}"
                                    class="inline-flex items-center gap-2 bg-gray-100 hover:bg-gray-200 text-gray-700 px-4 py-2 rounded-lg transition">
                                     ✕ Réinitialiser les filtres
@@ -226,17 +261,14 @@
             </tbody>
         </table>
     </div>
-
 </div>
 
 {{-- PAGINATION --}}
 @if($products->hasPages())
-    <div class="mt-6">
-        {{ $products->appends(request()->query())->links() }}
-    </div>
+    <div class="mt-6">{{ $products->appends(request()->query())->links() }}</div>
 @endif
 
-{{-- AIDE CONTEXTUELLE --}}
+{{-- AIDE --}}
 <div class="bg-blue-50 border-l-4 border-blue-500 rounded-lg p-4 mt-6">
     <div class="flex items-start gap-3">
         <span class="text-2xl">💡</span>
@@ -245,10 +277,39 @@
             <ul class="space-y-1 text-gray-700">
                 <li><strong>⭐ Phare</strong> — Apparaît sur la page d'accueil</li>
                 <li><strong>✅ Actif</strong> — Visible sur le site public</li>
-                <li><strong>🌐 Voir sur le site</strong> — Ouvre la page publique du produit</li>
+                <li><strong>⏳ En attente</strong> — Doit être approuvé par un Admin/Super Admin</li>
+                <li><strong>✅ Approuvé</strong> — Validé et publié</li>
+                <li><strong>❌ Rejeté</strong> — Non conforme, à corriger</li>
             </ul>
         </div>
     </div>
 </div>
+
+{{-- SCRIPT DE REJET --}}
+<script>
+function rejectProduct(id) {
+    const reason = prompt('Motif du rejet :');
+    if (reason && reason.trim() !== '') {
+        const form = document.createElement('form');
+        form.method = 'POST';
+        form.action = `/admin/products/${id}/reject`;
+
+        const csrf = document.createElement('input');
+        csrf.type = 'hidden';
+        csrf.name = '_token';
+        csrf.value = '{{ csrf_token() }}';
+
+        const reasonInput = document.createElement('input');
+        reasonInput.type = 'hidden';
+        reasonInput.name = 'rejection_reason';
+        reasonInput.value = reason.trim();
+
+        form.appendChild(csrf);
+        form.appendChild(reasonInput);
+        document.body.appendChild(form);
+        form.submit();
+    }
+}
+</script>
 
 @endsection

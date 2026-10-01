@@ -7,34 +7,37 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 class ProductController extends Controller
 {
-   public function index(Request $request)
+ public function index(Request $request)
 {
-    $categories = Category::with('products')->get();
+    $query = Product::active()
+                    ->approved();  // ← AJOUTEZ
 
-    $query = Product::active()->orderBy('order');
-
-    if ($request->has('category') && $request->category) {
-        $category = Category::where('slug', $request->category)->first();
-        if ($category) {
-            $query->where('category_id', $category->id);
-        }
+    if ($request->filled('category')) {
+        $query->whereHas('category', function ($q) use ($request) {
+            $q->where('slug', $request->category);
+        });
     }
 
-    $products = $query->get();
+    $products = $query->orderBy('order')->paginate(9);
+   $categories = Category::all();
 
     return view('products.index', compact('products', 'categories'));
 }
 
-    public function show($slug)
-    {
-        $product = Product::where('slug', $slug)->active()->firstOrFail();
+   public function show($slug)
+{
+    $product = Product::where('slug', $slug)
+                      ->active()
+                      ->approved()  // ← AJOUTEZ
+                      ->firstOrFail();
 
-        $related = Product::active()
-            ->where('category_id', $product->category_id)
-            ->where('id', '!=', $product->id)
-            ->take(3)
-            ->get();
+    $related = Product::active()
+        ->approved()  // ← AJOUTEZ
+        ->where('id', '!=', $product->id)
+        ->where('category_id', $product->category_id)
+        ->take(3)
+        ->get();
 
-        return view('products.show', compact('product', 'related'));
-    }
+    return view('products.show', compact('product', 'related'));
+}
 }

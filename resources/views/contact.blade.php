@@ -1,32 +1,35 @@
 @extends('layouts.site')
 @section('title', __('messages.contact') . ' - CIOK')
-@section('meta_description', 'Contactez la CIOK - Siège à Le Kef, antenne à Tunis. Téléphone : +216 78 253 816. Formulaire de contact en ligne.')
+@section('meta_description', __('messages.contact_intro'))
 @section('og_image', asset('images/entree.webp'))
 @section('content')
 
-{{-- ═══════════════════════════════════════════════════════ --}}
-{{-- BANNER --}}
-{{-- ═══════════════════════════════════════════════════════ --}}
-<section class="relative text-white overflow-hidden">
+{{-- ═══ BANNER ═══ --}}
+<section class="relative text-white overflow-hidden" style="min-height: 500px;">
     <div class="absolute inset-0">
-        <img src="{{ asset('images/entree.webp') }}" alt="Contact CIOK" class="w-full h-full object-cover">
-        <div class="absolute inset-0 bg-gradient-to-r from-blue-950/95 to-blue-900/70"></div>
+        <img src="{{ asset('images/entree.webp') }}"
+             alt="{{ __('messages.contact_us') }} CIOK"
+             class="w-full h-full object-cover scale-110"
+             style="filter: blur(3px) brightness(0.9); object-position: center;">
+        <div class="absolute inset-0 bg-gradient-to-r from-blue-950/85 via-blue-900/70 to-blue-800/50"></div>
     </div>
-    <div class="relative max-w-7xl mx-auto px-4 py-24">
-        <div class="inline-block bg-yellow-500 text-blue-900 text-xs font-bold px-3 py-1 rounded-full mb-4">
-            ✉️ CONTACT
+
+    <div class="relative max-w-7xl mx-auto px-4 py-32 flex flex-col justify-center" style="min-height: 500px;">
+        <div class="inline-flex items-center gap-2 bg-yellow-500 text-blue-900 text-xs font-bold px-4 py-1.5 rounded-full mb-6 w-fit shadow-lg">
+            {{ __('messages.contact_badge') }}
         </div>
-        <h1 class="text-4xl md:text-6xl font-extrabold mb-4">{{ __('messages.contact_us') }}</h1>
-        <p class="text-blue-100 text-lg md:text-xl max-w-3xl leading-relaxed">
-            Notre équipe est à votre disposition pour répondre à toutes vos questions
+        <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-6 leading-tight drop-shadow-lg">
+            {{ __('messages.contact_us') }}
+        </h1>
+        <p class="text-blue-100 text-lg md:text-xl lg:text-2xl max-w-3xl leading-relaxed drop-shadow-md">
+            {{ __('messages.contact_intro') }}
         </p>
     </div>
+
     <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-yellow-500 via-yellow-400 to-yellow-500"></div>
 </section>
 
-{{-- ═══════════════════════════════════════════════════════ --}}
-{{-- CARTES DE CONTACT RAPIDE --}}
-{{-- ═══════════════════════════════════════════════════════ --}}
+{{-- ═══ CARTES DE CONTACT RAPIDE ═══ --}}
 <section class="max-w-7xl mx-auto px-4 -mt-12 relative z-10">
     <div class="grid md:grid-cols-3 gap-6">
 
@@ -35,7 +38,7 @@
             <div class="w-14 h-14 bg-blue-100 text-blue-900 rounded-full flex items-center justify-center text-2xl mx-auto mb-4 group-hover:scale-110 transition">
                 📞
             </div>
-            <h3 class="font-bold text-blue-900 mb-1">Téléphone</h3>
+            <h3 class="font-bold text-blue-900 mb-1">{{ __('messages.contact_quick_phone') }}</h3>
             <p class="text-gray-600 text-sm">+216 78 253 816</p>
         </a>
 
@@ -44,7 +47,7 @@
             <div class="w-14 h-14 bg-yellow-100 text-yellow-700 rounded-full flex items-center justify-center text-2xl mx-auto mb-4 group-hover:scale-110 transition">
                 ✉️
             </div>
-            <h3 class="font-bold text-blue-900 mb-1">Email commercial</h3>
+            <h3 class="font-bold text-blue-900 mb-1">{{ __('messages.contact_quick_email') }}</h3>
             <p class="text-gray-600 text-sm">commercial@ciok.com.tn</p>
         </a>
 
@@ -53,30 +56,28 @@
             <div class="w-14 h-14 bg-green-100 text-green-700 rounded-full flex items-center justify-center text-2xl mx-auto mb-4 group-hover:scale-110 transition">
                 💼
             </div>
-            <h3 class="font-bold text-blue-900 mb-1">Ressources humaines</h3>
-            <p class="text-gray-600 text-sm">grh@ciok.com.tn</p>
+            <h3 class="font-bold text-blue-900 mb-1">{{ __('messages.contact_quick_rh') }}</h3>
+            <p class="text-gray-600 text-sm">rh@ciok.com.tn</p>
         </a>
 
     </div>
 </section>
 
-{{-- ═══════════════════════════════════════════════════════ --}}
-{{-- FORMULAIRE + ADRESSES --}}
-{{-- ═══════════════════════════════════════════════════════ --}}
+{{-- ═══ FORMULAIRE + ADRESSES ═══ --}}
 <section class="max-w-7xl mx-auto px-4 py-16 grid lg:grid-cols-2 gap-12">
 
     {{-- Formulaire --}}
     <div>
         <div class="inline-block bg-blue-100 text-blue-800 text-xs font-bold px-3 py-1 rounded-full mb-4">
-            📝 FORMULAIRE
+            {{ __('messages.contact_form_badge') }}
         </div>
-        <h2 class="text-3xl font-bold text-blue-900 mb-6">Envoyez-nous un message</h2>
+        <h2 class="text-3xl font-bold text-blue-900 mb-6">{{ __('messages.contact_form_title') }}</h2>
 
         @if(session('success'))
             <div class="bg-green-100 border-l-4 border-green-500 text-green-800 px-4 py-4 rounded mb-6 flex items-start gap-3">
                 <span class="text-2xl">✅</span>
                 <div>
-                    <strong class="block mb-1">Message envoyé avec succès !</strong>
+                    <strong class="block mb-1">{{ __('messages.contact_success') }}</strong>
                     <p class="text-sm">{{ session('success') }}</p>
                 </div>
             </div>
@@ -85,14 +86,13 @@
         <form action="{{ route('contact.send') }}" method="POST" class="bg-white shadow-md rounded-2xl p-6 space-y-5">
             @csrf
 
-            {{-- Nom + Email --}}
             <div class="grid md:grid-cols-2 gap-4">
                 <div>
                     <label class="block font-semibold mb-2 text-sm text-gray-700">
                         {{ __('messages.your_name') }} <span class="text-red-500">*</span>
                     </label>
                     <input type="text" name="name" value="{{ old('name') }}"
-                           placeholder="Votre nom complet"
+                           placeholder="{{ __('messages.your_name') }}"
                            class="w-full border-2 border-gray-200 rounded-lg px-4 py-3 focus:border-blue-900 focus:ring-2 focus:ring-blue-100 outline-none transition @error('name') border-red-300 @enderror"
                            required>
                     @error('name') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
@@ -109,7 +109,6 @@
                 </div>
             </div>
 
-            {{-- Téléphone --}}
             <div>
                 <label class="block font-semibold mb-2 text-sm text-gray-700">
                     {{ __('messages.your_phone') }}
@@ -119,38 +118,35 @@
                        class="w-full border-2 border-gray-200 rounded-lg px-4 py-3 focus:border-blue-900 focus:ring-2 focus:ring-blue-100 outline-none transition">
             </div>
 
-            {{-- Sujet --}}
             <div>
                 <label class="block font-semibold mb-2 text-sm text-gray-700">
                     {{ __('messages.subject') }} <span class="text-red-500">*</span>
                 </label>
                 <input type="text" name="subject" value="{{ old('subject') }}"
-                       placeholder="Objet de votre message"
+                       placeholder="{{ __('messages.subject') }}"
                        class="w-full border-2 border-gray-200 rounded-lg px-4 py-3 focus:border-blue-900 focus:ring-2 focus:ring-blue-100 outline-none transition @error('subject') border-red-300 @enderror"
                        required>
                 @error('subject') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
             </div>
 
-            {{-- Message --}}
             <div>
                 <label class="block font-semibold mb-2 text-sm text-gray-700">
                     {{ __('messages.message') }} <span class="text-red-500">*</span>
                 </label>
                 <textarea name="message" rows="6"
-                          placeholder="Décrivez votre demande..."
+                          placeholder="{{ __('messages.message') }}"
                           class="w-full border-2 border-gray-200 rounded-lg px-4 py-3 focus:border-blue-900 focus:ring-2 focus:ring-blue-100 outline-none transition @error('message') border-red-300 @enderror"
                           required>{{ old('message') }}</textarea>
                 @error('message') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
             </div>
 
-            {{-- Bouton --}}
             <button type="submit"
                     class="w-full bg-blue-900 text-white py-4 rounded-lg font-bold hover:bg-blue-800 transition shadow-md flex items-center justify-center gap-2">
                 ✉️ {{ __('messages.send_message') }}
             </button>
 
             <p class="text-xs text-gray-500 text-center">
-                * Champs obligatoires — Vos données ne seront jamais partagées.
+                {{ __('messages.contact_required') }}
             </p>
 
         </form>
@@ -159,9 +155,9 @@
     {{-- Coordonnées --}}
     <div>
         <div class="inline-block bg-yellow-500 text-blue-900 text-xs font-bold px-3 py-1 rounded-full mb-4">
-            📍 NOUS TROUVER
+            {{ __('messages.contact_addresses_badge') }}
         </div>
-        <h2 class="text-3xl font-bold text-blue-900 mb-6">Nos coordonnées</h2>
+        <h2 class="text-3xl font-bold text-blue-900 mb-6">{{ __('messages.contact_addresses_title') }}</h2>
 
         <div class="space-y-4">
 
@@ -172,7 +168,7 @@
                         🏭
                     </div>
                     <div>
-                        <h3 class="font-bold text-blue-900 mb-2">Siège Kef</h3>
+                        <h3 class="font-bold text-blue-900 mb-2">{{ __('messages.contact_siege_kef') }}</h3>
                         <p class="text-gray-700 text-sm leading-relaxed">
                             Cité des Jardins<br>
                             BP 94 — 7100 Le Kef, Tunisie
@@ -188,7 +184,7 @@
                         🏢
                     </div>
                     <div>
-                        <h3 class="font-bold text-blue-900 mb-2">Antenne Tunis</h3>
+                        <h3 class="font-bold text-blue-900 mb-2">{{ __('messages.contact_antenne_tunis') }}</h3>
                         <p class="text-gray-700 text-sm leading-relaxed">
                             Rue de Cologne<br>
                             Tunis, Tunisie
@@ -204,7 +200,7 @@
                         🏗️
                     </div>
                     <div>
-                        <h3 class="font-bold text-blue-900 mb-2">Usine de production</h3>
+                        <h3 class="font-bold text-blue-900 mb-2">{{ __('messages.contact_usine') }}</h3>
                         <p class="text-gray-700 text-sm leading-relaxed">
                             Route de Tajerouine<br>
                             Le Kef, Tunisie
@@ -227,7 +223,8 @@
                 style="border:0;"
                 allowfullscreen=""
                 loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade">
+                referrerpolicy="no-referrer-when-downgrade"
+                title="{{ __('messages.contact_addresses_title') }}">
             </iframe>
         </div>
 
@@ -235,17 +232,15 @@
 
 </section>
 
-{{-- ═══════════════════════════════════════════════════════ --}}
-{{-- HORAIRES --}}
-{{-- ═══════════════════════════════════════════════════════ --}}
+{{-- ═══ HORAIRES ═══ --}}
 <section class="bg-gray-50 py-16 reveal">
     <div class="max-w-4xl mx-auto px-4">
 
         <div class="text-center mb-10">
             <div class="inline-block bg-blue-100 text-blue-800 text-xs font-bold px-3 py-1 rounded-full mb-3">
-                🕐 HORAIRES
+                {{ __('messages.contact_hours_badge') }}
             </div>
-            <h2 class="text-3xl font-bold text-blue-900">Horaires d'ouverture</h2>
+            <h2 class="text-3xl font-bold text-blue-900">{{ __('messages.contact_hours_title') }}</h2>
         </div>
 
         <div class="bg-white rounded-xl shadow-md overflow-hidden">
@@ -253,35 +248,35 @@
 
                 <div class="p-6 border-b md:border-b-0 md:border-r border-gray-100">
                     <h3 class="font-bold text-blue-900 mb-3 flex items-center gap-2">
-                        🏢 Bureaux administratifs
+                        {{ __('messages.contact_hours_office') }}
                     </h3>
                     <div class="text-gray-700 text-sm space-y-1">
                         <div class="flex justify-between">
-                            <span>Lundi — Vendredi :</span>
+                            <span>{{ __('messages.contact_hours_week') }}</span>
                             <strong>08h00 — 17h00</strong>
                         </div>
                         <div class="flex justify-between">
-                            <span>Samedi :</span>
+                            <span>{{ __('messages.contact_hours_sat') }}</span>
                             <strong>08h00 — 12h00</strong>
                         </div>
                         <div class="flex justify-between">
-                            <span>Dimanche :</span>
-                            <strong class="text-red-500">Fermé</strong>
+                            <span>{{ __('messages.contact_hours_sun') }}</span>
+                            <strong class="text-red-500">{{ __('messages.contact_hours_closed') }}</strong>
                         </div>
                     </div>
                 </div>
 
                 <div class="p-6">
                     <h3 class="font-bold text-blue-900 mb-3 flex items-center gap-2">
-                        🏭 Usine de production
+                        {{ __('messages.contact_hours_factory') }}
                     </h3>
                     <div class="text-gray-700 text-sm space-y-1">
                         <div class="flex justify-between">
-                            <span>Production :</span>
+                            <span>{{ __('messages.contact_hours_production') }}</span>
                             <strong>24h/24 — 7j/7</strong>
                         </div>
                         <div class="flex justify-between">
-                            <span>Service commercial :</span>
+                            <span>{{ __('messages.contact_hours_commercial') }}</span>
                             <strong>08h00 — 16h30</strong>
                         </div>
                     </div>
@@ -293,14 +288,12 @@
     </div>
 </section>
 
-{{-- ═══════════════════════════════════════════════════════ --}}
-{{-- CTA --}}
-{{-- ═══════════════════════════════════════════════════════ --}}
+{{-- ═══ CTA ═══ --}}
 <section class="bg-gradient-to-r from-blue-900 to-blue-800 text-white py-16">
     <div class="max-w-4xl mx-auto text-center px-4">
-        <h2 class="text-3xl font-bold mb-4">Besoin d'une information urgente ?</h2>
+        <h2 class="text-3xl font-bold mb-4">{{ __('messages.contact_urgent_title') }}</h2>
         <p class="text-blue-100 mb-8 text-lg">
-            Appelez-nous directement, notre équipe vous répondra immédiatement.
+            {{ __('messages.contact_urgent_desc') }}
         </p>
         <a href="tel:+21678253816"
            class="inline-flex items-center gap-2 bg-yellow-500 text-blue-900 px-8 py-3 rounded-lg font-bold hover:bg-yellow-400 transition shadow-lg hover:-translate-y-1 text-lg">

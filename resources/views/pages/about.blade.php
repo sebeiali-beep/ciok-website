@@ -1,6 +1,6 @@
 @extends('layouts.site')
 @section('title', __('messages.about') . ' - CIOK')
-@section('meta_description', 'Découvrez la CIOK - Société des Ciments d\'Oum El Kelil. Acteur industriel majeur en Tunisie depuis 1979. Notre histoire, mission et valeurs.')
+@section('meta_description', __('messages.about_intro'))
 @section('og_image', asset('images/usine-flag.webp'))
 @section('content')
 
@@ -9,17 +9,22 @@
 {{-- ═══════════════════════════════════════════════════════ --}}
 <section class="relative text-white overflow-hidden" style="min-height: 500px;">
     <div class="absolute inset-0">
-        <img src="{{ asset('images/aerien1.webp') }}" alt="CIOK" class="w-full h-full object-cover">
-        <div class="absolute inset-0 bg-gradient-to-r from-blue-950/95 to-blue-900/70"></div>
+        <img src="{{ asset('images/aerien1.webp') }}"
+             alt="{{ __('messages.about') }} CIOK"
+             class="w-full h-full object-cover scale-110"
+             style="filter: blur(3px) brightness(0.9); object-position: center;">
+        <div class="absolute inset-0 bg-gradient-to-r from-blue-950/85 via-blue-900/70 to-blue-800/50"></div>
     </div>
     <div class="relative max-w-7xl mx-auto px-4 py-32 flex flex-col justify-center" style="min-height: 500px;">
 
         <div class="inline-flex items-center gap-2 bg-yellow-500 text-blue-900 text-xs font-bold px-4 py-1.5 rounded-full mb-6 w-fit shadow-lg">
-            🏢 QUI SOMMES-NOUS
+            {{ __('messages.about_badge') }}
         </div>
-        <h1 class="text-4xl md:text-6xl font-extrabold mb-4">{{ __('messages.about') }}</h1>
-        <p class="text-blue-100 text-lg md:text-xl max-w-3xl leading-relaxed">
-            Découvrez l'histoire, la mission et les valeurs de la Société des Ciments d'Oum El Kelil
+        <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-6 leading-tight drop-shadow-lg">
+            {{ __('messages.about') }}
+        </h1>
+        <p class="text-blue-100 text-lg md:text-xl lg:text-2xl max-w-3xl leading-relaxed drop-shadow-md">
+            {{ __('messages.about_intro') }}
         </p>
     </div>
     <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-yellow-500 via-yellow-400 to-yellow-500"></div>
@@ -32,32 +37,28 @@
 
     <div>
         <div class="inline-block bg-yellow-500 text-blue-900 text-xs font-bold px-3 py-1 rounded-full mb-4">
-            NOTRE HISTOIRE
+            {{ __('messages.about_history_badge') }}
         </div>
 
         <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-6 leading-tight">
-            Un acteur clé dans la production de <span class="text-yellow-500">ciment de qualité</span>
+            {{ __('messages.about_title_part1') }} <span class="text-yellow-500">{{ __('messages.about_title_part2') }}</span>
         </h2>
 
         <p class="text-gray-700 leading-relaxed mb-4">
-            La <strong>Société des Ciments d'Oum El Khelil (CIOK)</strong> est une entreprise industrielle
-            spécialisée dans la production de ciment destiné aux secteurs du bâtiment et des travaux publics.
+            {!! __('messages.about_p1') !!}
         </p>
 
         <p class="text-gray-700 leading-relaxed mb-4">
-            Elle s'appuie sur un <strong>savoir-faire reconnu</strong>, des équipements performants
-            et un engagement permanent en faveur de la <strong>qualité</strong>, de la <strong>sécurité</strong>
-            et du <strong>respect de l'environnement</strong>.
+            {!! __('messages.about_p2') !!}
         </p>
 
         <p class="text-gray-700 leading-relaxed mb-6">
-            Sa mission est d'accompagner le développement des infrastructures en proposant des
-            produits fiables, conformes aux normes en vigueur et adaptés aux besoins de ses partenaires.
+            {{ __('messages.about_p3') }}
         </p>
 
         <a href="{{ route('products.index') }}"
            class="inline-flex items-center gap-2 bg-blue-900 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-800 transition hover:-translate-y-1">
-            🏭 Nos produits →
+            🏭 {{ __('messages.about_products_btn') }} →
         </a>
     </div>
 
@@ -67,13 +68,13 @@
     <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
         <div class="relative w-full overflow-hidden bg-gray-100">
             <img src="{{ asset('images/pdg.webp') }}"
-                 alt="Taoufik KHARDANI - PDG CIOK"
+                 alt="Taoufik KHARDANI - {{ __('messages.pdg_title') }}"
                  class="w-full object-contain"
                  style="max-height: 400px;">
         </div>
         <div class="py-4 px-4 text-center bg-gradient-to-r from-blue-900 to-blue-800">
             <h3 class="font-bold text-white text-xl tracking-wide">TAOUFIK KHARDANI</h3>
-            <p class="text-blue-200 text-sm mt-1">Président Directeur Général</p>
+            <p class="text-blue-200 text-sm mt-1">{{ __('messages.pdg_title') }}</p>
         </div>
     </div>
 
@@ -102,19 +103,19 @@
 
         <div>
             <div class="text-5xl font-extrabold text-yellow-400">1979</div>
-            <div class="mt-2 text-blue-200 text-sm uppercase tracking-wider">Année de création</div>
+            <div class="mt-2 text-blue-200 text-sm uppercase tracking-wider">{{ __('messages.key_stat_creation') }}</div>
         </div>
         <div>
             <div class="text-5xl font-extrabold text-yellow-400">700+</div>
-            <div class="mt-2 text-blue-200 text-sm uppercase tracking-wider">Collaborateurs</div>
+            <div class="mt-2 text-blue-200 text-sm uppercase tracking-wider">{{ __('messages.key_stat_employees') }}</div>
         </div>
         <div>
             <div class="text-5xl font-extrabold text-yellow-400">1M+</div>
-            <div class="mt-2 text-blue-200 text-sm uppercase tracking-wider">Tonnes / an</div>
+            <div class="mt-2 text-blue-200 text-sm uppercase tracking-wider">{{ __('messages.key_stat_tons') }}</div>
         </div>
         <div>
             <div class="text-5xl font-extrabold text-yellow-400">ISO</div>
-            <div class="mt-2 text-blue-200 text-sm uppercase tracking-wider">9001 Certifié</div>
+            <div class="mt-2 text-blue-200 text-sm uppercase tracking-wider">9001 {{ __('messages.key_stat_iso') }}</div>
         </div>
 
     </div>
@@ -127,14 +128,13 @@
 
     <div class="text-center mb-12">
         <div class="inline-block bg-yellow-500 text-blue-900 text-xs font-bold px-3 py-1 rounded-full mb-4">
-            📅 NOTRE PARCOURS
+            {{ __('messages.about_timeline_badge') }}
         </div>
-        <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-3">Notre histoire</h2>
-        <p class="text-gray-600">Plus de 45 ans au service du bâtiment tunisien</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-3">{{ __('messages.about_timeline_title') }}</h2>
+        <p class="text-gray-600">{{ __('messages.about_timeline_subtitle') }}</p>
     </div>
 
     <div class="relative">
-        {{-- Ligne verticale --}}
         <div class="absolute left-8 top-0 bottom-0 w-0.5 bg-blue-200 hidden md:block"></div>
 
         <div class="space-y-8">
@@ -145,9 +145,9 @@
                     1979
                 </div>
                 <div class="flex-1 bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition">
-                    <h3 class="font-bold text-blue-900 text-lg mb-2">Création de la CIOK</h3>
+                    <h3 class="font-bold text-blue-900 text-lg mb-2">{{ __('messages.timeline_1979_title') }}</h3>
                     <p class="text-gray-600 text-sm leading-relaxed">
-                        Fondation de la Société des Ciments d'Oum El Khelil à Tajerouine dans le gouvernorat du Kef.
+                        {{ __('messages.timeline_1979_desc') }}
                     </p>
                 </div>
             </div>
@@ -158,9 +158,9 @@
                     1990
                 </div>
                 <div class="flex-1 bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition">
-                    <h3 class="font-bold text-blue-900 text-lg mb-2">Modernisation</h3>
+                    <h3 class="font-bold text-blue-900 text-lg mb-2">{{ __('messages.timeline_1990_title') }}</h3>
                     <p class="text-gray-600 text-sm leading-relaxed">
-                        Investissement dans de nouveaux équipements industriels et augmentation de la capacité de production.
+                        {{ __('messages.timeline_1990_desc') }}
                     </p>
                 </div>
             </div>
@@ -171,9 +171,9 @@
                     2005
                 </div>
                 <div class="flex-1 bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition">
-                    <h3 class="font-bold text-blue-900 text-lg mb-2">Certification ISO 9001</h3>
+                    <h3 class="font-bold text-blue-900 text-lg mb-2">{{ __('messages.timeline_2005_title') }}</h3>
                     <p class="text-gray-600 text-sm leading-relaxed">
-                        Obtention de la certification ISO 9001 reconnaissant l'excellence de nos processus qualité.
+                        {{ __('messages.timeline_2005_desc') }}
                     </p>
                 </div>
             </div>
@@ -184,10 +184,9 @@
                     2026
                 </div>
                 <div class="flex-1 bg-blue-50 rounded-xl shadow-md p-6 border-l-4 border-yellow-500">
-                    <h3 class="font-bold text-blue-900 text-lg mb-2">Aujourd'hui</h3>
+                    <h3 class="font-bold text-blue-900 text-lg mb-2">{{ __('messages.timeline_2026_title') }}</h3>
                     <p class="text-gray-600 text-sm leading-relaxed">
-                        Un acteur majeur du marché tunisien du ciment, avec plus de 700 collaborateurs
-                        et une capacité de production d'un million de tonnes par an.
+                        {{ __('messages.timeline_2026_desc') }}
                     </p>
                 </div>
             </div>
@@ -206,40 +205,38 @@
 
         <div class="text-center mb-12">
             <div class="inline-block bg-blue-100 text-blue-800 text-xs font-bold px-3 py-1 rounded-full mb-4">
-                NOS PRIORITÉS
+                {{ __('messages.about_priorities_badge') }}
             </div>
-            <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-3">Notre engagement</h2>
-            <p class="text-gray-600">Trois piliers fondent notre action quotidienne</p>
+            <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-3">{{ __('messages.about_priorities_title') }}</h2>
+            <p class="text-gray-600">{{ __('messages.about_priorities_subtitle') }}</p>
         </div>
 
         <div class="grid md:grid-cols-3 gap-6">
 
             <div class="bg-white rounded-xl shadow-md p-8 hover:shadow-2xl transition hover:-translate-y-2 border-t-4 border-blue-900">
                 <div class="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center text-3xl mb-5">🎯</div>
-                <h3 class="text-xl font-bold text-blue-900 mb-3">Notre mission</h3>
+                <h3 class="text-xl font-bold text-blue-900 mb-3">{{ __('messages.about_mission_title') }}</h3>
                 <p class="text-gray-600 leading-relaxed">
-                    Accompagner le développement des infrastructures tunisiennes en fournissant
-                    des ciments de haute qualité, conformes aux normes nationales et internationales.
+                    {{ __('messages.about_mission_desc') }}
                 </p>
             </div>
 
             <div class="bg-white rounded-xl shadow-md p-8 hover:shadow-2xl transition hover:-translate-y-2 border-t-4 border-yellow-500">
                 <div class="w-16 h-16 bg-yellow-100 rounded-xl flex items-center justify-center text-3xl mb-5">👁️</div>
-                <h3 class="text-xl font-bold text-blue-900 mb-3">Notre vision</h3>
+                <h3 class="text-xl font-bold text-blue-900 mb-3">{{ __('messages.about_vision_title') }}</h3>
                 <p class="text-gray-600 leading-relaxed">
-                    Être un acteur industriel de référence en Tunisie, reconnu pour son excellence,
-                    son innovation et son engagement en faveur du développement durable.
+                    {{ __('messages.about_vision_desc') }}
                 </p>
             </div>
 
             <div class="bg-white rounded-xl shadow-md p-8 hover:shadow-2xl transition hover:-translate-y-2 border-t-4 border-green-600">
                 <div class="w-16 h-16 bg-green-100 rounded-xl flex items-center justify-center text-3xl mb-5">💎</div>
-                <h3 class="text-xl font-bold text-blue-900 mb-3">Nos valeurs</h3>
+                <h3 class="text-xl font-bold text-blue-900 mb-3">{{ __('messages.about_values_title') }}</h3>
                 <ul class="text-gray-600 space-y-2">
-                    <li class="flex items-center gap-2">✦ Excellence industrielle</li>
-                    <li class="flex items-center gap-2">✦ Sécurité et qualité</li>
-                    <li class="flex items-center gap-2">✦ Respect de l'environnement</li>
-                    <li class="flex items-center gap-2">✦ Engagement partenaires</li>
+                    <li class="flex items-center gap-2">{{ __('messages.about_values_li1') }}</li>
+                    <li class="flex items-center gap-2">{{ __('messages.about_values_li2') }}</li>
+                    <li class="flex items-center gap-2">{{ __('messages.about_values_li3') }}</li>
+                    <li class="flex items-center gap-2">{{ __('messages.about_values_li4') }}</li>
                 </ul>
             </div>
 
@@ -254,33 +251,31 @@
 <section class="max-w-7xl mx-auto px-4 py-20 grid lg:grid-cols-2 gap-12 items-center reveal">
 
     <div class="img-zoom rounded-2xl shadow-xl overflow-hidden">
-        <img src="{{ asset('images/entree.webp') }}" alt="Entrée usine CIOK" class="w-full h-96 object-cover">
+        <img src="{{ asset('images/entree.webp') }}" alt="{{ __('messages.about_site_title') }}" class="w-full h-96 object-cover">
     </div>
 
     <div>
         <div class="inline-block bg-yellow-500 text-blue-900 text-xs font-bold px-3 py-1 rounded-full mb-4">
-            📍 NOTRE SITE
+            {{ __('messages.about_site_badge') }}
         </div>
-        <h2 class="text-3xl font-bold text-blue-900 mb-6">Un site industriel stratégique</h2>
+        <h2 class="text-3xl font-bold text-blue-900 mb-6">{{ __('messages.about_site_title') }}</h2>
 
         <p class="text-gray-700 leading-relaxed mb-4">
-            Située à <strong>Tajerouine, dans le gouvernorat du Kef</strong>, notre usine
-            bénéficie d'une position stratégique au cœur de la Tunisie et d'un accès
-            privilégié aux carrières de calcaire et de marne.
+            {!! __('messages.about_site_desc') !!}
         </p>
 
         <ul class="text-gray-700 space-y-3 mt-6">
             <li class="flex items-center gap-3">
                 <span class="w-8 h-8 bg-green-500 text-white rounded-full flex items-center justify-center text-sm flex-shrink-0">🏭</span>
-                Site de production moderne
+                {{ __('messages.about_site_li1') }}
             </li>
             <li class="flex items-center gap-3">
                 <span class="w-8 h-8 bg-green-500 text-white rounded-full flex items-center justify-center text-sm flex-shrink-0">🌍</span>
-                Proximité des matières premières
+                {{ __('messages.about_site_li2') }}
             </li>
             <li class="flex items-center gap-3">
                 <span class="w-8 h-8 bg-green-500 text-white rounded-full flex items-center justify-center text-sm flex-shrink-0">🚛</span>
-                Réseau de distribution national
+                {{ __('messages.about_site_li3') }}
             </li>
         </ul>
 
@@ -300,9 +295,9 @@
 
         <div class="text-center mb-10">
             <div class="inline-block bg-blue-100 text-blue-800 text-xs font-bold px-3 py-1 rounded-full mb-3">
-                📸 GALERIE
+                {{ __('messages.about_gallery_badge') }}
             </div>
-            <h2 class="text-3xl font-bold text-blue-900">Notre usine en images</h2>
+            <h2 class="text-3xl font-bold text-blue-900">{{ __('messages.about_gallery_title') }}</h2>
         </div>
 
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -330,13 +325,13 @@
     </div>
     <div class="relative max-w-4xl mx-auto text-center px-4 py-20">
         <div class="inline-block bg-yellow-500 text-blue-900 text-xs font-bold px-3 py-1 rounded-full mb-4">
-            COLLABORONS
+            {{ __('messages.about_cta_badge') }}
         </div>
         <h2 class="text-3xl md:text-4xl font-extrabold mb-6">
-            Envie de travailler avec nous ?
+            {{ __('messages.about_cta_title') }}
         </h2>
         <p class="text-blue-100 text-lg mb-8">
-            Notre équipe commerciale est à votre disposition.
+            {{ __('messages.about_cta_desc') }}
         </p>
         <div class="flex flex-wrap gap-4 justify-center">
             <a href="{{ route('contact.show') }}"
@@ -345,7 +340,7 @@
             </a>
             <a href="{{ route('products.index') }}"
                class="border-2 border-white text-white px-8 py-3 rounded-lg font-bold hover:bg-white hover:text-blue-900 transition hover:-translate-y-1">
-                🏭 Nos produits
+                🏭 {{ __('messages.about_products_btn') }}
             </a>
         </div>
     </div>

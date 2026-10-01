@@ -1,6 +1,9 @@
 <?php
 
 return [
+    // ═══════════════════════════════════════════════════════
+    // NAVIGATION
+    // ═══════════════════════════════════════════════════════
     'home' => 'Accueil',
     'about' => 'À propos',
     'products' => 'Nos produits',
@@ -8,20 +11,418 @@ return [
     'quality' => 'Qualité',
     'careers' => 'Carrières',
     'contact' => 'Contact',
+
+    // ═══════════════════════════════════════════════════════
+    // BOUTONS GÉNÉRAUX
+    // ═══════════════════════════════════════════════════════
     'read_more' => 'Lire la suite',
+    'learn_more' => 'En savoir plus',
+    'send_message' => 'Envoyer le message',
+    'all_rights_reserved' => 'Tous droits réservés',
+    'back' => 'Retour',
+    'see' => 'Voir',
+    'view_all' => 'Voir tout',
+    'search' => 'Rechercher',
+
+    // ═══════════════════════════════════════════════════════
+    // ACCUEIL
+    // ═══════════════════════════════════════════════════════
+    'welcome_title' => 'Bienvenue chez CIOK',
+    'welcome_subtitle' => 'Les Ciments d\'Oum El Kelil — Excellence industrielle depuis 1979',
+    'pdg_title' => 'Président Directeur Général',
+
+    // Chiffres clés
+    'key_stat_creation' => 'Année de création',
+    'key_stat_employees' => 'Collaborateurs',
+    'key_stat_tons' => 'Tonnes / an',
+    'key_stat_iso' => 'Certifié',
+
+    // Hero slider
+    'slide1_badge' => '🏭 EXCELLENCE INDUSTRIELLE DEPUIS 1979',
+    'slide1_title' => 'Bienvenue chez CIOK',
+    'slide1_subtitle' => 'Les Ciments d\'Oum El Kelil — Excellence industrielle depuis 1979',
+    'slide2_badge' => '🇹🇳 ACTEUR CLÉ DU BÂTIMENT EN TUNISIE',
+    'slide2_title' => 'Une entreprise nationale',
+    'slide2_subtitle' => 'Fièrement tunisienne, au service du développement du pays',
+    'slide2_btn1' => 'Découvrir CIOK',
+    'slide3_badge' => '🏷️ UN CIMENT DE QUALITÉ CERTIFIÉE',
+    'slide3_title' => 'Des produits reconnus',
+    'slide3_subtitle' => 'Conforme aux normes tunisiennes NT 47.01 et européennes EN 197-1',
+    'slide3_btn2' => 'Notre qualité',
+    'slide4_badge' => '🚛 DISTRIBUTION NATIONALE',
+    'slide4_title' => 'Une logistique performante',
+    'slide4_subtitle' => 'Un réseau de distribution couvrant toute la Tunisie',
+    'slide4_btn1' => 'Nos services',
+    'slide5_badge' => '⚙️ TECHNOLOGIE DE POINTE',
+    'slide5_title' => 'Un savoir-faire reconnu',
+    'slide5_subtitle' => 'Des équipements de dernière génération pour une qualité constante',
+    'slide5_btn1' => 'Voir la qualité',
+
+    // Qui sommes-nous (accueil)
+    'who_we_are' => 'Qui sommes-nous',
+    'who_we_are_title_part1' => 'Un acteur clé dans la production de',
+    'who_we_are_title_part2' => 'ciment de qualité',
+    'who_we_are_p1' => 'La <strong>Société des Ciments d\'Oum El Khelil (CIOK)</strong> est une entreprise industrielle spécialisée dans la production de ciment destiné aux secteurs du bâtiment et des travaux publics.',
+    'who_we_are_p2' => 'Elle s\'appuie sur un savoir-faire reconnu, des équipements performants et un engagement permanent en faveur de la qualité, de la sécurité et du respect de l\'environnement.',
+    'who_we_are_li1' => 'Production conforme aux normes tunisiennes et internationales',
+    'who_we_are_li2' => 'Équipements industriels de dernière génération',
+    'who_we_are_li3' => 'Réseau de distribution national',
+
+    // Engagements (accueil)
+    'our_commitments' => 'Nos engagements',
+    'commitments_title' => 'Qualité, environnement & sécurité',
+    'commitment_quality' => 'Qualité certifiée',
+    'commitment_quality_desc' => 'Nos produits sont conformes aux normes tunisiennes et européennes (EN 197-1). Certification ISO 9001 pour l\'ensemble de nos processus.',
+    'commitment_env' => 'Respect de l\'environnement',
+    'commitment_env_desc' => 'Engagement dans le programme national d\'élimination des déchets PCB et investissements continus dans des technologies propres.',
+    'commitment_safety' => 'Sécurité maximale',
+    'commitment_safety_desc' => 'Priorité absolue à la sécurité de nos collaborateurs avec des formations régulières et des équipements aux normes internationales.',
+
+    // ═══════════════════════════════════════════════════════
+    // À PROPOS
+    // ═══════════════════════════════════════════════════════
+    'about_badge' => '🏢 QUI SOMMES-NOUS',
+    'about_intro' => 'Découvrez l\'histoire, la mission et les valeurs de la Société des Ciments d\'Oum El Kelil',
+    'about_history_badge' => 'NOTRE HISTOIRE',
+    'about_title_part1' => 'Un acteur clé dans la production de',
+    'about_title_part2' => 'ciment de qualité',
+    'about_p1' => 'La <strong>Société des Ciments d\'Oum El Khelil (CIOK)</strong> est une entreprise industrielle spécialisée dans la production de ciment destiné aux secteurs du bâtiment et des travaux publics.',
+    'about_p2' => 'Elle s\'appuie sur un <strong>savoir-faire reconnu</strong>, des équipements performants et un engagement permanent en faveur de la <strong>qualité</strong>, de la <strong>sécurité</strong> et du <strong>respect de l\'environnement</strong>.',
+    'about_p3' => 'Sa mission est d\'accompagner le développement des infrastructures en proposant des produits fiables, conformes aux normes en vigueur et adaptés aux besoins de ses partenaires.',
+    'about_products_btn' => 'Nos produits',
+
+    // Timeline
+    'about_timeline_badge' => '📅 NOTRE PARCOURS',
+    'about_timeline_title' => 'Notre histoire',
+    'about_timeline_subtitle' => 'Plus de 45 ans au service du bâtiment tunisien',
+    'timeline_1979_title' => 'Création de la CIOK',
+    'timeline_1979_desc' => 'Fondation de la Société des Ciments d\'Oum El Khelil à Tajerouine dans le gouvernorat du Kef.',
+    'timeline_1990_title' => 'Modernisation',
+    'timeline_1990_desc' => 'Investissement dans de nouveaux équipements industriels et augmentation de la capacité de production.',
+    'timeline_2005_title' => 'Certification ISO 9001',
+    'timeline_2005_desc' => 'Obtention de la certification ISO 9001 reconnaissant l\'excellence de nos processus qualité.',
+    'timeline_2026_title' => 'Aujourd\'hui',
+    'timeline_2026_desc' => 'Un acteur majeur du marché tunisien du ciment, avec plus de 700 collaborateurs et une capacité de production d\'un million de tonnes par an.',
+
+    // Mission/Vision/Valeurs
+    'about_priorities_badge' => 'NOS PRIORITÉS',
+    'about_priorities_title' => 'Notre engagement',
+    'about_priorities_subtitle' => 'Trois piliers fondent notre action quotidienne',
+    'about_mission_title' => 'Notre mission',
+    'about_mission_desc' => 'Accompagner le développement des infrastructures tunisiennes en fournissant des ciments de haute qualité, conformes aux normes nationales et internationales.',
+    'about_vision_title' => 'Notre vision',
+    'about_vision_desc' => 'Être un acteur industriel de référence en Tunisie, reconnu pour son excellence, son innovation et son engagement en faveur du développement durable.',
+    'about_values_title' => 'Nos valeurs',
+    'about_values_li1' => '✦ Excellence industrielle',
+    'about_values_li2' => '✦ Sécurité et qualité',
+    'about_values_li3' => '✦ Respect de l\'environnement',
+    'about_values_li4' => '✦ Engagement partenaires',
+
+    // Localisation
+    'about_site_badge' => '📍 NOTRE SITE',
+    'about_site_title' => 'Un site industriel stratégique',
+    'about_site_desc' => 'Située à <strong>Tajerouine, dans le gouvernorat du Kef</strong>, notre usine bénéficie d\'une position stratégique au cœur de la Tunisie et d\'un accès privilégié aux carrières de calcaire et de marne.',
+    'about_site_li1' => 'Site de production moderne',
+    'about_site_li2' => 'Proximité des matières premières',
+    'about_site_li3' => 'Réseau de distribution national',
+
+    // Galerie
+    'about_gallery_badge' => '📸 GALERIE',
+    'about_gallery_title' => 'Notre usine en images',
+
+    // CTA final
+    'about_cta_badge' => 'COLLABORONS',
+    'about_cta_title' => 'Envie de travailler avec nous ?',
+    'about_cta_desc' => 'Notre équipe commerciale est à votre disposition.',
+
+    // ═══════════════════════════════════════════════════════
+    // PRODUITS
+    // ═══════════════════════════════════════════════════════
+    'products_badge' => '📦 NOS PRODUITS',
     'our_products' => 'Nos produits',
     'our_products_desc' => 'Découvrez notre gamme de ciments, chaux et clinker de haute qualité.',
+    'view_all_products' => 'Voir tous nos produits',
+    'no_products' => 'Aucun produit pour le moment.',
+    'featured' => 'PHARE',
+    'product_category' => 'Catégorie',
+    'product_specs' => 'Spécifications techniques',
+    'product_advantages' => 'Avantages',
+    'product_adv_quality' => 'Qualité certifiée',
+    'product_adv_delivery' => 'Livraison nationale',
+    'product_adv_local' => 'Production locale',
+    'product_adv_support' => 'Support technique',
+    'product_quote_info' => 'Besoin d\'un devis ?',
+    'product_quote_desc' => 'Contactez notre équipe commerciale pour connaître les tarifs et disponibilités.',
+    'related_products' => 'Produits similaires',
+    'related_products_desc' => 'D\'autres références de notre gamme',
+    'see_product' => 'Voir le produit',
+
+    // ═══════════════════════════════════════════════════════
+    // ACTUALITÉS
+    // ═══════════════════════════════════════════════════════
+    'news_badge' => '📰 ACTUALITÉS',
     'latest_news' => 'Dernières actualités',
     'latest_news_desc' => 'Restez informé de nos actualités et communiqués.',
+    'view_all_news' => 'Voir toutes les actualités',
+    'no_news' => 'Aucune actualité pour le moment.',
+    'articles_published' => 'Articles publiés',
+    'last_update' => 'Dernière mise à jour',
+    'news_featured' => '⭐ À LA UNE',
+    'other_news' => 'Autres actualités',
+    'news_cta_badge' => '📬 RESTEZ INFORMÉ',
+    'news_cta_title' => 'Ne manquez aucune actualité',
+    'news_cta_desc' => 'Suivez nos dernières nouvelles, communiqués et événements.',
+
+    // Détail actualité
+    'article_share' => 'Partager :',
+    'article_related' => 'Articles similaires',
+    'article_related_badge' => 'À LIRE AUSSI',
+    'article_liked' => 'Vous avez aimé cet article ?',
+    'article_liked_desc' => 'Découvrez toutes nos actualités et restez informé.',
+
+    // ═══════════════════════════════════════════════════════
+    // MARCHÉ PUBLIC
+    // ═══════════════════════════════════════════════════════
+    'tender_market' => 'Marché public',
+    'tender_intro' => 'Consultez nos appels d\'offres, consultations et consultations élargies. Toutes les informations et documents sont disponibles en téléchargement.',
+    'tender_tenders' => 'Appels d\'offres',
+    'tender_consultations' => 'Consultations',
+    'tender_extended' => 'Consultations élargies',
+    'tender_all' => 'Tous',
+    'tender_filter' => 'Filtrer :',
+    'tender_results' => 'résultat(s)',
+    'tender_filtered' => '(filtré)',
+
+    // Statuts
+    'tender_open' => 'En cours',
+    'tender_awarded' => 'Attribué',
+    'tender_closed' => 'Clôturé',
+    'tender_still_open' => 'Encore ouvert',
+
+    // Détails
+    'tender_deadline' => 'Limite',
+    'tender_opening' => 'Ouverture',
+    'tender_important_dates' => 'Dates importantes',
+    'tender_deadline_submission' => 'Date limite de dépôt',
+    'tender_opening_bids' => 'Ouverture des plis',
+    'tender_documents' => 'Documents',
+    'tender_no_document' => 'Aucun document disponible pour le moment.',
+    'tender_how_to_apply' => 'Comment soumissionner ?',
+    'tender_procurement_dept' => 'Service des marchés',
+    'tender_num' => 'N°',
+    'tender_object' => 'Objet',
+    'tender_deadline_short' => 'Date limite',
+    'tender_latest' => 'Dernier appel d\'offres',
+
+    // Actions
+    'tender_back' => 'Retour aux marchés publics',
+    'tender_download_pdf' => 'Télécharger le PDF',
+    'tender_notice' => 'Avis d\'appel d\'offres',
+    'tender_final_results' => 'Résultats définitifs',
+    'tender_see' => 'Voir',
+    'tender_view_all' => 'Voir tous les marchés publics',
+    'tender_manual' => 'Manuel d\'achat CIOK',
+    'tender_plan' => 'Plan prévisionnel des marchés',
+    'tender_related' => 'Autres marchés similaires',
+    'tender_related_badge' => 'À CONSULTER',
+    'tender_question' => 'Une question sur nos marchés publics ?',
+    'tender_question_desc' => 'Notre service des marchés est à votre disposition pour vous accompagner.',
+
+    // Comment soumissionner
+    'tender_how_step1' => 'Consulter',
+    'tender_how_step1_desc' => 'Lisez l\'avis d\'appel d\'offres et téléchargez les documents PDF.',
+    'tender_how_step2' => 'Préparer',
+    'tender_how_step2_desc' => 'Préparez votre dossier selon les exigences du cahier des charges.',
+    'tender_how_step3' => 'Déposer',
+    'tender_how_step3_desc' => 'Déposez votre dossier avant la date limite indiquée.',
+    'tender_how_badge' => '💡 BON À SAVOIR',
+
+    // Manuel + Plan
+    'tender_doc_badge' => '📘 DOCUMENT OFFICIEL',
+    'tender_doc_coming_soon' => 'Le document sera disponible prochainement.',
+
+    // ═══════════════════════════════════════════════════════
+    // QUALITÉ
+    // ═══════════════════════════════════════════════════════
+    'quality_badge' => '✅ QUALITÉ',
+    'quality_intro' => 'Notre engagement pour l\'excellence et la conformité aux normes internationales',
+    'quality_engagement_badge' => 'NOTRE ENGAGEMENT',
+    'quality_engagement_title' => 'La qualité au cœur de nos priorités',
+    'quality_engagement_desc' => 'CIOK s\'engage à respecter les normes nationales et internationales les plus strictes pour garantir la qualité, la résistance et la durabilité de ses produits.',
+    'quality_certifications_badge' => '🏆 CERTIFICATIONS',
+    'quality_certifications_title' => 'Nos certifications',
+    'quality_cert_ce' => 'Marquage CE',
+    'quality_cert_ce_desc' => 'Conformité européenne',
+    'quality_cert_en' => 'EN 197-1',
+    'quality_cert_en_desc' => 'Norme européenne du ciment',
+    'quality_cert_nt' => 'NT 47.01',
+    'quality_cert_nt_desc' => 'Norme tunisienne du ciment',
+    'quality_cert_iso' => 'ISO 9001',
+    'quality_cert_iso_desc' => 'Système de management de la qualité',
+    'quality_lab_badge' => '🔬 LABORATOIRE',
+    'quality_control_title' => 'Contrôle qualité rigoureux',
+    'quality_control_desc' => 'Chaque lot de production est soumis à des tests rigoureux en laboratoire afin de garantir la résistance, la durabilité et la conformité de nos ciments.',
+    'quality_control_li1_title' => 'Tests physiques',
+    'quality_control_li1_desc' => 'Résistance, temps de prise, stabilité volumique',
+    'quality_control_li2_title' => 'Analyses chimiques',
+    'quality_control_li2_desc' => 'Composition, taux de sulfates, alcalins',
+    'quality_control_li3_title' => 'Traçabilité',
+    'quality_control_li3_desc' => 'Suivi complet de chaque lot de production',
+    'quality_process_badge' => '📋 PROCESSUS',
+    'quality_process_title' => 'Le processus qualité CIOK',
+    'quality_process_subtitle' => 'De la matière première au produit fini',
+    'quality_step1' => 'Extraction',
+    'quality_step1_desc' => 'Sélection rigoureuse des matières premières',
+    'quality_step2' => 'Production',
+    'quality_step2_desc' => 'Contrôle continu à chaque étape',
+    'quality_step3' => 'Analyse',
+    'quality_step3_desc' => 'Tests en laboratoire par lot',
+    'quality_step4' => 'Livraison',
+    'quality_step4_desc' => 'Produits certifiés conformes',
+    'quality_cta_title' => 'Des questions sur notre qualité ?',
+    'quality_cta_desc' => 'Notre équipe technique est à votre disposition.',
+
+    // ═══════════════════════════════════════════════════════
+    // CARRIÈRES
+    // ═══════════════════════════════════════════════════════
+    'careers_badge' => '💼 CARRIÈRES',
+    'careers_intro' => 'Rejoignez une équipe dynamique et contribuez au développement industriel de la Tunisie',
+    'careers_why_badge' => 'POURQUOI CIOK ?',
+    'careers_why_title' => 'Travailler chez CIOK',
+    'careers_why_desc' => 'Un environnement de travail stimulant et des opportunités de carrière',
+    'careers_industry' => 'Industrie majeure',
+    'careers_industry_desc' => 'Un acteur clé du secteur industriel tunisien',
+    'careers_training' => 'Formation continue',
+    'careers_training_desc' => 'Développez vos compétences tout au long de votre carrière',
+    'careers_team' => 'Esprit d\'équipe',
+    'careers_team_desc' => 'Une culture d\'entreprise collaborative',
+    'careers_evolution' => 'Évolution',
+    'careers_evolution_desc' => 'Perspectives d\'évolution au sein du groupe',
+    'careers_jobs_badge' => '💼 OFFRES D\'EMPLOI',
+    'careers_jobs_title' => 'Offres actuelles',
+    'careers_jobs_desc' => 'Découvrez nos opportunités de carrière',
+    'careers_no_jobs' => 'Aucune offre disponible pour le moment',
+    'careers_no_jobs_desc' => 'Nous n\'avons pas d\'offre d\'emploi actuellement, mais vous pouvez nous envoyer votre candidature spontanée.',
+    'careers_send_cv' => 'Envoyer une candidature',
+    'careers_spontaneous_badge' => '📧 CANDIDATURE SPONTANÉE',
+    'careers_spontaneous_title' => 'Vous n\'avez pas trouvé votre poste ?',
+    'careers_spontaneous_desc' => 'Envoyez-nous votre CV et votre lettre de motivation. Nous étudierons votre candidature avec attention et vous contacterons dès qu\'une opportunité correspondra à votre profil.',
+    'careers_docs_title' => '📋 Documents à envoyer',
+    'careers_doc_cv' => 'Curriculum Vitae (CV) à jour',
+    'careers_doc_letter' => 'Lettre de motivation',
+    'careers_doc_diplomas' => 'Copies des diplômes',
+    'careers_doc_attestations' => 'Attestations de travail (si applicable)',
+    'careers_concours_badge' => '📢 ANNONCES',
+    'careers_concours_title' => 'Résultats de concours',
+    'careers_concours_desc' => 'Les résultats des concours de recrutement sont disponibles sur le site officiel de la CIOK.',
+    'careers_concours_link' => 'Voir sur www.ciok.tn',
+    'careers_cta_title' => 'Une question sur le recrutement ?',
+    'careers_cta_desc' => 'Notre service des ressources humaines vous répondra dans les plus brefs délais.',
+
+    // ═══════════════════════════════════════════════════════
+    // CONTACT
+    // ═══════════════════════════════════════════════════════
+    'contact_badge' => '✉️ CONTACT',
     'contact_us' => 'Nous contacter',
-    'send_message' => 'Envoyer le message',
+    'contact_intro' => 'Notre équipe est à votre disposition pour répondre à toutes vos questions',
+    'contact_quick_phone' => 'Téléphone',
+    'contact_quick_email' => 'Email commercial',
+    'contact_quick_rh' => 'Ressources humaines',
+    'contact_form_badge' => '📝 FORMULAIRE',
+    'contact_form_title' => 'Envoyez-nous un message',
+    'contact_success' => 'Message envoyé avec succès !',
+    'contact_your_name' => 'Votre nom',
+    'contact_your_email' => 'Votre email',
+    'contact_your_phone' => 'Votre téléphone',
+    'contact_subject' => 'Sujet',
+    'contact_message' => 'Message',
+    'contact_required' => '* Champs obligatoires — Vos données ne seront jamais partagées.',
+    'contact_addresses_badge' => '📍 NOUS TROUVER',
+    'contact_addresses_title' => 'Nos coordonnées',
+    'contact_siege_kef' => 'Siège Kef',
+    'contact_antenne_tunis' => 'Antenne Tunis',
+    'contact_usine' => 'Usine de production',
+    'contact_hours_badge' => '🕐 HORAIRES',
+    'contact_hours_title' => 'Horaires d\'ouverture',
+    'contact_hours_office' => '🏢 Bureaux administratifs',
+    'contact_hours_factory' => '🏭 Usine de production',
+    'contact_hours_week' => 'Lundi — Vendredi :',
+    'contact_hours_sat' => 'Samedi :',
+    'contact_hours_sun' => 'Dimanche :',
+    'contact_hours_closed' => 'Fermé',
+    'contact_hours_production' => 'Production :',
+    'contact_hours_commercial' => 'Service commercial :',
+    'contact_urgent_title' => 'Besoin d\'une information urgente ?',
+    'contact_urgent_desc' => 'Appelez-nous directement, notre équipe vous répondra immédiatement.',
+
+    // Formulaire de contact
     'your_name' => 'Votre nom',
     'your_email' => 'Votre email',
     'your_phone' => 'Votre téléphone',
     'subject' => 'Sujet',
     'message' => 'Message',
-    'welcome_title' => 'Bienvenue chez CIOK',
-    'welcome_subtitle' => 'Les Ciments d\'Oum El Kelil — Excellence industrielle depuis 1979',
-    'learn_more' => 'En savoir plus',
-    'all_rights_reserved' => 'Tous droits réservés',
+
+    // ═══════════════════════════════════════════════════════
+    // FOOTER
+    // ═══════════════════════════════════════════════════════
+    'footer_description' => 'Acteur industriel majeur contribuant au développement des infrastructures et du secteur du bâtiment en Tunisie depuis 1979.',
+    'footer_navigation' => 'Navigation',
+    'footer_contact' => 'Contact',
+    'footer_follow' => 'Suivez-nous',
+    'footer_follow_desc' => 'Restez informé de nos actualités et appels d\'offres.',
+    'footer_languages' => 'Langues',
+    'footer_legal' => 'Mentions légales',
+    'footer_privacy' => 'Politique de confidentialité',
+    'footer_contact_link' => 'Contact',
+    'footer_siege' => 'SIÈGE KEF',
+    'footer_antenne' => 'ANTENNE TUNIS',
+        // ═══ CLÉS MANQUANTES ═══
+    'tenders_in_progress' => 'Appels d\'offres en cours',
+    'tenders_home_intro' => 'Consultez nos appels d\'offres et consultations élargies en cours. Toutes les informations et documents sont disponibles en téléchargement.',
+    'contact_cta_desc' => 'Une question, un projet, une demande de devis ? Notre équipe commerciale est à votre disposition pour vous accompagner.',
+
+    // ═══ QUALITÉ ═══
+    'quality_intro' => 'Notre engagement pour l\'excellence et la conformité aux normes internationales',
+    'quality_engagement_title' => 'La qualité au cœur de nos priorités',
+    'quality_engagement_desc' => 'CIOK s\'engage à respecter les normes nationales et internationales les plus strictes pour garantir la qualité, la résistance et la durabilité de ses produits.',
+    'quality_certifications_title' => 'Nos certifications',
+    'quality_cert_ce' => 'Marquage CE',
+    'quality_cert_ce_desc' => 'Conformité européenne',
+    'quality_cert_en' => 'EN 197-1',
+    'quality_cert_en_desc' => 'Norme européenne du ciment',
+    'quality_cert_nt' => 'NT 47.01',
+    'quality_cert_nt_desc' => 'Norme tunisienne du ciment',
+    'quality_cert_iso' => 'ISO 9001',
+    'quality_cert_iso_desc' => 'Système de management de la qualité',
+    'quality_control_title' => 'Contrôle qualité rigoureux',
+
+    // ═══ CARRIÈRES ═══
+    'careers_intro' => 'Rejoignez une équipe dynamique et contribuez au développement industriel de la Tunisie',
+    'careers_why_title' => 'Travailler chez CIOK',
+    'careers_why_desc' => 'Un environnement de travail stimulant et des opportunités de carrière',
+    'careers_industry' => 'Industrie majeure',
+    'careers_industry_desc' => 'Un acteur clé du secteur industriel tunisien',
+    'careers_training' => 'Formation continue',
+    'careers_training_desc' => 'Développez vos compétences tout au long de votre carrière',
+    'careers_team' => 'Esprit d\'équipe',
+    'careers_team_desc' => 'Une culture d\'entreprise collaborative',
+    'careers_evolution' => 'Évolution',
+    'careers_evolution_desc' => 'Perspectives d\'évolution au sein du groupe',
+    'careers_jobs_title' => 'Offres actuelles',
+    'careers_jobs_desc' => 'Découvrez nos opportunités de carrière',
+    'careers_no_jobs' => 'Aucune offre disponible pour le moment',
+        'tender_no_results' => 'Aucun résultat',
+    'tender_no_results_desc' => 'Aucun marché public ne correspond à votre recherche.',
+    'tender_at' => 'à',
+    'tender_notice_short' => 'Avis',
+    'tender_results_short' => 'Résultats',
+        'product_filter' => 'Filtrer :',
+    'product_all' => 'Tous les produits',
+    'no_products_desc' => 'Revenez bientôt pour découvrir nos nouveautés.',
+    'product_quote_title' => 'Besoin d\'un devis ou d\'informations ?',
+    'articles_published' => 'Articles publiés',
+    'last_update' => 'Dernière mise à jour',
+    'other_news' => 'Autres actualités',
+    'no_news_desc' => 'Revenez bientôt pour découvrir nos dernières nouvelles.',
+    'back_home' => 'Retour à l\'accueil',
 ];

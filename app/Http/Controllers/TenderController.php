@@ -3,13 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\Tender;
+use App\Models\TenderDocument;
 use Illuminate\Http\Request;
 
 class TenderController extends Controller
 {
-    public function index(Request $request)
+    /**
+     * Liste publique des marchés publics (avec filtres par type)
+     */
+  public function index(Request $request)
 {
-    $query = Tender::where('is_published', true);
+    // ═══ Base query pour la liste (avec filtre type + approved) ═══
+    $query = Tender::where('is_published', true)->approved();
 
     if ($request->filled('type')) {
         $query->where('type', $request->type);
@@ -19,35 +24,64 @@ class TenderController extends Controller
                      ->orderByDesc('created_at')
                      ->paginate(9);
 
+    // ═══ Stats (avec LE MÊME filtre) ═══
+    $statsQuery = Tender::where('is_published', true)->approved();
+
+    if ($request->filled('type')) {
+        $statsQuery->where('type', $request->type);
+    }
+
     $stats = [
-        'open'    => Tender::where('is_published', true)->where('status', 'open')->count(),
-        'awarded' => Tender::where('is_published', true)->where('status', 'awarded')->count(),
-        'closed'  => Tender::where('is_published', true)->where('status', 'closed')->count(),
+        'open'    => (clone $statsQuery)->where('status', 'open')->count(),
+        'awarded' => (clone $statsQuery)->where('status', 'awarded')->count(),
+        'closed'  => (clone $statsQuery)->where('status', 'closed')->count(),
     ];
 
     return view('tenders.index', compact('tenders', 'stats'));
 }
 
-    public function show($slug)
+    /**
+     * Détail d'un marché public
+     */
+   public function show($slug)
+{
+    $tender = Tender::where('slug', $slug)
+                    ->published()
+                    ->approved()  // ← AJOUTEZ
+                    ->firstOrFail();
+
+    $related = Tender::published()
+        ->approved()  // ← AJOUTEZ
+        ->where('id', '!=', $tender->id)
+        ->where('type', $tender->type)
+        ->latest('published_at')
+        ->take(3)
+        ->get();
+
+    return view('tenders.show', compact('tender', 'related'));
+}
+
+    /**
+     * Page "Manuel d'achat"
+     */
+    public function manual()
     {
-        $tender = Tender::where('slug', $slug)->published()->firstOrFail();
+        $document = TenderDocument::where('slug', 'manuel-achat-ciok')
+            ->published()
+            ->firstOrFail();
 
-        $related = Tender::published()
-            ->where('id', '!=', $tender->id)
-            ->latest('published_at')
-            ->take(3)
-            ->get();
-
-        return view('tenders.show', compact('tender', 'related'));
+        return view('tenders.document', compact('document'));
     }
 
-    public function manual()
-{
-    return view('tenders.manual');
-}
+    /**
+     * Page "Plan prévisionnel"
+     */
+    public function plan()
+    {
+        $document = TenderDocument::where('slug', 'plan-previsionnel')
+            ->published()
+            ->firstOrFail();
 
-public function plan()
-{
-    return view('tenders.plan');
-}
+        return view('tenders.document', compact('document'));
+    }
 }

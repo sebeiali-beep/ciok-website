@@ -124,10 +124,14 @@
 
                 {{-- Réseaux sociaux --}}
                 <div class="flex gap-3 mb-6">
-                    <a href="#" title="Facebook"
-                       class="w-10 h-10 bg-blue-900 hover:bg-yellow-500 hover:text-blue-950 rounded-lg flex items-center justify-center transition text-lg font-bold">
-                        f
-                    </a>
+               <a href="https://www.facebook.com/profile.php?id=100087158515055"
+       target="_blank"
+       rel="noopener noreferrer"
+       title="Facebook CIOK"
+       aria-label="Facebook CIOK"
+       class="w-10 h-10 bg-blue-900 hover:bg-yellow-500 hover:text-blue-950 rounded-lg flex items-center justify-center transition text-lg font-bold">
+        f
+    </a>
                     <a href="#" title="LinkedIn"
                        class="w-10 h-10 bg-blue-900 hover:bg-yellow-500 hover:text-blue-950 rounded-lg flex items-center justify-center transition text-sm font-bold">
                         in

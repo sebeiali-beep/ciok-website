@@ -11,21 +11,29 @@ use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
-  public function index(Request $request)
+ public function index(Request $request)
 {
-    $query = Product::with('category');
+    $query = Product::query();
 
-    if ($request->has('search') && $request->search) {
-        $search = $request->search;
-        $query->where(function ($q) use ($search) {
-            $q->where('name_fr', 'like', "%{$search}%")
-              ->orWhere('name_ar', 'like', "%{$search}%")
-              ->orWhere('name_en', 'like', "%{$search}%");
+    // ═══ Recherche ═══
+    if ($request->filled('search')) {
+        $s = $request->search;
+        $query->where(function ($q) use ($s) {
+            $q->where('name_fr', 'like', "%{$s}%")
+              ->orWhere('name_ar', 'like', "%{$s}%")
+              ->orWhere('name_en', 'like', "%{$s}%")
+              ->orWhere('description_fr', 'like', "%{$s}%");
         });
     }
 
-    if ($request->has('category') && $request->category) {
+    // ═══ Filtre catégorie ═══
+    if ($request->filled('category')) {
         $query->where('category_id', $request->category);
+    }
+
+    // ═══ Filtre approbation ═══
+    if ($request->filled('approval')) {
+        $query->where('approval_status', $request->approval);
     }
 
     $products = $query->latest()->paginate(15);
@@ -109,5 +117,44 @@ class ProductController extends Controller
         $product->delete();
 
         return redirect()->route('admin.products.index')->with('success', 'Produit supprimé !');
+    }
+        // ═══════════════════════════════════════════════════════
+    // APPROBATION
+    // ═══════════════════════════════════════════════════════
+
+    public function approve(Product $product)
+    {
+        if (!auth()->user()->canManageUsers()) {
+            abort(403, 'Vous n\'avez pas la permission d\'approuver.');
+        }
+
+        $product->update([
+            'approval_status'  => 'approved',
+            'approved_by'      => auth()->id(),
+            'approved_at'      => now(),
+            'rejection_reason' => null,
+        ]);
+
+        return back()->with('success', '✅ Produit approuvé et publié.');
+    }
+
+    public function reject(Request $request, Product $product)
+    {
+        if (!auth()->user()->canManageUsers()) {
+            abort(403, 'Vous n\'avez pas la permission de rejeter.');
+        }
+
+        $request->validate([
+            'rejection_reason' => 'required|string|max:500',
+        ]);
+
+        $product->update([
+            'approval_status'  => 'rejected',
+            'approved_by'      => auth()->id(),
+            'approved_at'      => now(),
+            'rejection_reason' => $request->rejection_reason,
+        ]);
+
+        return back()->with('success', '❌ Produit rejeté.');
     }
 }

@@ -10,24 +10,33 @@ use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
-   public function index(Request $request)
+ public function index(Request $request)
 {
     $query = Post::query();
 
-    if ($request->has('search') && $request->search) {
-        $search = $request->search;
-        $query->where(function ($q) use ($search) {
-            $q->where('title_fr', 'like', "%{$search}%")
-              ->orWhere('title_ar', 'like', "%{$search}%")
-              ->orWhere('title_en', 'like', "%{$search}%")
-              ->orWhere('excerpt_fr', 'like', "%{$search}%");
+    // ═══ Recherche ═══
+    if ($request->filled('search')) {
+        $s = $request->search;
+        $query->where(function ($q) use ($s) {
+            $q->where('title_fr', 'like', "%{$s}%")
+              ->orWhere('title_ar', 'like', "%{$s}%")
+              ->orWhere('title_en', 'like', "%{$s}%")
+              ->orWhere('excerpt_fr', 'like', "%{$s}%");
         });
     }
 
-    if ($request->has('status') && $request->status === 'published') {
-        $query->where('is_published', true);
-    } elseif ($request->has('status') && $request->status === 'draft') {
-        $query->where('is_published', false);
+    // ═══ Filtre statut (publié/brouillon) ═══
+    if ($request->filled('status')) {
+        if ($request->status === 'published') {
+            $query->where('is_published', true);
+        } elseif ($request->status === 'draft') {
+            $query->where('is_published', false);
+        }
+    }
+
+    // ═══ Filtre approbation ═══
+    if ($request->filled('approval')) {
+        $query->where('approval_status', $request->approval);
     }
 
     $posts = $query->latest()->paginate(15);
@@ -103,5 +112,44 @@ class PostController extends Controller
         $post->delete();
 
         return redirect()->route('admin.posts.index')->with('success', 'Actualité supprimée !');
+    }
+        // ═══════════════════════════════════════════════════════
+    // APPROBATION
+    // ═══════════════════════════════════════════════════════
+
+    public function approve(Post $post)
+    {
+        if (!auth()->user()->canManageUsers()) {
+            abort(403, 'Vous n\'avez pas la permission d\'approuver.');
+        }
+
+        $post->update([
+            'approval_status'  => 'approved',
+            'approved_by'      => auth()->id(),
+            'approved_at'      => now(),
+            'rejection_reason' => null,
+        ]);
+
+        return back()->with('success', '✅ Actualité approuvée et publiée.');
+    }
+
+    public function reject(Request $request, Post $post)
+    {
+        if (!auth()->user()->canManageUsers()) {
+            abort(403, 'Vous n\'avez pas la permission de rejeter.');
+        }
+
+        $request->validate([
+            'rejection_reason' => 'required|string|max:500',
+        ]);
+
+        $post->update([
+            'approval_status'  => 'rejected',
+            'approved_by'      => auth()->id(),
+            'approved_at'      => now(),
+            'rejection_reason' => $request->rejection_reason,
+        ]);
+
+        return back()->with('success', '❌ Actualité rejetée.');
     }
 }

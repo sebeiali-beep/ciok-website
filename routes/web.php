@@ -25,12 +25,13 @@ Route::get('/produits/{slug}', [ProductController::class, 'show'])->name('produc
 Route::get('/actualites', [PostController::class, 'index'])->name('posts.index');
 Route::get('/actualites/{slug}', [PostController::class, 'show'])->name('posts.show');
 
-// 📋 Appels d'offres
 // 📋 Marché public
 Route::get('/marche-public', [TenderController::class, 'index'])->name('tenders.index');
 Route::get('/marche-public/manuel-achat', [TenderController::class, 'manual'])->name('tenders.manual');
 Route::get('/marche-public/plan-previsionnel', [TenderController::class, 'plan'])->name('tenders.plan');
 Route::get('/marche-public/{slug}', [TenderController::class, 'show'])->name('tenders.show');
+
+// ✉️ Contact
 Route::get('/contact', [ContactController::class, 'show'])->name('contact.show');
 Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
 
@@ -42,38 +43,73 @@ Route::get('/dashboard', function () {
     return redirect()->route('home');
 })->middleware('auth')->name('dashboard');
 
-/// 🔐 Admin - Accessible à tous les admin
+// ═══════════════════════════════════════════════════════════════════
+// 🔐 ADMIN
+// ═══════════════════════════════════════════════════════════════════
 Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
 
-    // Dashboard (tout le monde)
+    // ═══ Dashboard ═══
     Route::get('/', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
 
-    // Produits (super_admin, admin, product_manager)
+    // ═══ Produits ═══
     Route::middleware('role:products')->group(function () {
         Route::resource('products', \App\Http\Controllers\Admin\ProductController::class);
+
+        // Approbation
+        Route::post('products/{product}/approve', [\App\Http\Controllers\Admin\ProductController::class, 'approve'])
+            ->name('products.approve');
+        Route::post('products/{product}/reject', [\App\Http\Controllers\Admin\ProductController::class, 'reject'])
+            ->name('products.reject');
     });
 
-    // Actualités (super_admin, admin, post_manager)
+    // ═══ Actualités ═══
     Route::middleware('role:posts')->group(function () {
         Route::resource('posts', \App\Http\Controllers\Admin\PostController::class);
+
+        // Approbation
+        Route::post('posts/{post}/approve', [\App\Http\Controllers\Admin\PostController::class, 'approve'])
+            ->name('posts.approve');
+        Route::post('posts/{post}/reject', [\App\Http\Controllers\Admin\PostController::class, 'reject'])
+            ->name('posts.reject');
     });
 
-    // Appels d'offres (super_admin, admin, tender_manager)
+    // ═══ Marché public ═══
     Route::middleware('role:tenders')->group(function () {
         Route::resource('tenders', \App\Http\Controllers\Admin\TenderController::class);
+
+        // Approbation
+        Route::post('tenders/{tender}/approve', [\App\Http\Controllers\Admin\TenderController::class, 'approve'])
+            ->name('tenders.approve');
+        Route::post('tenders/{tender}/reject', [\App\Http\Controllers\Admin\TenderController::class, 'reject'])
+            ->name('tenders.reject');
+
+        // Duplication
+        Route::post('tenders/{tender}/duplicate', [\App\Http\Controllers\Admin\TenderController::class, 'duplicate'])
+            ->name('tenders.duplicate');
+
+        // Export CSV
+        Route::get('tenders/export/csv', [\App\Http\Controllers\Admin\TenderController::class, 'exportCsv'])
+            ->name('tenders.export.csv');
+
+        // Documents (Manuel + Plan)
+        Route::get('tender-documents', [\App\Http\Controllers\Admin\TenderDocumentController::class, 'index'])
+            ->name('tender-documents.index');
+        Route::get('tender-documents/{document}/edit', [\App\Http\Controllers\Admin\TenderDocumentController::class, 'edit'])
+            ->name('tender-documents.edit');
+        Route::put('tender-documents/{document}', [\App\Http\Controllers\Admin\TenderDocumentController::class, 'update'])
+            ->name('tender-documents.update');
     });
 
-    // Messages (super_admin, admin, message_manager)
+    // ═══ Messages ═══
     Route::middleware('role:messages')->group(function () {
         Route::resource('messages', \App\Http\Controllers\Admin\MessageController::class)
             ->only(['index', 'show', 'destroy']);
     });
 
-    // Utilisateurs (super_admin, admin uniquement)
+    // ═══ Utilisateurs ═══
     Route::middleware('role:users')->group(function () {
         Route::resource('users', \App\Http\Controllers\Admin\UserController::class);
     });
-
 });
 
 // Auth routes (Breeze) — TOUJOURS À LA FIN

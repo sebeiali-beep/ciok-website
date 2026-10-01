@@ -1,8 +1,8 @@
 @extends('layouts.site')
-@section('title', $tender->reference . ' - CIOK')
+@section('title', $tender->reference . ' - Marché public CIOK')
 @section('meta_description', Str::limit($tender->description ?? $tender->title, 155))
 @section('og_type', 'article')
-
+@section('og_image', asset('images/silos.webp'))
 @section('content')
 
 {{-- ═══════════════════════════════════════════════════════ --}}
@@ -15,7 +15,7 @@
         </a>
         <span class="text-gray-400">/</span>
         <a href="{{ route('tenders.index') }}" class="text-blue-700 hover:underline">
-            Appels d'offres
+            Marché public
         </a>
         <span class="text-gray-400">/</span>
         <span class="text-gray-600 font-mono font-semibold">{{ $tender->reference }}</span>
@@ -23,42 +23,45 @@
 </div>
 
 {{-- ═══════════════════════════════════════════════════════ --}}
-{{-- EN-TÊTE DE L'APPEL D'OFFRES --}}
+{{-- EN-TÊTE --}}
 {{-- ═══════════════════════════════════════════════════════ --}}
 <section class="bg-gradient-to-r from-blue-950 to-blue-800 text-white relative overflow-hidden">
-    <div class="absolute top-0 right-0 text-[20rem] opacity-5 leading-none select-none">📋</div>
+    <div class="absolute top-0 right-0 text-[20rem] opacity-5 leading-none select-none pointer-events-none">📋</div>
 
     <div class="relative max-w-5xl mx-auto px-4 py-16">
 
         {{-- Badges --}}
         <div class="flex flex-wrap gap-3 mb-6">
-            <span class="inline-flex items-center gap-1 text-xs font-bold px-4 py-1.5 rounded-full bg-yellow-500 text-blue-900">
-                {{ $tender->type === 'appel_offre' ? '📄' : '📢' }}
-                {{ $tender->type_label }}
+            <span class="inline-flex items-center gap-1.5 text-xs font-bold px-4 py-1.5 rounded-full bg-yellow-500 text-blue-900 shadow-lg">
+                @if($tender->type === 'appel_offre') 📄 APPEL D'OFFRE
+                @elseif($tender->type === 'consultation') 💼 CONSULTATION
+                @else 📢 CONSULTATION ÉLARGIE
+                @endif
             </span>
 
             @if($tender->status === 'open')
-                <span class="inline-flex items-center gap-1 bg-green-500 text-white text-xs font-bold px-4 py-1.5 rounded-full">
-                    🟢 Ouvert
+                <span class="inline-flex items-center gap-1.5 bg-green-500 text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-lg">
+                    <span class="w-2 h-2 bg-white rounded-full animate-pulse"></span>
+                    EN COURS
                 </span>
             @elseif($tender->status === 'awarded')
-                <span class="inline-flex items-center gap-1 bg-blue-500 text-white text-xs font-bold px-4 py-1.5 rounded-full">
-                    ✅ Attribué
+                <span class="inline-flex items-center gap-1.5 bg-blue-500 text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-lg">
+                    ✅ ATTRIBUÉ
                 </span>
             @else
-                <span class="inline-flex items-center gap-1 bg-gray-500 text-white text-xs font-bold px-4 py-1.5 rounded-full">
-                    🔒 Clôturé
+                <span class="inline-flex items-center gap-1.5 bg-gray-500 text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-lg">
+                    🔒 CLÔTURÉ
                 </span>
             @endif
         </div>
 
         {{-- Référence --}}
-        <div class="text-yellow-400 font-mono font-extrabold text-xl mb-4">
+        <div class="text-yellow-400 font-mono font-extrabold text-xl mb-4 tracking-wider">
             {{ $tender->reference }}
         </div>
 
         {{-- Titre --}}
-        <h1 class="text-3xl md:text-5xl font-extrabold mb-6 leading-tight">
+        <h1 class="text-3xl md:text-5xl font-extrabold mb-6 leading-tight drop-shadow-lg">
             {{ $tender->title }}
         </h1>
 
@@ -75,14 +78,14 @@
 </section>
 
 {{-- ═══════════════════════════════════════════════════════ --}}
-{{-- CONTENU PRINCIPAL --}}
+{{-- CONTENU --}}
 {{-- ═══════════════════════════════════════════════════════ --}}
 <section class="max-w-5xl mx-auto px-4 py-12">
 
     <div class="grid md:grid-cols-2 gap-6 mb-10">
 
         {{-- Carte : Dates importantes --}}
-        <div class="bg-white rounded-2xl shadow-md p-6 border-t-4 border-blue-900">
+        <div class="bg-white rounded-2xl shadow-md p-6 border-t-4 border-blue-900 hover:shadow-xl transition">
             <h3 class="text-lg font-bold text-blue-900 mb-6 flex items-center gap-2">
                 <span class="text-2xl">📅</span> Dates importantes
             </h3>
@@ -136,7 +139,7 @@
         </div>
 
         {{-- Carte : Documents --}}
-        <div class="bg-white rounded-2xl shadow-md p-6 border-t-4 border-yellow-500">
+        <div class="bg-white rounded-2xl shadow-md p-6 border-t-4 border-yellow-500 hover:shadow-xl transition">
             <h3 class="text-lg font-bold text-blue-900 mb-6 flex items-center gap-2">
                 <span class="text-2xl">📎</span> Documents
             </h3>
@@ -202,15 +205,15 @@
                 </p>
                 <ol class="space-y-2 text-gray-700 text-sm mb-5">
                     <li class="flex items-start gap-2">
-                        <span class="font-bold text-yellow-700">1.</span>
+                        <span class="font-bold text-yellow-700 flex-shrink-0">1.</span>
                         Télécharger les documents ci-dessus
                     </li>
                     <li class="flex items-start gap-2">
-                        <span class="font-bold text-yellow-700">2.</span>
+                        <span class="font-bold text-yellow-700 flex-shrink-0">2.</span>
                         Préparer votre dossier selon les exigences
                     </li>
                     <li class="flex items-start gap-2">
-                        <span class="font-bold text-yellow-700">3.</span>
+                        <span class="font-bold text-yellow-700 flex-shrink-0">3.</span>
                         Déposer votre dossier avant la date limite
                     </li>
                 </ol>
@@ -221,8 +224,8 @@
                         <a href="tel:+21678253816" class="text-blue-700 font-semibold hover:underline flex items-center gap-1">
                             📞 +216 78 253 816
                         </a>
-                        <a href="mailto:commercial@ciok.com.tn" class="text-blue-700 font-semibold hover:underline flex items-center gap-1">
-                            ✉️ commercial@ciok.com.tn
+                        <a href="mailto:dg@ciok.com.tn" class="text-blue-700 font-semibold hover:underline flex items-center gap-1">
+                            ✉️ dg@ciok.com.tn
                         </a>
                     </div>
                 </div>
@@ -234,24 +237,24 @@
     <div class="text-center">
         <a href="{{ route('tenders.index') }}"
            class="inline-flex items-center gap-2 bg-gray-100 hover:bg-gray-200 text-gray-700 px-6 py-3 rounded-lg font-semibold transition">
-            ← Retour à tous les appels d'offres
+            ← Retour à tous les marchés publics
         </a>
     </div>
 
 </section>
 
 {{-- ═══════════════════════════════════════════════════════ --}}
-{{-- AUTRES APPELS D'OFFRES --}}
+{{-- AUTRES MARCHÉS SIMILAIRES --}}
 {{-- ═══════════════════════════════════════════════════════ --}}
-@if($related->isNotEmpty())
+@if(isset($related) && $related->isNotEmpty())
     <section class="bg-gray-50 py-16">
         <div class="max-w-7xl mx-auto px-4">
 
             <div class="text-center mb-10">
-                <div class="inline-block bg-blue-100 text-blue-800 text-xs font-bold px-3 py-1 rounded-full mb-3">
+                <div class="inline-flex items-center gap-2 bg-blue-100 text-blue-800 text-xs font-bold px-4 py-1.5 rounded-full mb-3 w-fit mx-auto">
                     À CONSULTER
                 </div>
-                <h2 class="text-3xl font-bold text-blue-900">Autres appels d'offres</h2>
+                <h2 class="text-3xl font-bold text-blue-900">Autres marchés similaires</h2>
             </div>
 
             <div class="grid md:grid-cols-3 gap-6">
@@ -262,7 +265,7 @@
 
                         <div class="flex items-center gap-2 mb-3">
                             <span class="text-xs font-bold px-2 py-1 rounded
-                                        {{ $t->type === 'appel_offre' ? 'bg-blue-100 text-blue-800' : 'bg-purple-100 text-purple-800' }}">
+                                        {{ $t->type === 'appel_offre' ? 'bg-blue-100 text-blue-800' : 'bg-pink-100 text-pink-800' }}">
                                 {{ $t->type === 'appel_offre' ? '📄' : '📢' }}
                             </span>
                             <span class="font-mono font-bold text-blue-900 text-xs">
@@ -307,11 +310,11 @@
 {{-- ═══════════════════════════════════════════════════════ --}}
 <section class="bg-gradient-to-r from-blue-900 to-blue-800 text-white py-16">
     <div class="max-w-4xl mx-auto text-center px-4">
-        <div class="inline-block bg-yellow-500 text-blue-900 text-xs font-bold px-3 py-1 rounded-full mb-4">
+        <div class="inline-flex items-center gap-2 bg-yellow-500 text-blue-900 text-xs font-bold px-4 py-1.5 rounded-full mb-4 w-fit mx-auto">
             BESOIN D'AIDE ?
         </div>
         <h2 class="text-3xl md:text-4xl font-bold mb-4">
-            Une question sur cet appel d'offres ?
+            Une question sur ce marché public ?
         </h2>
         <p class="text-blue-100 mb-8 text-lg">
             Notre service des marchés vous répond dans les plus brefs délais.

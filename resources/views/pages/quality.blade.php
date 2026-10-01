@@ -1,38 +1,30 @@
 @extends('layouts.site')
 @section('title', __('messages.quality') . ' - CIOK')
-@section('meta_description', 'Notre engagement pour la qualité : certification ISO 9001, conformité aux normes NT 47.01 et EN 197-1. Contrôle qualité rigoureux.')
-@section('og_image', asset('images/silos.webp'))
+@section('meta_description', __('messages.quality_intro'))
+@section('og_image', asset('images/labo.webp'))
 @section('content')
 
 {{-- ═══════════════════════════════════════════════════════ --}}
 {{-- BANNER --}}
 {{-- ═══════════════════════════════════════════════════════ --}}
 <section class="relative text-white overflow-hidden" style="min-height: 500px;">
-    {{-- Image de fond avec effet flou --}}
     <div class="absolute inset-0">
         <img src="{{ asset('images/labo.webp') }}"
-             alt="Qualité CIOK"
+             alt="{{ __('messages.quality') }} CIOK"
              class="w-full h-full object-cover scale-110"
              style="filter: blur(3px) brightness(0.9); object-position: center;">
         <div class="absolute inset-0 bg-gradient-to-r from-blue-950/85 via-blue-900/70 to-blue-800/50"></div>
     </div>
 
-    {{-- Contenu --}}
     <div class="relative max-w-7xl mx-auto px-4 py-32 flex flex-col justify-center" style="min-height: 500px;">
-
-        {{-- Badge compact --}}
         <div class="inline-flex items-center gap-2 bg-yellow-500 text-blue-900 text-xs font-bold px-4 py-1.5 rounded-full mb-6 w-fit shadow-lg">
-            ✅ QUALITÉ
+            {{ __('messages.quality_badge') }}
         </div>
-
-        {{-- Titre plus grand --}}
         <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-6 leading-tight drop-shadow-lg">
             {{ __('messages.quality') }}
         </h1>
-
-        {{-- Sous-titre --}}
         <p class="text-blue-100 text-lg md:text-xl lg:text-2xl max-w-3xl leading-relaxed drop-shadow-md">
-            Notre engagement pour l'excellence et la conformité aux normes internationales
+            {{ __('messages.quality_intro') }}
         </p>
     </div>
 
@@ -44,14 +36,13 @@
 {{-- ═══════════════════════════════════════════════════════ --}}
 <section class="max-w-5xl mx-auto px-4 py-16 text-center reveal">
     <div class="inline-block bg-blue-100 text-blue-800 text-xs font-bold px-3 py-1 rounded-full mb-4">
-        NOTRE ENGAGEMENT
+        {{ __('messages.quality_engagement_badge') }}
     </div>
     <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-6 leading-tight">
-        La qualité au cœur de nos priorités
+        {{ __('messages.quality_engagement_title') }}
     </h2>
     <p class="text-gray-700 leading-relaxed text-lg max-w-3xl mx-auto">
-        CIOK s'engage à respecter les normes nationales et internationales les plus strictes
-        pour garantir la qualité, la résistance et la durabilité de ses produits.
+        {{ __('messages.quality_engagement_desc') }}
     </p>
 </section>
 
@@ -63,35 +54,35 @@
 
         <div class="text-center mb-12">
             <div class="inline-block bg-yellow-500 text-blue-900 text-xs font-bold px-3 py-1 rounded-full mb-3">
-                🏆 CERTIFICATIONS
+                {{ __('messages.quality_certifications_badge') }}
             </div>
-            <h2 class="text-3xl font-bold text-blue-900">Nos certifications</h2>
+            <h2 class="text-3xl font-bold text-blue-900">{{ __('messages.quality_certifications_title') }}</h2>
         </div>
 
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
 
             <div class="bg-white rounded-xl shadow-md p-6 text-center hover:shadow-2xl transition hover:-translate-y-2 border-t-4 border-blue-900">
                 <div class="text-5xl mb-4">🏆</div>
-                <h3 class="font-bold text-blue-900 mb-2 text-lg">ISO 9001</h3>
-                <p class="text-gray-600 text-sm">Système de management de la qualité</p>
+                <h3 class="font-bold text-blue-900 mb-2 text-lg">{{ __('messages.quality_cert_iso') }}</h3>
+                <p class="text-gray-600 text-sm">{{ __('messages.quality_cert_iso_desc') }}</p>
             </div>
 
             <div class="bg-white rounded-xl shadow-md p-6 text-center hover:shadow-2xl transition hover:-translate-y-2 border-t-4 border-green-600">
                 <div class="text-5xl mb-4">🇹🇳</div>
-                <h3 class="font-bold text-blue-900 mb-2 text-lg">NT 47.01</h3>
-                <p class="text-gray-600 text-sm">Norme tunisienne du ciment</p>
+                <h3 class="font-bold text-blue-900 mb-2 text-lg">{{ __('messages.quality_cert_nt') }}</h3>
+                <p class="text-gray-600 text-sm">{{ __('messages.quality_cert_nt_desc') }}</p>
             </div>
 
             <div class="bg-white rounded-xl shadow-md p-6 text-center hover:shadow-2xl transition hover:-translate-y-2 border-t-4 border-yellow-500">
                 <div class="text-5xl mb-4">🌍</div>
-                <h3 class="font-bold text-blue-900 mb-2 text-lg">EN 197-1</h3>
-                <p class="text-gray-600 text-sm">Norme européenne du ciment</p>
+                <h3 class="font-bold text-blue-900 mb-2 text-lg">{{ __('messages.quality_cert_en') }}</h3>
+                <p class="text-gray-600 text-sm">{{ __('messages.quality_cert_en_desc') }}</p>
             </div>
 
             <div class="bg-white rounded-xl shadow-md p-6 text-center hover:shadow-2xl transition hover:-translate-y-2 border-t-4 border-purple-600">
                 <div class="text-5xl mb-4">✅</div>
-                <h3 class="font-bold text-blue-900 mb-2 text-lg">Marquage CE</h3>
-                <p class="text-gray-600 text-sm">Conformité européenne</p>
+                <h3 class="font-bold text-blue-900 mb-2 text-lg">{{ __('messages.quality_cert_ce') }}</h3>
+                <p class="text-gray-600 text-sm">{{ __('messages.quality_cert_ce_desc') }}</p>
             </div>
 
         </div>
@@ -106,42 +97,41 @@
 
     <div>
         <div class="inline-block bg-blue-100 text-blue-800 text-xs font-bold px-3 py-1 rounded-full mb-4">
-            🔬 LABORATOIRE
+            {{ __('messages.quality_lab_badge') }}
         </div>
-        <h2 class="text-3xl font-bold text-blue-900 mb-6">Contrôle qualité rigoureux</h2>
+        <h2 class="text-3xl font-bold text-blue-900 mb-6">{{ __('messages.quality_control_title') }}</h2>
 
         <p class="text-gray-700 leading-relaxed mb-6">
-            Chaque lot de production est soumis à des tests rigoureux en laboratoire
-            afin de garantir la résistance, la durabilité et la conformité de nos ciments.
+            {{ __('messages.quality_control_desc') }}
         </p>
 
         <ul class="space-y-4">
             <li class="flex items-start gap-3">
                 <span class="w-8 h-8 bg-green-500 text-white rounded-full flex items-center justify-center text-sm flex-shrink-0 mt-0.5">✓</span>
                 <div>
-                    <strong class="text-blue-900">Tests physiques</strong>
-                    <p class="text-sm text-gray-600">Résistance, temps de prise, stabilité volumique</p>
+                    <strong class="text-blue-900">{{ __('messages.quality_control_li1_title') }}</strong>
+                    <p class="text-sm text-gray-600">{{ __('messages.quality_control_li1_desc') }}</p>
                 </div>
             </li>
             <li class="flex items-start gap-3">
                 <span class="w-8 h-8 bg-green-500 text-white rounded-full flex items-center justify-center text-sm flex-shrink-0 mt-0.5">✓</span>
                 <div>
-                    <strong class="text-blue-900">Analyses chimiques</strong>
-                    <p class="text-sm text-gray-600">Composition, taux de sulfates, alcalins</p>
+                    <strong class="text-blue-900">{{ __('messages.quality_control_li2_title') }}</strong>
+                    <p class="text-sm text-gray-600">{{ __('messages.quality_control_li2_desc') }}</p>
                 </div>
             </li>
             <li class="flex items-start gap-3">
                 <span class="w-8 h-8 bg-green-500 text-white rounded-full flex items-center justify-center text-sm flex-shrink-0 mt-0.5">✓</span>
                 <div>
-                    <strong class="text-blue-900">Traçabilité</strong>
-                    <p class="text-sm text-gray-600">Suivi complet de chaque lot de production</p>
+                    <strong class="text-blue-900">{{ __('messages.quality_control_li3_title') }}</strong>
+                    <p class="text-sm text-gray-600">{{ __('messages.quality_control_li3_desc') }}</p>
                 </div>
             </li>
         </ul>
     </div>
 
     <div class="img-zoom rounded-2xl shadow-xl overflow-hidden">
-        <img src="{{ asset('images/aerien.webp') }}" alt="Contrôle qualité" class="w-full h-96 object-cover">
+        <img src="{{ asset('images/aerien.webp') }}" alt="{{ __('messages.quality_control_title') }}" class="w-full h-96 object-cover">
     </div>
 
 </section>
@@ -154,36 +144,36 @@
 
         <div class="text-center mb-12">
             <div class="inline-block bg-yellow-500 text-blue-900 text-xs font-bold px-3 py-1 rounded-full mb-3">
-                📋 PROCESSUS
+                {{ __('messages.quality_process_badge') }}
             </div>
-            <h2 class="text-3xl font-bold mb-3">Le processus qualité CIOK</h2>
-            <p class="text-blue-200">De la matière première au produit fini</p>
+            <h2 class="text-3xl font-bold mb-3">{{ __('messages.quality_process_title') }}</h2>
+            <p class="text-blue-200">{{ __('messages.quality_process_subtitle') }}</p>
         </div>
 
         <div class="grid md:grid-cols-4 gap-6">
 
             <div class="text-center">
                 <div class="w-16 h-16 bg-yellow-500 text-blue-900 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4 shadow-lg">1</div>
-                <h3 class="font-bold mb-2">Extraction</h3>
-                <p class="text-blue-200 text-sm">Sélection rigoureuse des matières premières</p>
+                <h3 class="font-bold mb-2">{{ __('messages.quality_step1') }}</h3>
+                <p class="text-blue-200 text-sm">{{ __('messages.quality_step1_desc') }}</p>
             </div>
 
             <div class="text-center">
                 <div class="w-16 h-16 bg-yellow-500 text-blue-900 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4 shadow-lg">2</div>
-                <h3 class="font-bold mb-2">Production</h3>
-                <p class="text-blue-200 text-sm">Contrôle continu à chaque étape</p>
+                <h3 class="font-bold mb-2">{{ __('messages.quality_step2') }}</h3>
+                <p class="text-blue-200 text-sm">{{ __('messages.quality_step2_desc') }}</p>
             </div>
 
             <div class="text-center">
                 <div class="w-16 h-16 bg-yellow-500 text-blue-900 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4 shadow-lg">3</div>
-                <h3 class="font-bold mb-2">Analyse</h3>
-                <p class="text-blue-200 text-sm">Tests en laboratoire par lot</p>
+                <h3 class="font-bold mb-2">{{ __('messages.quality_step3') }}</h3>
+                <p class="text-blue-200 text-sm">{{ __('messages.quality_step3_desc') }}</p>
             </div>
 
             <div class="text-center">
                 <div class="w-16 h-16 bg-yellow-500 text-blue-900 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4 shadow-lg">4</div>
-                <h3 class="font-bold mb-2">Livraison</h3>
-                <p class="text-blue-200 text-sm">Produits certifiés conformes</p>
+                <h3 class="font-bold mb-2">{{ __('messages.quality_step4') }}</h3>
+                <p class="text-blue-200 text-sm">{{ __('messages.quality_step4_desc') }}</p>
             </div>
 
         </div>
@@ -195,8 +185,8 @@
 {{-- CTA --}}
 {{-- ═══════════════════════════════════════════════════════ --}}
 <section class="max-w-4xl mx-auto px-4 py-16 text-center">
-    <h2 class="text-3xl font-bold text-blue-900 mb-4">Des questions sur notre qualité ?</h2>
-    <p class="text-gray-600 mb-8">Notre équipe technique est à votre disposition.</p>
+    <h2 class="text-3xl font-bold text-blue-900 mb-4">{{ __('messages.quality_cta_title') }}</h2>
+    <p class="text-gray-600 mb-8">{{ __('messages.quality_cta_desc') }}</p>
     <a href="{{ route('contact.show') }}"
        class="inline-flex items-center gap-2 bg-blue-900 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-800 transition hover:-translate-y-1">
         ✉️ {{ __('messages.contact_us') }}
