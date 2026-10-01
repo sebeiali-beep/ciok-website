@@ -12,14 +12,11 @@ return new class extends Migration
         $driver = DB::connection()->getDriverName();
 
         if ($driver === 'pgsql') {
-            // ═══ PostgreSQL ═══
-            // Supprimer l'ancienne contrainte CHECK (si elle existe)
+            // PostgreSQL (Render)
             DB::statement("ALTER TABLE tenders DROP CONSTRAINT IF EXISTS tenders_type_check");
-            
-            // Créer la nouvelle contrainte CHECK avec les 3 types
             DB::statement("ALTER TABLE tenders ADD CONSTRAINT tenders_type_check CHECK (type IN ('appel_offre', 'consultation', 'consultation_elargie'))");
         } else {
-            // ═══ MySQL ═══
+            // MySQL (Local)
             DB::statement("ALTER TABLE tenders MODIFY COLUMN type ENUM('appel_offre', 'consultation', 'consultation_elargie') DEFAULT 'appel_offre'");
         }
     }
