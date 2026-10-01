@@ -13,9 +13,6 @@ php artisan optimize:clear
 echo "=== Migration de la base de donnees ==="
 php artisan migrate --force
 
-echo "=== Execution des seeders ==="
-php artisan db:seed --force
-
 echo "=== Lien storage ==="
 php artisan storage:link || true
 
