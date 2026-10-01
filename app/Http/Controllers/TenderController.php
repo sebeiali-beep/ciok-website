@@ -8,29 +8,25 @@ use Illuminate\Http\Request;
 class TenderController extends Controller
 {
     public function index(Request $request)
-    {
-        $query = Tender::published()->latest('published_at');
+{
+    $query = Tender::where('is_published', true);
 
-        // Filtre par type
-        if ($request->has('type') && in_array($request->type, ['appel_offre', 'consultation_elargie'])) {
-            $query->where('type', $request->type);
-        }
-
-        // Filtre par statut
-        if ($request->has('status') && in_array($request->status, ['open', 'closed', 'awarded'])) {
-            $query->where('status', $request->status);
-        }
-
-        $tenders = $query->paginate(10);
-
-        $stats = [
-            'open' => Tender::published()->where('status', 'open')->count(),
-            'closed' => Tender::published()->where('status', 'closed')->count(),
-            'awarded' => Tender::published()->where('status', 'awarded')->count(),
-        ];
-
-        return view('tenders.index', compact('tenders', 'stats'));
+    if ($request->filled('type')) {
+        $query->where('type', $request->type);
     }
+
+    $tenders = $query->orderByDesc('deadline_date')
+                     ->orderByDesc('created_at')
+                     ->paginate(9);
+
+    $stats = [
+        'open'    => Tender::where('is_published', true)->where('status', 'open')->count(),
+        'awarded' => Tender::where('is_published', true)->where('status', 'awarded')->count(),
+        'closed'  => Tender::where('is_published', true)->where('status', 'closed')->count(),
+    ];
+
+    return view('tenders.index', compact('tenders', 'stats'));
+}
 
     public function show($slug)
     {
@@ -44,4 +40,14 @@ class TenderController extends Controller
 
         return view('tenders.show', compact('tender', 'related'));
     }
+
+    public function manual()
+{
+    return view('tenders.manual');
+}
+
+public function plan()
+{
+    return view('tenders.plan');
+}
 }
