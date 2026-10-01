@@ -9,12 +9,30 @@ return new class extends Migration
 {
     public function up(): void
     {
-        // Modifier l'enum pour ajouter 'consultation'
-        DB::statement("ALTER TABLE tenders MODIFY COLUMN type ENUM('appel_offre', 'consultation', 'consultation_elargie') DEFAULT 'appel_offre'");
+        $driver = DB::connection()->getDriverName();
+
+        if ($driver === 'pgsql') {
+            // ═══ PostgreSQL ═══
+            // Supprimer l'ancienne contrainte CHECK (si elle existe)
+            DB::statement("ALTER TABLE tenders DROP CONSTRAINT IF EXISTS tenders_type_check");
+            
+            // Créer la nouvelle contrainte CHECK avec les 3 types
+            DB::statement("ALTER TABLE tenders ADD CONSTRAINT tenders_type_check CHECK (type IN ('appel_offre', 'consultation', 'consultation_elargie'))");
+        } else {
+            // ═══ MySQL ═══
+            DB::statement("ALTER TABLE tenders MODIFY COLUMN type ENUM('appel_offre', 'consultation', 'consultation_elargie') DEFAULT 'appel_offre'");
+        }
     }
 
     public function down(): void
     {
-        DB::statement("ALTER TABLE tenders MODIFY COLUMN type ENUM('appel_offre', 'consultation_elargie') DEFAULT 'appel_offre'");
+        $driver = DB::connection()->getDriverName();
+
+        if ($driver === 'pgsql') {
+            DB::statement("ALTER TABLE tenders DROP CONSTRAINT IF EXISTS tenders_type_check");
+            DB::statement("ALTER TABLE tenders ADD CONSTRAINT tenders_type_check CHECK (type IN ('appel_offre', 'consultation_elargie'))");
+        } else {
+            DB::statement("ALTER TABLE tenders MODIFY COLUMN type ENUM('appel_offre', 'consultation_elargie') DEFAULT 'appel_offre'");
+        }
     }
 };
