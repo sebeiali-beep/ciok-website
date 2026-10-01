@@ -1,26 +1,24 @@
 #!/bin/bash
 set -e
 
-echo "🚀 Démarrage de CIOK..."
+echo "=== Demarrage de CIOK ==="
 
-# Générer la clé d'application si absente
 if [ -z "$APP_KEY" ]; then
     php artisan key:generate --force
 fi
 
-echo "🧹 Nettoyage des caches..."
+echo "=== Nettoyage des caches ==="
 php artisan optimize:clear
 
-echo "📦 Migration de la base de données..."
+echo "=== Migration de la base de donnees ==="
 php artisan migrate --force
 
-echo "🌱 Exécution des seeders..."
+echo "=== Execution des seeders ==="
 php artisan db:seed --force
 
-echo "🔗 Lien storage..."
+echo "=== Lien storage ==="
 php artisan storage:link || true
 
-echo "✅ Prêt, démarrage du serveur..."
+echo "=== Pret, demarrage du serveur ==="
 
-# Démarrer PHP-FPM
 exec php-fpm
